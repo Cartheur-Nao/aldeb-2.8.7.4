@@ -1,0 +1,1266 @@
+topic: ~lexicon()
+language: mnc
+
+dynamic:robotname
+dynamic:friendlyname
+dynamic:all_descriptions
+dynamic:all_languages
+dynamic:myrobotname
+
+
+dynamic:app-name
+dynamic:app-dance
+dynamic:app-game
+dynamic:app-story
+dynamic:registered_name
+
+dynamic:available_languages
+
+
+
+
+#request
+#answer
+#robots concepts
+#noun
+#phrase
+#verb
+#adj
+#adv
+#pronoun
+#prep
+#entity
+
+#-----------------concept used in other concepts-------------------------------------------------#
+concept:(softer)
+[轻点 小点 低点]
+
+concept:(do)
+[做　干　搞]
+
+concept:(raise)
+[提高 增强 增加 调大 调高 大点]
+
+concept:(able)
+["能{够}" 会 可以]
+
+concept:(produce)
+[生产 出生 建造 创造 制造 设计 发明 做 产 造]
+
+concept:(people)
+["我{们}" 其他人 "人{类 们}"]
+
+concept:(how_to)
+["如何" "怎样" "咋{样}" "怎么" "怎么样"]
+
+concept:(what)
+[什么 啥]
+
+concept:(Romeo) [Romeo 罗密欧]
+
+concept:(Pepper) [Pepper 拍破　派波]
+
+concept:(Nao) [Nao 脑]
+
+concept:(want)
+[想 需要 要 得 希望]
+
+concept:(tell)
+[告诉 "说{话}"　"讲{话}" 提醒]
+
+#------------------------------------------------------------------#
+
+
+
+#==================================================================#
+##### REQUEST #####
+#------------------------------------------------------------------#
+
+
+
+concept:(can_you_request1)
+[能不能 要不要 会不会 可不可以 想不想 愿不愿意]
+
+concept:(can_you_request2)
+["能{够}" 要 会 可以 想 愿意]
+
+concept:(can_i_request)
+[能不能 要不要 可不可以 "能{够}" 要 可以]
+
+concept:(ok_request)
+[可以吗　好吗　行吗　行不行　好不好　可不可以 吧]
+
+concept:(info_request) [
+    "{~can_you_request1 ~can_you_request2} ~tell"
+    "{~want}知道"
+]
+
+concept:(capable_or_not)
+[能不能 可不可以]
+
+concept:(capable_ma)
+["能{够}" 可以]
+
+#==================================================================#
+
+
+#==================================================================#
+#####  ANSWER  #####
+#------------------------------------------------------------------#
+
+concept:(yes)
+["[对 是　好]{的}" 对头 正确 可以 行 想]
+
+concept:(yes_for_sing)
+[~yes "{我}听着呢" "洗耳恭听"　"我想听"　"唱吧"]
+
+concept:(ok)
+[好的 好 ok]
+
+concept:(good)
+[棒 完美 好 可以 不错 还行 过得去 凑合 差不多]
+
+concept:(alright)
+["好{的}" 没问题]
+
+concept:(great_of_good_news)
+[太棒了 棒棒哒　太好啦 我听到很开心 你开心我就开心]#["I'm {so} glad!"  "I'm happy to hear it!" "Great!" "Awesome!"]
+
+concept:(great_before_action)
+[好嘞　走起　太好啦 我会好好表现的]#["let's do it!" "Great!" "Awesome!" "i'll try my best"]
+
+
+concept:(thank_you)
+[    "谢谢{你}"#thank you
+    "{非常 十分}感谢{你}"#thank you very much
+    "多谢"#thanks
+]
+concept:(thanks_im_flattered)
+^rand [
+    "谢谢,　么么哒"#"Thank you! bisous!"
+    "过奖, 过奖, 谢谢"#"How nice, thank you!"
+    "承蒙夸奖,不敢当!"#"I feel flattered!"
+    "谢谢, 你人真好"#thanks,that's very nice of you
+    "谢谢,你嘴真甜"#thanks,that's very nice of you
+]
+
+concept:(no) [
+    "不{想　行 要 可以 ok} {谢谢}"
+    "别说了"
+    "没门"
+    "我没兴趣"
+    "我不[确定 知道]"
+    "我不这么认为"
+    "我会考虑一下"
+    "一点也不"
+    "[绝对 绝对 完全 可能]不是"
+    "在你梦里"
+    "你是在做梦吗?"
+    "休想"
+    "[暂时 现在]不"
+    "没那么多"
+    "这不是真的"
+    "这是错误的"
+    "绝对不"
+    "不是真的"
+    "不完全是"
+    "这不关你的事"
+    "你在干什么"
+    "它不感兴趣"
+    "我不喜欢它"
+    "不是现在"
+    "也许以后"
+    "下一次"
+    "从来{没有}"
+    ]
+
+concept:(refuse_answer)
+    "这个我不知道能不能帮上忙"#I don't know if I'll be very useful.
+    "己所不欲 勿施于人"#one should not impose on others what he himself does not desire.（Confucian Analects）.
+
+#==================================================================#
+
+
+
+#==================================================================#
+##### Robot concepts #####
+#------------------------------------------------------------------#
+dynamic:robotname
+
+concept:(ald_robots) [~robotname "~Nao $robot=Nao"  "~Pepper $robot=Pepper" "~Romeo $robot=Romeo"]
+
+
+concept:(robots)["你{们}" 机器 "{人形 类人型　仿人型}机器人 $temp/subj=robot"]
+#==================================================================#
+
+
+#==================================================================#
+##### Voice tweaking #####
+concept:(neutral) \style=neutral\ \rspd=100\ \vct=110\
+concept:(neutral_slow) \style=neutral\ \vct=105\ \rspd=100\
+concept:(joyful) \style=joyful\ \rspd=90\ \vct=95\
+concept:(didactic) \style=didactic\ \rspd=105\ \vct=110\
+#==================================================================#
+
+
+
+#==================================================================#
+##### NOUN #####
+#------------------------------------------------------------------#
+
+concept:(meaning)
+[含义　意义　意思　代表什么　说道 象征]
+
+concept:(speed)
+[速度　速率]
+
+concept:(mood)
+[心情　情绪]
+concept:(emotion)
+[情感　内心　感情　感受　心思　想法　情意　感觉]
+
+concept:(volume)
+[音量　声音　动静 声　嗓门　嗓音 噪声 分贝]
+
+concept:(producer)
+[生产 建造 创造 制造 设计 发明][者 商]
+
+concept:(percentage)
+[百分之多少 百分比 "~what 水平" 大小 多少 多大]
+
+concept:(word)
+[单词 词汇　生词　字{儿}　词{儿}]
+
+concept:(thing)
+["事{儿}" 事情]
+
+concept:(name) [名字　名儿　姓名　姓　大名　真名　全名　本名]
+
+concept:(nickname) [昵称　小名　外号　绰号　雅号　别名　网名　中文名]
+
+concept:(age) [年龄 芳龄 岁数]
+
+concept:(opinion)
+[看法　想法　建议　见解　观点　高见]
+
+concept:(color)
+[颜色　色儿　散儿　散r]#"散儿　散r" added for the recognition of "色儿"
+
+concept:(food)
+[吃的　食物　主食　甜食　甜品　肉类　前菜　蔬菜　水果　零食 "[早 中　午　晚 法　日]餐"　"[中国　法国　日本]菜"]#food Staples Sweets Meat appetizers Vegetables Fruit Snacks　breakfirst lunch dinner [chinese french japanese]food
+
+concept:(song)
+["歌曲"　"[歌　曲]{儿　r}" "主题[歌　曲]"　"[老　新]歌"]#"r" added for the vocal recognition
+
+concept:(movie)
+["电影{儿　r}"　电视剧　"片{儿　r　子}" 影视剧]#"r" added for the vocal recognition
+
+concept:(law)[法律　定律　法则　法规　规则　守则]
+
+concept:(asimov)["{Isaac } Asimov" 艾萨克 阿西莫夫]
+
+concept:(composer)["[作曲　原作　创作　谱曲]{人　者}" 作家　]
+
+concept:(lyrics)["歌词{儿　r}" "词{儿　r}"]
+
+concept:(voice)
+["声[音 儿　r]"　动静　嗓音 音色　声线　音调 歌声]
+
+concept:(languages_entity)
+["中文"　"汉语" "[西班牙　英　印地　阿拉伯　葡萄牙　孟加拉　俄　日　旁遮普　德　爪哇　马来　泰卢固　越南　韩　法　马拉地　泰米尔　乌尔都　土耳其　义大利　粤　泰　古吉拉特　晋　闽南　波斯　波兰　缅甸　客家][文 语]"]
+
+concept:(singer)
+["歌[手 王　星 唱家 者]"　"{超级　超人气　大牌　下一个　大　小　当红　摇滚}[明星　巨星]"]
+
+concept:(talent)
+[才　天赋　灵性　悟性　天才　天份]
+
+#------------------------------------------------------------------#
+##### family and friend ####
+#------------------------------------------------------------------#
+
+concept:(sister)["{大}姐"　"{小}妹"　姐妹　姊妹 姐姐　妹妹]
+
+concept:(brother)["{大}哥"　"{小}弟"　兄弟　弟兄 兄长　哥哥　弟弟]
+
+concept:(brother_and_sister)["{大}哥"　"{小}弟"　兄弟　弟兄 兄长　"{大}姐"　"{小}妹"　姐妹　姊妹 "兄弟{和　或}姐妹"　兄妹　姐弟　姐姐　哥哥　弟弟　妹妹]
+
+concept:(family)[亲戚　"家{里}人"　至亲　亲人]
+
+concept:(parents)[ 家长　"父母{亲}" 双亲　爸爸妈妈　爸妈 母亲　父母　"妈{妈}"　"爸{爸}"　"爹{爹}"　"娘{亲}"]
+
+concept:(relative)
+[伯母 伯父 公公 叔叔 堂伯 堂伯父 堂叔 堂哥 堂大爷 堂妹 堂姐 堂姑 堂姨 堂姨妈 堂弟 堂舅 堂阿姨 外公 外奶 外婆 外爷 外祖母 外祖父 大公伯母 大外公 大外奶 大外婆 大外爷 大奶 大妈 大姥 大姥爷 大娘 大婆 大爷 太公 太外公 太外婆 太奶 太姥 太姥爷 太婆 太爷 奶奶 妹夫 姐夫 姐妹 姑丈 姑公 姑外公 姑外奶 姑外婆 姑外爷 姑奶 姑妈 姑姑 姑姥 姑姥爷 姑婆 姑父 姑爷 姑爹 姥姥 姥爷 姨丈 姨公 姨外公 姨外奶 姨外婆 姨外爷 姨奶 姨妈 姨姥 姨姥爷 姨姨 姨婆 姨父 姨爷 姨爹 婆婆 婶婶 嫂子 子女 弟媳 爷爷 祖母 祖父 舅公 舅外公 舅外奶 舅外婆 舅奶 舅妈 舅姥 舅姥爷 舅娘 舅婆 舅爷 舅舅 表伯 表伯父 表叔 表哥 表大爷 表妹 表姐 表姑 表姑母 表姨 表姨妈 表弟 表舅 表阿姨 阿姨 ]
+
+concept:(friend)["朋友{们}"　闺蜜　"哥们{儿}"　友人　好友　老铁　知音　知己]
+
+#------------------------------------------------------------------#
+##### robot body #####
+#------------------------------------------------------------------#
+
+concept:(fingerprint)
+["[手　手指　指头]上{纹路　痕迹　印　突起　图案}" "指纹"]
+
+concept:(finger)
+[手指　"{手}指头" 拇指 指尖]
+
+concept:(hand)
+[手 两手 双手 手掌 巴掌 手板 掌 掌心 手心 手掌心]
+
+concept:(head)
+[头 脑袋 脑瓜子 脑瓜儿 脑壳 脑瓜 脑部 脑袋瓜 头部]
+
+concept:(arm)
+[手臂　胳膊　胳臂　上臂 臂膀 前臂]
+
+concept:(tablet)
+["平板{电脑 儿}"　"{i}pad" 派得]
+
+concept:(microphone)
+[麦克风　话筒 听筒]
+
+concept:(speaker)
+[喇叭　扬声器 音响　扩音器　音箱]
+
+concept:(charge_battery)
+[
+"把电池[充满 充好]"
+"充{好　满　完}电"
+]
+
+#==================================================================#
+
+
+#==================================================================#
+#####  PREP #####
+concept:(to)[为 到 成 至]
+
+concept:(for)[给　为]
+
+concept:(about)[有关　关于]
+
+concept:(and)[和　与　还有]
+concept:(toward)[向 朝 望 往 朝向 朝着]
+#==================================================================#
+
+
+#==================================================================#
+##### VERB #####
+#------------------------------------------------------------------#
+
+concept:(roll)
+[滑动 滑行 滑]
+
+concept:(walk)
+[走 走动 走路 走道儿 行走]
+
+concept:(turn)
+[掉转 扭转 回转 反过来 扭 转 翻转 扭动 转过]
+
+concept:(touch)[碰 触摸　抚摸　摸得着 摸摸]
+
+concept:(feel)[体验 体会 感受 感到 感觉 觉得 深感 感觉到 倍感]
+
+concept:(repeat)[ "[重 重新 再][告诉 说　讲 提醒]" 重申 重复　重温]
+
+concept:(one_time){"{一}[次　遍　下]"}
+
+concept:(compose)[写　原作　创作　谱曲]
+
+concept:(learn)["学{习　来　过　得　会 到　完　好}"]
+
+concept:(teach)["教{过　得　会　给}"　传授]
+
+concept:(remember)["记[住　得　清]"]
+
+concept:(forget)[不记得　"记不[住　得　清]" 忘记 忘掉 忘却 忘怀 遗忘 忘 置于脑后 淡忘]
+
+concept:(replace)[替代　代替　取代　替换　淘汰]
+
+concept:(sing)["唱{只　首　个}~song" "[唱 "唱歌{儿　r}" ]"]
+
+concept:(hum)[呻吟 哼 打呼 哼哼 哼唧 哼唱　唱歌　唱]
+
+concept:(dislike)[讨厌　不喜欢　不爱　反感　厌恶　厌烦]
+
+concept:(change)[改变　改　变 更改]
+
+concept:(trust)[相信　信任　信赖 信]
+
+concept:(consider)
+["看{待}" 评价 认为]
+
+concept:(know_someone)["{看}见过"　认识　知道]
+
+concept:(find)
+[找到　发现　看到]
+
+
+
+concept:(ask)
+[问 咨询]
+
+concept:(speak)
+[说　讲]
+
+
+
+concept:(robot_impossible_actions)
+[
+喝{东西}#drink
+吃{东西}#eat
+游泳#swim
+飞#fly
+"上厕所"#go to toillet
+"扔垃圾"#take a dump
+"小便"#"do number 2"
+"尿尿"#pee
+"拉屎"#poo
+"大便"#"do number 1"
+"呼吸"#breathe
+"哭"#cry
+]
+
+concept:(robot_impossible_sport)
+[俯卧撑 踢足球　跆拳道　武术　功夫　仰卧起坐 摔跤 泰拳 长跑 拔河 竞走 拳击 赛跑 三级跳远 举重 接力赛跑 花剑 击剑 撑杆跳 撑竿跳 越野赛跑 障碍赛跑 抓举 速滑 田径运动 团体操]#Push-ups Sit-ups Sit-ups Muay Thai mid-distance running Women's football Tug of war Race boxing Three-foot long jump Weightlifting Relays Foil Fencing Pole vault Pole-crossing Off-road Cross-country racing Obstacle racing Snatch Speed ​​skating Track and field Sports Group calisthenics
+
+concept:(move)
+[走　跑　移动　行驶]
+
+concept:(understand)
+[了解　理解　"{弄　搞}明白"　猜到　知道　得知　认识　掌握]
+
+concept:(see)
+[看到　看见　看着　瞧见　]
+
+
+
+concept:(recognize)
+[识别　认出{来}　看出{来}　侦测　辨认　鉴别　知道　分辨出　认得]
+
+
+
+#------------------------------------------------------------------#
+##### Link verb #####
+#------------------------------------------------------------------#
+
+concept:(become)[变成　成为]
+
+concept:(be)
+[是 为 有]
+
+#------------------------------------------------------------------#
+##### Modal verb #####
+#------------------------------------------------------------------#
+
+
+
+concept:(love)
+[喜欢　"{喜 钟 酷 偏}爱"]
+
+concept:(must)[必须　一定]
+
+concept:(should)["应{该　当}" 该　要 得]
+
+concept:(need)[需要　要]
+
+concept:(make)[让　使]
+
+#------------------------------------------------------------------#
+
+##### adjust volume #####
+#------------------------------------------------------------------#
+concept:(adjust)
+[调整 调节 控制 改变 设置 调]
+
+concept:(hear)
+["听{到 着　见 "出{来}"}"]
+
+concept:(lower)
+[降低 调低　减小　缩小 调小]
+
+concept:(yell)
+[喊 叫 吼 嚷嚷]
+
+
+
+
+#------------------------------------------------------------------#
+
+
+
+#------------------------------------------------------------------#
+ concept:(verb_nogood_entity)
+ [
+ 杀{掉 死}#kill
+ [死 去世 逝世]#dead
+ ]
+#------------------------------------------------------------------#
+concept:(gift_verb)
+[
+"给"#"give"
+"提供"#offer"
+]
+
+concept:(gift_verb_continuous)
+[
+"正在给"#giving
+"正在提供"#"offering"
+]
+
+concept:(gift_verb_pt)
+[
+给过#"given"
+提供过#"offered"
+]
+
+
+
+
+
+#==================================================================#
+#####  ADJ  #####
+#------------------------------------------------------------------#
+concept:(a_little)
+[有点 有些 一点 稍微 丁点 一些 点]
+
+concept:(loud)
+[大　响 吵　烦人 高]
+
+concept:(soft)
+[轻 低 小]
+
+concept:(some)
+["{一}["点{儿}" 些 下 个]"]
+
+concept:(short)
+[简短 短小　短]
+
+concept:(long)
+[长 冗长　久]
+
+concept:(maximum)
+[最大 最高]
+
+concept:(minimum)
+[最小 最低]
+
+concept:(male) [男的　"男孩{儿}" 男人　帅哥　男子汉　公的 汉子]
+
+concept:(female) [女的　"女孩{儿}" 女人　美女　妹子　姑娘　母的]
+
+concept:(another)[其他　别的]
+
+concept:(happy)[高兴 开心 愉快 欢快 快活 快乐 欢乐 欢娱 欢愉 欢欣 欢喜 喜欢 欣喜 欣然 愉悦 乐呵呵 乐悠悠 喜滋滋 喜洋洋 喜气洋洋 兴冲冲 甜丝丝 美丝丝 美滋滋 高高兴兴 快快乐乐 欢欢喜喜]
+
+concept:(sad)[悲伤 伤悲 伤心 伤感 难过 难受 哀伤 悲哀 悲愁 哀愁 悲怆 忧伤 凄然 凄怆 不是味儿 如丧考妣 凄风楚雨 不好过]
+
+concept:(tired)
+[疲倦 疲劳 疲乏 累 困 困乏 困顿 困倦 劳累 疲惫 困惫 疲顿 精疲力尽 劳乏 乏力 嗜睡 虚弱不堪 疲弱 疲态]
+
+
+#------------------------------------------------------------------#
+#personality
+
+concept:(talented)
+["有~talent" "~talent　过人"　天赋异禀　]
+
+concept:(kind)[友好　善良　友善  性格好 温柔 温和 温存 温润 和气 和善 和易 和蔼 和约 平易近人 好说话儿 好声好气 和颜悦色 和蔼可亲 和和气气 和悦 亲和]
+
+concept:(cool)[
+    "酷{炫}"
+    帅
+    厉害
+    好看
+    可爱
+]
+
+concept:(smart)[
+    智能　聪明　智商高　高智商　
+]
+
+concept:(dangerous)[
+    危险　邪恶　坏　恶魔　魔鬼　撒旦　妖魔　残忍　杀人武器 杀人　伤人　伤害
+]
+
+#------------------------------------------------------------------#
+#positive/negative
+
+concept:(good_adj)
+[棒 完美 好 好酷 好好 伟大 可爱 整洁 辉煌 体面 愉快 优秀 非凡 梦幻般的 神话般的 可以 不错 不赖　还行 过得去 凑合 差不多 壮丽 奇妙 令人愉快 让人愉快 美妙 极好]
+
+concept:( good_music_adj)
+[~good_adj 好听　高亢 雄浑 柔美 清脆 低沉 沙哑 有磁性 粗犷 细腻 圆韵 宛转 悠扬 悦耳 动听 天籁之音 宛如天籁 朗如珠玉 珠圆玉润 不绝如缕 银铃悦耳 莺声燕语 高山流水 珠落玉盘 黄钟大吕 荡气回肠 铿锵有力 慷慨激昂 让人陶醉 余音不绝 余音袅袅 曲尽其妙 袅袅余音 如空谷幽兰 像清风拂过琴弦 像落花飘在水上 此曲只应天上有 人间难得几回闻 余音绕梁 三日不绝 轻快 流畅 悲伤 伤感 粗犷 低沉 高亢 雄浑 舒缓 亢奋 欢快 激情 紧张 热情 平和 宁静 悠扬 舒缓 绵长 幽雅]
+
+concept:(moyen)
+[可以 不错 不赖　还行 过得去 凑合 差不多　正常]
+
+
+concept:(bad_adj)
+[坏 差 次 破 糟 不好 不行 不妙 不善 差劲 糟糕 欠佳 一般　不成 二流 不怎么样 恶心]
+
+concept:(bad_music_adj)
+[~bad_adj 刺耳 难听 不堪入耳]
+
+
+#==================================================================#
+#####  ADV  #####
+#------------------------------------------------------------------#
+concept:(very)
+[特别 非常 十分 很 太 相当 真 挺 好]
+
+concept:(still)
+[依然 依旧 仍然 仍旧 还是 一直 ]
+
+concept:(too)
+[这么 那么 着实 至极 多么 真是 真够 简直 太 太过 真的 确实 很 要命 着实 实在 非常 十分 极为 相当 比较 颇为 格外 尤其 超级]
+
+concept:(again)
+["再{{一}次}" "重新"]
+
+concept:(now)
+[现在 目前 当前]
+
+concept:(just)
+[方才 刚才 刚 刚刚]
+
+concept:(more)[进一步　更多　加深]
+
+concept:(together)[共同 协同 一同 一道 一起 一齐 "一块{r 儿}" 一路 一头 一并 联合 合 齐 共 同 齐声 同步 同台]
+
+#==================================================================#
+
+
+
+
+#==================================================================#
+#####  PRONOUN #####
+#------------------------------------------------------------------#
+
+concept:(i)
+[我 咱 俺 本人 人家]
+
+concept:(you)
+[你 您]
+
+concept:(prons)
+["我{们}" 他们 她们 他俩 她俩 他 她 人家]
+
+concept:(we)
+[我们 咱 咱们 俺们 咱俩]
+
+
+concept:(all)[全部　所有]
+
+#------------------------------------------------------------------#
+#####  Interrogative pronoun #####
+#------------------------------------------------------------------#
+
+concept:(when)["~what[时候　时间]" 哪年　几月]
+
+
+
+concept:(which)
+["哪[个　些　首　只]"]
+
+concept:(how_much)
+[大小 多少 多大 几]
+
+concept:(why)
+[为何 为什么 为啥  什么原因 啥原因]
+
+concept:(who)
+[谁　什么人　啥人]
+
+concept:(where)
+["哪{里　儿}"　"~what[地方]" "nar"]#"nar" added for the speech recognition of accent "er"
+
+concept:(how_old) [多大 几岁]
+
+concept:(how_long_time)[多长时间　"[多少 几][分钟　个小时]"]　
+
+#------------------------------------------------------------------#
+##### DAPS #####
+#------------------------------------------------------------------#
+concept:(highfive)[
+    让我们击掌
+    击掌
+]
+concept:(handshake)[
+    我们可以握手吗
+    握手
+]
+concept:(fistbump)[
+    挥手击掌
+]
+concept:(lowfive)[
+    向下击掌
+]
+concept:(hug)[
+    给我一个拥抱
+    来一个拥抱
+]
+
+#==================================================================#
+##### NUMBER #####
+#------------------------------------------------------------------#
+
+concept:(number_0_100)["0 $num=0" "1 $num=1" "2 $num=2" "3 $num=3" "4 $num=4" "5 $num=5" "6 $num=6" "7 $num=7" "8 $num=8" "9 $num=9" "10 $num=10" "11 $num=11" "12 $num=12" "13 $num=13" "14 $num=14" "15 $num=15" "16 $num=16" "17 $num=17" "18 $num=18" "19 $num=19" "20 $num=20" "21 $num=21" "22 $num=22" "23 $num=23" "24 $num=24"  "25 $num=25" "26 $num=26" "27 $num=27" "28 $num=28"  "29 $num=29" "30 $num=30" "31 $num=31" "32 $num=32" "33 $num=33" "34 $num=34" "35 $num=35" "36 $num=36" "37 $num=37" "38 $num=38" "39 $num=39" "40 $num=40" "41 $num=41" "42 $num=42" "43 $num=43" "44 $num=44" "45 $num=45" "46 $num=46" "47 $num=47" "48 $num=48" "49 $num=49" "50 $num=50" "51 $num=51" "52 $num=52" "53 $num=53" "54 $num=54" "55 $num=55" "56 $num=56"  "57 $num=57" "58 $num=58" "59 $num=59" "60 $num=60" "61 $num=61" "62 $num=62" "63 $num=63" "64 $num=64" "65 $num=65"  "66 $num=66" "67 $num=67" "68 $num=68" "69 $num=69" "70 $num=70"  "71 $num=71" "72 $num=72" "73 $num=73" "74 $num=74" "75 $num=75" "76 $num=76" "77 $num=77" "78 $num=78" "79 $num=79" "80 $num=80" "81 $num=81" "82 $num=82" "83 $num=83" "84 $num=84" "85 $num=85" "86 $num=86" "87 $num=87" "88 $num=88" "89 $num=89" "90 $num=90" "91 $num=91" "92 $num=92" "93 $num=93" "94 $num=94" "95 $num=95" "96 $num=96" "97 $num=97" "98 $num=98" "99 $num=99" "100 $num=100"]
+
+
+concept:(number_0_100_percent)[
+"百分之0 $num=0"
+"百分之1 $num=1"
+"百分之2 $num=2"
+"百分之3 $num=3"
+"百分之4 $num=4"
+"百分之5 $num=5"
+"百分之6 $num=6"
+"百分之7 $num=7"
+"百分之8 $num=8"
+"百分之9 $num=9"
+"百分之10 $num=10"
+"百分之11 $num=11"
+"百分之12 $num=12"
+"百分之13 $num=13"
+"百分之14 $num=14"
+"百分之15 $num=15"
+"百分之16 $num=16"
+"百分之17 $num=17"
+"百分之18 $num=18"
+"百分之19 $num=19"
+"百分之20 $num=20"
+"百分之21 $num=21"
+"百分之22 $num=22"
+"百分之23 $num=23"
+"百分之24 $num=24"
+"百分之25 $num=25"
+"百分之26 $num=26"
+"百分之27 $num=27"
+"百分之28 $num=28"
+"百分之29 $num=29"
+"百分之30 $num=30"
+"百分之31 $num=31"
+"百分之32 $num=32"
+"百分之33 $num=33"
+"百分之34 $num=34"
+"百分之35 $num=35"
+"百分之36 $num=36"
+"百分之37 $num=37"
+"百分之38 $num=38"
+"百分之39 $num=39"
+"百分之40 $num=40"
+"百分之41 $num=41"
+"百分之42 $num=42"
+"百分之43 $num=43"
+"百分之44 $num=44"
+"百分之45 $num=45"
+"百分之46 $num=46"
+"百分之47 $num=47"
+"百分之48 $num=48"
+"百分之49 $num=49"
+"百分之50 $num=50"
+"百分之51 $num=51"
+"百分之52 $num=52"
+"百分之53 $num=53"
+"百分之54 $num=54"
+"百分之55 $num=55"
+"百分之56 $num=56"
+"百分之57 $num=57"
+"百分之58 $num=58"
+"百分之59 $num=59"
+"百分之60 $num=60"
+"百分之61 $num=61"
+"百分之62 $num=62"
+"百分之63 $num=63"
+"百分之64 $num=64"
+"百分之65 $num=65"
+"百分之66 $num=66"
+"百分之67 $num=67"
+"百分之68 $num=68"
+"百分之69 $num=69"
+"百分之70 $num=70"
+"百分之71 $num=71"
+"百分之72 $num=72"
+"百分之73 $num=73"
+"百分之74 $num=74"
+"百分之75 $num=75"
+"百分之76 $num=76"
+"百分之77 $num=77"
+"百分之78 $num=78"
+"百分之79 $num=79"
+"百分之80 $num=80"
+"百分之81 $num=81"
+"百分之82 $num=82"
+"百分之83 $num=83"
+"百分之84 $num=84"
+"百分之85 $num=85"
+"百分之86 $num=86"
+"百分之87 $num=87"
+"百分之88 $num=88"
+"百分之89 $num=89"
+]
+
+concept:(negative_number_0_100)["0 $num=-0" "1 $num=-1" "2 $num=-2" "3 $num=-3" "4 $num=-4" "5 $num=-5" "6 $num=-6" "7 $num=-7" "8 $num=-8" "9 $num=-9" "10 $num=-10" "11 $num=-11" "12 $num=-12" "13 $num=-13" "14 $num=-14" "15 $num=-15" "16 $num=-16" "17 $num=-17" "18 $num=-18" "19 $num=-19" "20 $num=-20" "21 $num=-21" "22 $num=-22" "23 $num=-23" "24 $num=-24"  "25 $num=-25" "26 $num=-26" "27 $num=-27" "28 $num=-28"  "29 $num=-29" "30 $num=-30" "31 $num=-31" "32 $num=-32" "33 $num=-33" "34 $num=-34" "35 $num=-35" "36 $num=-36" "37 $num=-37" "38 $num=-38" "39 $num=-39" "40 $num=-40" "41 $num=-41" "42 $num=-42" "43 $num=-43" "44 $num=-44" "45 $num=-45" "46 $num=-46" "47 $num=-47" "48 $num=-48" "49 $num=-49" "50 $num=-50" "51 $num=-51" "52 $num=-52" "53 $num=-53" "54 $num=-54" "55 $num=-55" "56 $num=-56"  "57 $num=-57" "58 $num=-58" "59 $num=-59" "60 $num=-60" "61 $num=-61" "62 $num=-62" "63 $num=-63" "64 $num=-64" "65 $num=-65"  "66 $num=-66" "67 $num=-67" "68 $num=-68" "69 $num=-69" "70 $num=-70"  "71 $num=-71" "72 $num=-72" "73 $num=-73" "74 $num=-74" "75 $num=-75" "76 $num=-76" "77 $num=-77" "78 $num=-78" "79 $num=-79" "80 $num=-80" "81 $num=-81" "82 $num=-82" "83 $num=-83" "84 $num=-84" "85 $num=-85" "86 $num=-86" "87 $num=-87" "88 $num=-88" "89 $num=-89" "90 $num=-90" "91 $num=-91" "92 $num=-92" "93 $num=-93" "94 $num=-94" "95 $num=-95" "96 $num=-96" "97 $num=-97" "98 $num=-98" "99 $num=-99" "100 $num=-100"]
+
+
+concept:(number_hour)
+[1 2 3 4 5 6 7 8 9 10 11 12]
+
+concept:(number_minute)
+[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59]
+
+
+#==================================================================#
+#####  main_music_entity #####
+concept:(main_music_entity)
+[
+"非洲打击 $context=音乐"
+"古典 $context=音乐"
+"乡村 $context=音乐"
+"迪斯科 $context=音乐"
+"迪厅 $context=音乐"
+"朋克 $context=音乐"
+"说唱  $context=音乐"
+"饶舌  $context=音乐"
+"嘻哈 $context=maybe_music $context2=舞蹈"
+"放克 $context=音乐"
+"摇滚 $context=音乐"
+"高科技舞曲 $context=音乐"
+"巴萨诺瓦 $context=音乐"
+"金属 $context=maybe_music  $context2=金属"
+"歌剧 $context=音乐"
+"电子 $context=音乐"
+"现代  $context=音乐"
+"爵士 $context=音乐"
+"雷鬼 $context=音乐"
+"灵魂  $context=音乐"
+"Classical {music} $context=音乐"
+"Country {music} $context=音乐"
+"Disco {music} $context=音乐"
+"Funk {music} $context=音乐"
+"Hip-Hop music $context=音乐"
+"Hip-Hop $context=maybe_music $context2=舞蹈"
+"[Rock "Rock'n'roll"] $context=音乐"
+"Jazz $context=音乐"
+"Rap $context=音乐"
+]
+
+
+#==================================================================#
+#####  psycho_phobia_entity #####
+concept:(psycho_phobia_entity)[
+"怕酸 $temp/theme=sourness"
+"成功恐惧症 $temp/theme=success"
+"黑暗恐惧症 $temp/theme=darkness"
+"恐高 $temp/theme=heights"
+"高空恐惧症 $temp/theme=heights"
+"怕灰 $temp/theme=dust"
+"怕风 $temp/theme=wind"
+"怕人 $temp/theme=people"
+"怕无穷 $temp/theme=infinity"
+"亲密恐惧症 $temp/theme=intimacy"
+"怕触摸  $temp/theme="being touched""
+"怕水 $temp/theme=water"
+"怕数字  $temp/theme=numbers"
+"怕被忘记  $temp/theme="being forgotten""
+"怕犯错  $temp/theme=failure"
+"怕臭  $temp/theme="being dirty""
+"走路恐惧症  $temp/theme=falling"
+"怕走路  $temp/theme=falling"
+"楼梯恐惧症 $temp/theme=stairs"
+"自行车恐惧症 $temp/theme="riding a bike""
+"烟雾恐惧症 $temp/theme=smoke"
+"幸福恐惧症 $temp/theme=happiness"
+"怕跳舞  $temp/theme=dancing"
+"怕台阶  $temp/theme=climbing"
+"怕自行车  $temp/theme="riding a bike""
+"昏厥恐惧症 $temp/theme=fainting"
+"怕腹泻 $temp/theme="going to the toilet""
+"怕昏过去  $temp/theme=fainting"
+"怕烟  $temp/theme=smoke"
+"年龄恐惧症 $temp/theme="getting old""
+"窒息恐惧症 $temp/theme="having bad breath""
+"触摸恐惧症 $temp/theme="being touched""
+"怕承担责任  $temp/theme="having responsibilites""
+"怕孤独  $temp/theme=isolation"
+"孤独恐惧症  $temp/theme="being alone""
+"音乐恐惧症 $temp/theme=music"
+"怕噎到  $temp/theme=choking"
+"怕火  $temp/theme=fire"
+"怕死  $temp/theme=death"
+"怕便秘 $temp/theme="going to the toilet""
+"怕怀孕  $temp/theme=pregnancy"
+"怕开车 $temp/theme=driving"
+]
+
+concept:(food_phobia_entity)[
+"厌食症 $temp/theme=食物"
+"水果恐惧症 $temp/theme=水果"
+"蘑菇恐惧症 $temp/theme=蘑菇"
+"芝士恐惧症　$temp/theme=芝士"
+"黄油恐惧症 $temp/theme=黄油"
+]
+#cibophonia fructophobia mycophobia turophobia voutyrophobia
+
+concept:(animal_phobia_entity)[
+"怕小虫 $temp/theme="very tiny bugs""
+"怕猫 $temp/theme=cats"
+"怕鸡 $temp/theme=chickens"
+"怕鸭 $temp/theme=ducks"
+"怕蜜蜂 $temp/theme=bees"
+"怕蜘蛛 $temp/theme=spiders"
+"怕蝙蝠 $temp/theme=bats"
+"怕狗 $temp/theme=dogs"
+"怕昆虫 $temp/theme=insects"
+"怕马 $temp/theme=horses"
+"怕爬行动物 $temp/theme=reptiles"
+"怕鲨鱼 $temp/theme=sharks"
+"怕鱼 $temp/theme=fish"
+"怕蟑螂 $temp/theme=cockroaches"
+"怕蝴蝶 $temp/theme=butterflies"
+"怕兔子 $temp/theme=rabbits"
+"怕蛾 $temp/theme=moths"
+"怕老鼠 $temp/theme=mice"
+"怕蚂蚁 $temp/theme=ants"
+"怕蛇 $temp/theme=snakes"
+"怕鸟 $temp/theme=birds"
+"怕青蛙 $temp/theme=frogs"
+"怕蠕虫 $temp/theme=worms"
+"怕黄蜂 $temp/theme=wasps"
+"怕乌鱼 $temp/theme=squids"
+"怕动物 $temp/theme=animals"
+]
+
+concept:(non_psycho_phobia_entity)[
+"声音恐惧症 $temp/theme="loud sounds""
+"怕光 $temp/theme=light"
+"气味恐惧症 $temp/theme=odors"
+]
+
+#concept:(superstition_phobia_entity)[
+#"hexakosioihexekontahexaphobia $temp/theme="the number 666""
+#"paraskevidekatriaphobia $temp/theme="Friday the 13th""
+#"tetraphobia $temp/theme="the number 4""
+#"triskaidekaphobia $temp/theme="the number 13""
+#]
+
+
+concept:(discrimination_phobia_entity)[
+"性冷淡 $temp/theme=asexuals"
+"侏儒 $temp/theme=midgets"
+"艾滋病人  $temp/theme=AIDS"
+"男子 $temp/theme=men"
+"双性恋 $temp/theme=bisexuals"
+"胖人 $temp/theme="fat people""
+"基督徒 $temp/theme=Christians"
+"老年人 $temp/theme="old people""
+"女人 $temp/theme=women"
+"异性恋 $temp/theme=heterosexuals"
+"同性恋 $temp/theme=homosexuals"
+"穆斯林 $temp/theme=Muslims"
+"犹太人 $temp/theme=Jews"
+"蕾丝 $temp/theme=lesbians"
+"孩子 $temp/theme=children"
+"秃子 $temp/theme="bald people""
+"精神病人 $temp/theme="mental illness""
+"变性人 $temp/theme="transgender people""
+"陌生人 $temp/theme=strangers"
+]
+
+concept:(bio_chemichal_phobia_entity)[
+"化学 $temp/theme=chemicals"
+"阳光 $temp/theme=sunlight"
+"肥胖 $temp/theme=fat"
+"日光 $temp/theme=daylight"
+"高温 $temp/theme=heat"
+]
+
+concept:(weird_phobia_entity)[
+"厕所没纸 $temp/theme="running out of toilet paper""
+"发饰 $temp/theme="hair bands""
+"科技 $temp/theme=technology"
+]
+
+concept:(color_phobia_entity)[红 橙 黄 绿 青 蓝 紫 白　黑]#red orange yellow green blue purple
+
+#==================================================================#
+##### phrase #####
+#------------------------------------------------------------------#
+
+concept:(what_is_your_name) [
+    "你的~name[是 叫]~what"#"what_is your name"
+    "你叫~what{~name}"#"what_is your name"
+    "{应{该}}~how_to [称呼 叫]你"#"how [do should can] I call you"
+    "[知不知道　知道 ~tell]你的~name{是~what 叫~what}"#"["do you know" "tell me"]what_is your name"
+    "~tell 你是谁"#"tell me who you are"
+    "把你的~name ~tell"#"give me your name"
+    "[~people 他们]["{~how_to}叫你"　"叫你~what"]"#"what do they call you"
+]
+
+concept:(birthday) [
+    "["~what[时候 日期　时间]" "哪[天 年]"]~produce"#"[when "what [day year]"] were you [born created invented]"
+    "[生日 "~produce　日期"]["~what[时候 日期　时间]" "哪[天 年]" "几月"]"#"when is your [birthday "date of birth" "birth date"]"
+    "[生日 "~produce　日期"]"
+]
+
+concept:(cool_or_not)[
+    "酷不酷{炫} $cool=酷炫"
+    "帅不帅 $cool=帅"
+    "厉不厉害 $cool=厉害"
+    "好不好看 $cool=好看"
+    "可不可爱 $cool=可爱"
+]
+
+concept:(what_for)
+["~what 用{途 处}" "~able ~do ~what" "的用[途 处]"]
+
+concept:(show_me)
+"[展示　"给我看{看}"　"给我瞅{瞅}"]{一下}"
+
+concept:(faster)
+[提速　增速　"[加大 增加 加快]~speed" "~speed[加大 增加 加快]"]
+
+concept:(raise_volume)
+["~raise~volume" "大声点" "听不到"]
+
+concept:(lower_volume)
+["[~softer ~lower]{~volume}" "小声点" "小点声" ]
+
+concept:(talk_about)
+[
+    "["说[一说 说 一下]" "讲[一讲 讲 一下]" "聊[一聊 聊 一下]"]"
+    "[解释 阐述 讲解 介绍]{一下}"
+]
+
+concept:(physical_mission)[
+    "收拾一下" "做家务" "清理" #clean up
+    "泡咖啡" #make a coffee
+    "搬东西" #move something
+    "[洗 刷][碗 盘子]" #clean dishes
+    "扫地"　#sweep the floor
+    "做饭" #cook
+]
+
+concept:(work_mission)[
+     写作业 #do homework
+     "加班{儿}" #work overtime
+     "上班{儿}" #work
+     "赚钱" #make money
+     "付钱" #pay the bill　
+]
+
+concept:(help)
+[帮我一下　帮我一把　帮帮我　帮帮忙　帮个忙　来帮我　来帮忙]
+
+#concept:(help)
+#[
+#    "{需要 ~can_you_request1 ~can_you_request2} ~help_verb "#1"[~can_you_request "saurais-tu" "{est-ce que} tu saurais"] me [renseigner "donner ["une [info information]" "un renseignement" "des [infos informations renseignements]"]"]"
+#    "[需要 ~can_you_request1 ~can_you_request2] ~ask "{一}["点{儿}" 些 下 个]" ["事{儿}" 事情]"#"{comment} peux-tu m'aider"
+#]
+
+concept:(love_or_not)
+["喜{欢}不喜欢"　爱不爱]
+
+concept:(want_or_not)
+[想　愿意　想不想 愿不愿意]
+
+concept:(take_as)["[看　当]成" "{看　当}做"　当]
+
+concept:(make_friend)[[做　当 "交{个}"]~friend]
+
+concept:(heard_about)["听{说}过"　有所耳闻　久闻大名]
+
+concept:(the_song)["[这 那][首　个　只　儿　r]~song" "刚[唱　才　刚]的~song" "你的~song"]
+
+concept:(can_you_tell)[
+    "你{知不}知道" #"["do you know"
+    "{~can_you_request1 ~can_you_request2} ~tell"# "[~can_you_request ~can_you] tell me"]
+]
+
+concept:(dont)[不要　别]
+
+concept:(stop)
+["用不着"　"不{需}要"　"不要{再}"　"别再" "停{止}" stop]
+
+concept:(be_quiet)
+[安静 闭嘴 肃静]
+
+concept:(which_song)
+["~what {~song}" "~which ~song"]
+
+concept:(do_you_have)
+["你有{没有}"]
+
+concept:(do_you_know)
+["你{知不}知道"]
+
+concept:(as_you_want)
+["随{你}便"　看你　"如果你~want" 悉听尊便　听便 听你的　"你[选  决定]"]
+
+concept:(what_were_you_saying) [
+    "~you ~just [~ask~speak]的"#what you have said
+    "~just {~speak ~ask}的[话　问题]"#the [sentence question] just mentioned
+    "~you{~just}{~speak~ask}的[话　问题]"#the [sentence question] you just said
+    "~just 说的"#what have been said
+]
+
+concept:(last_sentence)[
+    "[这 那][
+        "{句　儿　r}话"
+        "个问题"
+            ]"#the [sentence question]
+    ~what_were_you_saying
+]
+
+concept:(repeat_it) [
+    "~repeat ~one_time {~last_sentence}"
+    "~info_request ~last_sentence"
+    "{~can_you_request1 ~can_you_request2}~again [~ask ~tell] {~i}~last_sentence"#"{~can_you} ask {me} the question {again}"
+    "{请}~repeat"#"repeat {please}"
+    "[重新　再]来{一次　一遍}"#"come again"
+    "{~info_request} {再}　~do ~one_time [动作 表情 那个 ~voice]"#"{~info_request} do [it that "[the this that] [animation motion movement thing sound noise]"] again {please}"
+]
+
+concept:(dont_understand_noun) [
+    "没[了解　理解　"{听 搞 弄 整}[懂 明白]"]"#"~i_have_not understood"
+    "["{听 搞　弄　整}不[懂 明白]" "不[懂 明白 知道]"]"#i don't understand
+]
+
+concept:(i_didnt_understand) [
+    "~last_sentence {是}~what"#"what did you say"
+    "你~speak~what"#"what did you say"
+    "{~i}~dont_understand_noun {"~last_sentence{~meaning}" "你的~meaning" "[这 那]个"}"#"~i_do_not [understand get] {it that this　"what are you [saying "trying to say" "talking about"]" "what do you [mean want say]"}"
+]
+
+concept:(i_didnt_hear) [
+    "没~hear{"~last_sentence"}"#"I ~didnt [hear "get [it "what you {just} said"]"]"
+]
+
+concept:(i_cant_hear) [
+    "听不{到 着　见}{"~last_sentence"}"#"I can't [hear "get [it "what you {just} said"]"]"
+]
+
+concept:(im_sick) ["~i[
+    "[
+    着凉 受凉 伤风 着风 感冒 受寒#"[headache "sore throat" "stomach ache" cold "stiff neck" "throat infection" "sore throat" strep migraine "stomach [flu ache]" cough]" "an {ear} infection" "the flu" blisters "chicken pox" measles]"
+    泻 腹泻 水泻 拉稀 泻肚 跑肚 闹肚子 拉肚子 下泻#Diarrhea
+    发烧 发热 发寒热 烧 发高烧#fever
+    咳嗽#"~i_am coughing"
+    头疼　头昏#"my head hurts"
+    吐 呕吐 哕 呕 吣#threw up
+    生病 犯病 发病#sick
+    受伤 负伤#hurt
+    ]"
+    "{身体　身上 感觉}{~a_little ~very}[不适 难受 难过 不爽 不得劲]"#"~i_am {"a little" "a bit" very feeling} [ill sick snuffly queasy congested]"
+]"]
+
+concept:(im_tired) [
+    "我[~need ~should ~want]睡{一}觉"#i [~need ~should ~want] to go to spleep
+    "我要困死了"#i'm very spleepy
+    "我{身体　身上 感觉}{~a_little ~very}~tired"#"["~i_am {feeling}" "I feel"] {suddenly "a [little bit]" very super too} [
+]
+
+concept:(turn_head)
+["~turn ~head" "[将　把]~head ~turn" 转头]
+
+concept:(repeat_movement)[ "["重{新}"　再][做　练习　~show_me 表演]" "重复{做　练习　~show_me 表演}"]
+
+concept:(do_it_again) [
+    "[
+        "["重{新}"　再]来{一次　一遍}"#"come again"
+        "{~want 请　~can_you_request1 ~can_you_request2} ~repeat_movement ~one_time"#"{~info_request} do [it that "[the this that] [animation motion movement thing sound noise]"] again {please}"
+    ]{~just}{动作 那个}"#the move just done
+]
+#==================================================================#
+
+####
+concept:(its_up_to_you)[
+    帮我选一个
+]
+
+concept:(i_dont_care)[
+    "我不在乎"
+    "无所谓"
+]
+
+concept:(i_dont_know)[
+    "我不知道"
+    "我不清楚"
+]
+
+#languages#
+concept:(main_languages_entity)[
+    "阿拉伯语 $available_language=$Dialog/Language/LangArabic"
+    "中文 $available_language=$Dialog/Language/LangChinese"
+    "德语 $available_language=$Dialog/Language/LangGerman"
+    "英语 $available_language=$Dialog/Language/LangEnglish"
+    "韩语 $available_language=$Dialog/Language/LangKorean"
+    "丹麦语 $available_language=$Dialog/Language/LangDanish"
+    "西班牙语 $available_language=$Dialog/Language/LangSpanish"
+    "芬兰语 $available_language=$Dialog/Language/LangFinnish"
+    "法语 $available_language=$Dialog/Language/LangFrench"
+    "希腊语 $available_language=$Dialog/Language/LangGreek"
+    "荷兰语 $available_language=$Dialog/Language/LangDutch"
+    "意大利语 $available_language=$Dialog/Language/LangItalian"
+    "日语 $available_language=$Dialog/Language/LangJapanese"
+    "挪威语 $available_language=$Dialog/Language/LangNorwegian"
+    "波兰语 $available_language=$Dialog/Language/LangPolish"
+    "葡萄牙语 $available_language=$Dialog/Language/LangPortuguese"
+    "俄语 $available_language=$Dialog/Language/LangRussian"
+    "瑞典语 $available_language=$Dialog/Language/LangSwedish"
+    "捷克语 $available_language=$Dialog/Language/LangCzech"
+    "土耳其语 $available_language=$Dialog/Language/LangTurkish"
+]
+
+concept:(dialog_languages_entity)[
+    "阿拉伯语 $lang=Arabic"
+    "捷克语 $lang=Czech"
+    "丹麦语 $lang=Danish"
+    "希腊语 $lang=Greek"
+    "韩语 $lang=Korean"
+    "德语 $lang=German"
+    "英语 $lang=English"
+    "西班牙语 $lang=Spanish"
+    "芬兰语 $lang=Finnish"
+    "法语 $lang=French"
+    "意大利语 $lang=Italian"
+    "荷兰语 $lang=Dutch"
+    "中文 $lang=Chinese"
+    "日语 $lang=Japanese"
+    "挪威语 $lang=Norwegian"
+    "波兰语 $lang=Polish"
+    "巴西葡萄牙语 $lang=Brazilian"
+    "葡萄牙语 $lang=Portuguese"
+    "俄语 $lang=Russian"
+    "瑞典语 $lang=Swedish"
+    "土耳其语 $lang=Turkish"
+    "台湾普通话 $lang="Taiwanese Mandarin""
+]
+
+def:translate_lang($language)
+^first
+[
+"$language==Arabic 阿拉伯语"
+"$language==Czech 捷克语"
+"$language==Danish 丹麦语"
+"$language==Greek 希腊语"
+"$language==Korean 韩语"
+"$language==German 德语"
+"$language==Spanish 西班牙语"
+"$language==Finnish 芬兰语"
+"$language==French 法语"
+"$language==Italian 意大利语"
+"$language==Dutch 荷兰语"
+"$language==Chinese 中文"
+"$language==Japanese 日语"
+"$language==Norwegian 挪威语"
+"$language==Polish 波兰语"
+"$language==Russian 俄语"
+"$language==Swedish 瑞典语"
+"$language==Turkish 土耳其语"
+"$language==English 英语"
+"$language=="Taiwanese Mandarin"　台湾普通话"
+]
+
+concept:(days) [星期一 星期二 星期三 星期四 星期五 星期六 星期日 星期天]

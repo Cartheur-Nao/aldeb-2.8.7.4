@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>French Lexicon - snippets &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../../index.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="naoqi-interaction-dialog-lexicon_french_snippets">
+                
+  <div class="section" id="french-lexicon-snippets">
+<span id="lexicon-french-snippets"></span><h1>French Lexicon - snippets<a class="headerlink" href="#french-lexicon-snippets" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../index_interaction.html#naoqi-interaction"><span>NAOqi Interaction engines</span></a> - <a class="reference internal" href="lexicon.html#lexicon"><span>Dialog Lexicon</span></a></p>
+<p>Full content: <a class="reference internal" href="lexicon_english.html#lexicon-english"><span>English Lexicon</span></a> - <a class="reference internal" href="lexicon_japanese.html#lexicon-japanese"><span>Japanese Lexicon</span></a> - French Lexicon
+- <a class="reference internal" href="lexicon_chinese.html#lexicon-chinese"><span>Chinese Lexicon</span></a> - <a class="reference internal" href="lexicon_german.html#lexicon-german"><span>German Lexicon</span></a> - <a class="reference internal" href="lexicon_italian.html#lexicon-italian"><span>Italian Lexicon</span></a> - <a class="reference internal" href="lexicon_spanish.html#lexicon-spanish"><span>Spanish Lexicon</span></a></p>
+<hr class="docutils" />
+<p><a class="reference internal" href="lexicon_french.html#lexicon-french"><span>Main</span></a> - <a class="reference internal" href="lexicon_french_entities.html#lexicon-french-entities"><span>entities</span></a> - <a class="reference internal" href="lexicon_french_synonyms.html#lexicon-french-synonyms"><span>synonyms</span></a> -
+<a class="reference internal" href="lexicon_french_output.html#lexicon-french-output"><span>output</span></a> - <a class="reference internal" href="lexicon_french_verbs.html#lexicon-french-verbs"><span>verbs</span></a> -
+snippets - <a class="reference internal" href="lexicon_french_yesno.html#lexicon-french-yesno"><span>yesno</span></a></p>
+<hr class="docutils" />
+<p><a class="reference download internal" href="../../../_downloads/lexicon_snippets_frf.top"><code class="xref download docutils literal"><span class="pre">lexicon_snippets_frf.top</span></code></a></p>
+<div class="highlight-QiChat"><div class="highlight"><pre><span class="ow">topic</span>: ~lexicon_snippets()
+<span class="ow">language</span>: frf
+
+<span class="ow">include</span>:lexicon_verbs_frf.top
+
+
+
+
+
+#==================================================================#
+##### INTERROGATIVE SNIPPETS #####
+#------------------------------------------------------------------#
+#concept:(are_you) 
+#concept:(are_you_able_to) 
+#concept:(can_i) 
+#concept:(can_i_ask)
+#concept:(can_we_speak)
+#concept:(can_you) 
+#concept:(can_you_request)
+#concept:(do_you)
+#concept:(do_you_follow) 
+#concept:(do_you_have)
+#concept:(do_you_know)
+#concept:(do_you_know-noun)
+#concept:(do_you_know_how)
+#concept:(do_you_know_what_is)
+#concept:(do_you_know_who_is)
+#concept:(do_you_like)
+#concept:(do_you_need) 
+#concept:(do_you_speak)
+#concept:(do_you_want) 
+#concept:(explain_me_what_are)
+#concept:(explain_me_what_is)
+#concept:(how_are_you)
+#concept:(how_many)
+#concept:(how_much_is) 
+#concept:(how_old_is)
+#concept:(is_there)
+#concept:(were_you) 
+#concept:(what_)
+#concept:(what_are) 
+#concept:(what_can_you_do) 
+#concept:(what_do_you_know) 
+#concept:(what_do_you_like)
+#concept:(what_do_you_prefer)
+#concept:(what_do_you_want)
+#concept:(what_is_masc)
+#concept:(what_is_fem)
+#concept:(what_are_masc)
+#concept:(what_are_fem)
+#concept:(where_are_you)
+#concept:(where_is)
+#concept:(who_are_you) 
+#concept:(who_is)
+#concept:(who_wrote) 
+#concept:(why_are_you_talking_about)
+#concept:(will_you) 
+
+
+<span class="ow">concept</span>:(can_you) [
+    ~vb_ask_pouvoir 
+    ~vb_ask_savoir
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(are_you_able_to) [
+    ~vb_ask_savoir
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(can_you_request)[
+    &quot;{&quot;est-ce que&quot;} [&quot;tu peux&quot; &quot;tu pourrais&quot;]&quot; 
+    &quot;peux-tu&quot; 
+    &quot;pourrais-tu&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_is_masc) [
+    &quot;quel est&quot;
+    &quot;c&#39;est quoi&quot;
+<span class="p">]</span>
+   
+<span class="ow">concept</span>:(what_is_fem) [
+    &quot;quelle est&quot;
+    &quot;c&#39;est quoi&quot;
+<span class="p">]</span>
+  
+<span class="ow">concept</span>:(what_are_masc) [
+    &quot;quels sont&quot;
+    &quot;[&quot;c&#39;est&quot; &quot;ce sont&quot;] quoi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_are_fem) [
+    &quot;quelles sont&quot;
+    &quot;[&quot;c&#39;est&quot; &quot;ce sont&quot;] quoi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you) [
+    &quot;{est-ce que} tu&quot; 
+    &quot;ça t&#39;arrive de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_have) [
+    ~vb_ask_avoir
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_like) [
+    ~vb_ask_aimer
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_do_you_like) [
+    &quot;{&quot;qu&#39;est-ce que&quot;} ~vb_pos_you_aimer&quot; 
+    &quot;{&quot;qu&#39;est-ce que&quot;} ~vb_pos_you_préférer&quot; 
+    &quot;{que} ~vb_int_you_préférer&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_do_you_prefer) [
+    &quot;{&quot;qu&#39;est-ce que&quot;} tu préfères&quot; 
+    &quot;tu préfères quoi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_know) [
+    ~vb_ask_connaître
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_know-noun)[
+    &quot;{&quot;est-ce que&quot;} tu connais&quot; 
+    &quot;connais-tu&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_know_how)[
+    &quot;~vb_ask_savoir comment&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_know_who_is)[
+    &quot;~vb_ask_savoir [&quot;qui est&quot; &quot;c&#39;est qui&quot; &quot;qui c&#39;est&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_know_what_is)[
+    &quot;[&quot;sais-tu&quot; &quot;{&quot;est-ce que&quot;} tu sais&quot; 
+    &quot;peux-tu me dire&quot; 
+    &quot;dis-moi&quot; 
+    &quot;tu peux me dire&quot;
+    <span class="p">]</span>
+        <span class="p">[</span>
+    &quot;ce qu&#39;est&quot; &quot;ce que c&#39;est&quot;]&quot; 
+    &quot;c&#39;est quoi&quot; 
+    &quot;qu&#39;est-ce que c&#39;est&quot; 
+    &quot;qu&#39;est-ce qu&#39;&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_do_you_know) [
+    &quot;{&quot;qu&#39;est-ce que&quot;} [~vb_pos_you_connaître ~vb_pos_you_savoir]&quot;
+    &quot;{que} [~vb_int_you_connaître ~vb_int_you_savoir]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_can_you_do) [
+    &quot;que [peux-tu sais-tu] faire&quot;
+    &quot;qu&#39;est-ce que tu [peux sais] faire&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_need) [
+    &quot;~vb_ask_avoir besoin de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_want) [
+    ~vb_ask_vouloir
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_speak) [
+    parles-tu 
+    &quot;tu parles&quot;     
+    &quot;~can_you parler&quot;
+<span class="p">]</span>
+    
+<span class="ow">concept</span>:(can_we_speak)[
+    &quot;[peut-on pourrait-on &quot;on peut&quot; &quot;on pourrait&quot; &quot;est-ce qu&#39;on [peut pourrait]&quot;] parler&quot; 
+    &quot;[serait-il est-il &quot;est-ce que c&#39;est&quot;] possible [&quot;qu&#39;on parle&quot; &quot;de parler&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(explain_me_what_is)
+<span class="p">[</span>
+    &quot;[explique-moi dis-moi] 
+        <span class="p">[</span>
+        &quot;ce qu&#39;est&quot; 
+        &quot;ce que c&#39;est {que}&quot;
+        &quot;[quel quelle] est&quot;
+        <span class="p">]</span>&quot;
+    &quot;~can_you [m&#39;expliquer &quot;me dire&quot;] [
+        &quot;ce [qu&#39;est &quot;que c&#39;est {que}&quot;]&quot;
+        &quot;quelle [est était]&quot;
+        &quot;qu&#39;est-ce [&quot;que c&#39;est {que}&quot; que]&quot;
+        <span class="p">]</span>&quot;
+    &quot;ça veut dire quoi&quot;
+    &quot;qu&#39;est-ce [&quot;que c&#39;est {que qu&#39;}&quot; que qu&#39;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(explain_me_what_are)[
+    &quot;~can_you [m&#39;expliquer &quot;me dire&quot;][quels quelles] sont&quot;
+    &quot;[explique-moi dis-moi][quels quelles] sont&quot;
+<span class="p">]</span>
+        
+<span class="ow">concept</span>:(tell_me_about)[
+    &quot;~can_you me parler&quot; 
+    &quot;parle-moi&quot;
+<span class="p">]</span>
+    
+<span class="ow">concept</span>:(what_are) [
+&quot;que sont&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(are_you) [
+~vb_ask_être
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(were_you) [
+    ~you_were &quot;as-tu été&quot; &quot;es-tu&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(will_you) [
+    ~vb_ask_aller
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(who_are_you) [
+    &quot;{&quot;~can_you me dire&quot;} qui ~vb_ask_être&quot; 
+    &quot;t&#39;es qui {toi}&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(where_are_you) [
+    &quot;où es-tu&quot; 
+    &quot;t&#39;es où&quot; 
+    &quot;~vb_ask_savoir où tu es&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(who_is) [
+    &quot;{&quot;tu sais&quot; &quot;tu ne sais pas&quot;} qui est&quot;
+    &quot;qui c&#39;est&quot;
+    &quot;c&#39;est qui&quot;
+    &quot;tu connais&quot;
+    &quot;connais-tu&quot;
+    &quot;tu {ne} connais pas&quot;
+    &quot;parle-moi de&quot;
+    &quot;~can_you me parler de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(where_is) [
+    &quot;où [&quot;se trouve&quot; &quot;est {situé}&quot;]&quot;
+    &quot;quelle est la localisation de&quot;
+    &quot;où peut-on trouver&quot;
+    &quot;[où quel] est l&#39;adresse de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(can_i) [
+    &quot;{&quot;est-ce que&quot;} [&quot;je peux&quot; &quot;je pourrais&quot;]&quot;
+    &quot;puis-je&quot;
+    &quot;peut-on&quot;
+    &quot;pourrais-je&quot;
+    &quot;j&#39;aimerais {bien}&quot;
+    &quot;je [souhaiterais souhaite]&quot;
+    &quot;je [veux voudrais]&quot;
+    &quot;[est-il c&#39;est] possible de&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(can_i_ask)[
+    &quot;puis-je {*} te demander&quot;
+    &quot;pourrais-je {*} te demander&quot;
+    &quot;est-ce que je peux {*} te demander&quot;
+    &quot;serait-il possible de te demander&quot;
+    &quot;est-il possible de te demander&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(why_are_you_talking_about) [
+    &quot;pourquoi [&quot;tu {me} [parles] [de du des]&quot; &quot;tu [mentionnes abordes évoques] [le la les]&quot;]&quot;
+    &quot;quelle est la raison [&quot;qui fait que&quot; &quot;pour laquelle&quot;] [&quot;tu {me} [parles] [de du des]&quot; &quot;tu [mentionnes abordes évoques] [le la les]&quot;]&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(who_wrote) [
+    &quot;qui a écrit&quot;
+    &quot;[qui quel] est l&#39;auteur [de du]&quot;
+    &quot;comment [s&#39;appelle &quot;se nomme&quot;] [&quot;celui qui a écrit&quot; &quot;l&#39;auteur [de du]&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(how_much_is) [
+    &quot;combien [vaut coute font fait]&quot;
+    &quot;[quelle quel] est la valeur de&quot;
+    &quot;ça fait combien&quot;
+    &quot;calcule&quot;
+    &quot;quel est le prix&quot; &quot;c&#39;est quoi {son le} prix&quot;
+    &quot;{il elle ça} coûte combien&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(how_many) [&quot;combien {~do_you_have} de&quot;]
+
+<span class="ow">concept</span>:(how_old_is)
+<span class="p">[</span>
+&quot;quel âge a&quot;
+&quot;[il elle] a quel âge&quot;
+&quot;[dis-moi &quot;dis moi&quot;] l&#39;âge de&quot;
+&quot;c&#39;est quoi l&#39;âge de&quot;
+&quot;quel est l&#39;âge de&quot;
+&quot;tu [peux pourrais] me dire l&#39;âge de&quot;
+&quot;[peux-tu pourrais-tu] me dire l&#39;âge de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_you_follow) [
+    ~vb_ask_supporter
+    ~vb_ask_soutenir
+    ~vb_ask_agree_with
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_do_you_want) [
+    &quot;{&quot;qu&#39;est-ce que&quot;} [~vb_pos_you_vouloir &quot;tu voudrais&quot;]&quot;
+    &quot;{que} ~vb_int_you_vouloir&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(is_there)
+<span class="p">[</span>
+&quot;est-ce qu&#39;il y a&quot; 
+&quot;y a t-il&quot; &quot;il y a&quot; 
+&quot;est-ce qu&#39;ya&quot; 
+&quot;il y a&quot;
+<span class="p">]</span>
+
+
+
+
+#==================================================================#
+##### AFFIRMATIVE SNIPPETS #####
+#------------------------------------------------------------------#
+#concept:(i_dont_like)#
+#concept:(i_like)#
+#concept:(i_like_for_knowledge)#
+#concept:(i_love_for_knowledge)#
+#concept:(im_addicted_by_for_knowledge)#
+#concept:(it_is_not)#
+#concept:(lets_talk_about)#
+#concept:(my_name_is)#
+#concept:(proac_my_name_is)#
+#concept:(show_me)#
+#concept:(speak_imp)#
+#concept:(tell_me)#
+#concept:(your_name_is)#
+        
+        
+<span class="ow">concept</span>:(speak_imp)[
+parle 
+parle-moi 
+parle-nous 
+parle-lui 
+parle-leur
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(show_me) [
+    &quot;montre {lui moi nous leur}&quot;
+    &quot;~can_you {lui moi nous leur} montrer&quot;
+    &quot;~can_you {lui me nous leur} faire voir&quot;
+    &quot;[~i_want_to ~i_want] [regarder voir]&quot;
+    &quot;est-ce que je peux [voir regarder]&quot;
+    &quot;est-ce qu&#39;on peut [voir regarder]&quot;
+    &quot;est-ce qu&#39;ils peuvent [voir regarder]&quot;
+    &quot;~can_you faire&quot;
+    fais-moi fais-nous fais-leur
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(lets_talk_about) [
+    &quot;~i_want_to [&quot;parler&quot; &quot;que tu me parles&quot;] {de du des}&quot;
+    &quot;[parle parle-moi parlons] {de du des}&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_like) [
+    &quot;~vb_pos_i_être ~addicted&quot;
+    &quot;~vb_pos_i_aimer&quot;
+    &quot;~vb_pos_i_kiffer&quot;
+    &quot;~vb_pos_i_adorer&quot;
+    &quot;j&#39;ai un {petit} faible pour&quot;
+    &quot;je suis obsédé par&quot;
+    &quot;j&#39;ai une préférence pour&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(i_dont_like) [
+    &quot;~vb_pos_i_avoir [&quot;horreur [de des du]&quot;]&quot;
+    ~vb_pos_i_détester
+    ~vb_pos_i_haïr
+    ~vb_neg_i_aimer
+    ~vb_neg_i_kiffer
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(it_is_not) 
+<span class="p">[</span>
+&quot;ce n&#39;est [pas plus]&quot; 
+&quot;c&#39;est [pas plus]&quot;
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(tell_me) 
+<span class="p">[</span>
+raconte-moi 
+dis-moi 
+parle-moi
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(my_name_is)
+<span class="p">[</span>
+&quot;je m&#39;appelle&quot; 
+&quot;tu peux m&#39;appeler&quot; 
+&quot;vous pouvez m&#39;appeler&quot; 
+&quot;appelle-moi&quot; &quot;on m&#39;appelle&quot; 
+&quot;je me nomme&quot; 
+&quot;mon nom est&quot; 
+&quot;je suis&quot; 
+&quot;mon prénom est&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(proac_my_name_is) 
+<span class="p">[</span>
+&quot;mon [nom prénom] est&quot;
+&quot;je m&#39;appelle&quot;
+&quot;tu peux m&#39;appeler&quot;
+&quot;vous pouvez m&#39;appeler&quot;
+&quot;je me nomme&quot;
+&quot;appelle-moi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(my_name_is_not) [
+    &quot;tu [&quot;as mal [compris entendu]&quot; &quot;n&#39;as pas [compris capté]&quot;] [&quot;mon nom&quot; &quot;[&quot;ce qu&#39;est&quot; &quot;quel est&quot;] mon nom&quot;]&quot;
+    &quot;{non} [c&#39;est &quot;ce n&#39;est&quot;] pas {ça} mon nom&quot;
+    #&quot;[~names_masc ~names_fem] [n&#39;est est] pas mon nom&quot;
+    &quot;[n&#39;est est] pas mon nom&quot;
+    &quot;je {ne} m&#39;appelle pas&quot;
+    #&quot;mon nom [est n&#39;est] pas [~names_masc ~names_fem ça]&quot;
+    &quot;mon nom [est n&#39;est] pas&quot;
+    &quot;~i_want_to [changer modifier] mon nom&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(your_name_is) [
+    &quot;ton nom est&quot;
+    &quot;tu t&#39;appelles&quot;
+<span class="p">]</span>
+%inference [rule1:(?id al:name ?name) -&gt; (al:Pepper al:registeredName ?name)] %inference
+
+
+<span class="ow">concept</span>:(im_addicted_by_for_knowledge)
+<span class="p">[</span>&quot;je suis&quot; &quot;j&#39;suis&quot;]{*}[&quot;fou $output_answer=&quot;tu es fou&quot;&quot;  &quot;folle $output_answer=&quot;tu es folle&quot;&quot; &quot;féru $output_answer=&quot;tu es féru&quot;&quot; &quot;amateur $output_answer=&quot;tu es amateur&quot;&quot; &quot;amatrice $output_answer=&quot;tu es amatrice&quot;&quot; &quot;amoureux $output_answer=&quot;tu es amoureux&quot;&quot;  &quot;amoureuse $output_answer=&quot;tu es amoureuse&quot;&quot; &quot;passionné $output_answer=&quot;tu es passionné&quot;&quot; &quot;émerveillé $output_answer=&quot;tu es émerveillé&quot;&quot; &quot;fan $output_answer=&quot;tu es fan&quot;&quot; &quot;fana $output_answer=&quot;tu es fana&quot;&quot; &quot;fada $output_answer=&quot;tu es fada&quot;&quot; &quot;fanatique $output_answer=&quot;tu es fanatique&quot;&quot; &quot;mordu $output_answer=&quot;tu es mordu&quot;&quot; &quot;avide $output_answer=&quot;tu es avide&quot;&quot; &quot;addict $output_answer=&quot;tu es addict&quot;&quot;] [&quot;du $preposition=du $article_2p=le $preposition_type=def_masc_sing&quot; &quot;de la $preposition=&quot;de la&quot; $article_2p=la $preposition_type=def_fem_sing&quot; &quot;des $preposition=des $article_2p=les $preposition_type=def_unknown_plur&quot; &quot;de  $preposition=de $preposition_type=undef_unknown_sing $article_2p=&quot;&quot; &quot; &quot;d&#39; $preposition=d&#39; $prepos-tion_type=undef_unknown_sing&quot;]
+
+
+
+<span class="ow">concept</span>:(i_like_for_knowledge) [
+    &quot;j&#39;aime&quot;
+    &quot;je kiffe&quot;
+    &quot;j&#39;ai un {petit} faible pour&quot;
+    &quot;j&#39;ai une préférence pour&quot;
+    &quot;j&#39;apprécie&quot;
+    <span class="p">]</span>
+    
+    
+<span class="ow">concept</span>:(i_love_for_knowledge)
+<span class="p">[</span>
+&quot;j&#39;adore {beaucoup énormément vraiment trop} $output_answer=&quot;t&#39;adores&quot; &quot; 
+&quot;[&quot;je suis&quot; &quot;j&#39;suis&quot;]{très énormément vraiment trop}[passionné passionnée] par  $output_answer=&quot;tu es passionné par&quot; &quot; 
+&quot;[&quot;je suis&quot; &quot;j&#39;suis&quot;]{très énormément vraiment trop}[émervéillé émerveillée] par $output_answer=&quot;tu es passionné par&quot; &quot; 
+&quot;je surkiffe $output_answer=&quot;tu surkiffes&quot; &quot;
+&quot;j&#39;aime vraiment $output_answer=&quot;tu aimes vraiment&quot;&quot;
+&quot;j&#39;ai une passion pour $output_answer=&quot;tu as une passion pour&quot;&quot;
+&quot;j&#39;admire {beaucoup énormément vraiment trop} $output_answer=&quot;tu admires&quot; &quot;
+&quot;je suis {absolument vraiment trop totalement} obsédé par  $output_answer=&quot;tu es obsédé par&quot; &quot;
+&quot;je raffole  $output_answer=&quot;tu raffoles&quot; &quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(i_guess) [
+    ~it_is
+    &quot;[&quot;je crois&quot; &quot;je pense&quot; &quot;~i_am [sûr sûre]&quot;] que ~it_is&quot;
+    &quot;[ma la] réponse [est était]&quot;
+    est-ce
+    était-ce
+    &quot;ça peut être&quot;
+    &quot;ça pourrait être&quot;
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index_dev_guide.html">NAOqi - Developer guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_nao.html"><strong>NAO</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../../contents.html">Site map</a>
+      <a title="Index" href="../../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

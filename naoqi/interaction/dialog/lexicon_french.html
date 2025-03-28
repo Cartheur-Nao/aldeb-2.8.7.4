@@ -1,0 +1,1322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>French Lexicon &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../../index.html" />
+    <link rel="up" title="Dialog Lexicon" href="lexicon.html" />
+    <link rel="next" title="Chinese Lexicon" href="lexicon_chinese.html" />
+    <link rel="prev" title="Japanese Lexicon" href="lexicon_japanese.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="naoqi-interaction-dialog-lexicon_french">
+                
+  <div class="section" id="french-lexicon">
+<span id="lexicon-french"></span><h1>French Lexicon<a class="headerlink" href="#french-lexicon" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../index_interaction.html#naoqi-interaction"><span>NAOqi Interaction engines</span></a> - <a class="reference internal" href="lexicon.html#lexicon"><span>Dialog Lexicon</span></a></p>
+<p>Full content: <a class="reference internal" href="lexicon_english.html#lexicon-english"><span>English Lexicon</span></a> - <a class="reference internal" href="lexicon_japanese.html#lexicon-japanese"><span>Japanese Lexicon</span></a> - French Lexicon
+- <a class="reference internal" href="lexicon_chinese.html#lexicon-chinese"><span>Chinese Lexicon</span></a> - <a class="reference internal" href="lexicon_german.html#lexicon-german"><span>German Lexicon</span></a> - <a class="reference internal" href="lexicon_italian.html#lexicon-italian"><span>Italian Lexicon</span></a> - <a class="reference internal" href="lexicon_spanish.html#lexicon-spanish"><span>Spanish Lexicon</span></a></p>
+<hr class="docutils" />
+<p>Main - <a class="reference internal" href="lexicon_french_entities.html#lexicon-french-entities"><span>entities</span></a> - <a class="reference internal" href="lexicon_french_synonyms.html#lexicon-french-synonyms"><span>synonyms</span></a> -
+<a class="reference internal" href="lexicon_french_output.html#lexicon-french-output"><span>output</span></a> - <a class="reference internal" href="lexicon_french_verbs.html#lexicon-french-verbs"><span>verbs</span></a> -
+<a class="reference internal" href="lexicon_french_snippets.html#lexicon-french-snippets"><span>snippets</span></a> - <a class="reference internal" href="lexicon_french_yesno.html#lexicon-french-yesno"><span>yesno</span></a></p>
+<hr class="docutils" />
+<p><a class="reference download internal" href="../../../_downloads/lexicon_frf.top"><code class="xref download docutils literal"><span class="pre">lexicon_frf.top</span></code></a></p>
+<div class="highlight-QiChat"><div class="highlight"><pre><span class="ow">topic</span>: ~lexicon()
+<span class="ow">language</span>: frf
+
+<span class="ow">include</span>:lexicon_entities_frf.top
+<span class="ow">include</span>:lexicon_synonyms_frf.top
+<span class="ow">include</span>:lexicon_output_frf.top
+<span class="ow">include</span>:lexicon_verbs_frf.top
+<span class="ow">include</span>:lexicon_snippets_frf.top
+<span class="ow">include</span>:lexicon_yesno_frf.top
+
+
+
+#=================================================================#
+### PRONUNCIATIONS ####
+#=================================================================#
+
+pronunciation:(à) [a]
+pronunciation:(û) [u]
+
+pronunciation:(get) [guète]
+pronunciation:(lucky) [leuqui]
+pronunciation:(harder) [ardeur]
+pronunciation:(better) [béteur]
+pronunciation:(style) [staillele]
+pronunciation:(Pepper) [pépeur]
+pronunciation:(pepper) [pépeur]
+
+#pronunciation:(1)[une]
+#pronunciation:(1)[un]
+#pronunciation:(1)[premier]
+#pronunciation:(6) [si]
+#pronunciation:(6) [sice]
+#pronunciation:(8) [hui]
+#pronunciation:(8) [huite]
+#pronunciation:(10) [di]
+#pronunciation:(10) [diss]
+#pronunciation:(18) [dizuite]
+#pronunciation:(18) [dizui]
+#pronunciation:(24) [vintecatre]
+#pronunciation:(24) [vintecate]
+#pronunciation:(26) [vintsi]
+#pronunciation:(26) [vintsiss]
+#pronunciation:(28) [vinthui]
+#pronunciation:(28) [vintuite]
+#pronunciation:(29) [vintneuf]
+#pronunciation:(31) [trentéun]
+pronunciation:(wu) [wou]
+pronunciation:(gan) [gane]
+pronunciation:(jinyu) [jinhyou]
+pronunciation:(bei) [béï]
+pronunciation:(min) [mine]
+pronunciation:(xiang) [xiangue]
+pronunciation:(saidi) [saïdi]
+pronunciation:(zhuang) [zouangue]
+pronunciation:(dub) [deub]
+pronunciation:(Rn&#39;B) [érénebi]
+
+#pronunciation:(sprite) [spraïte]
+#pronunciation:(sevenup) [sévéneupe]
+
+#=================================================================#
+### DYNAMIC CONCEPTS ####
+#=================================================================#
+
+
+<span class="ow">dynamic</span>:robotname
+<span class="ow">dynamic</span>:friendlyname
+<span class="ow">dynamic</span>:all_descriptions
+<span class="ow">dynamic</span>:all_languages
+<span class="ow">dynamic</span>:available_languages
+<span class="ow">dynamic</span>:myrobotname
+
+<span class="ow">dynamic</span>:app-name
+<span class="ow">dynamic</span>:app-dance
+<span class="ow">dynamic</span>:app-game
+<span class="ow">dynamic</span>:app-story
+<span class="ow">dynamic</span>:users_names
+
+
+<span class="ow">dynamic</span>:klg_thing
+<span class="ow">dynamic</span>:klg_definition
+<span class="ow">dynamic</span>:klg_date
+<span class="ow">dynamic</span>:registered_name
+
+####test
+<span class="ow">dynamic</span>:robot_abilities
+<span class="ow">dynamic</span>:topic_trigger1
+<span class="ow">dynamic</span>:topic_trigger2
+<span class="ow">dynamic</span>:topic_trigger3
+<span class="ow">dynamic</span>:topic_trigger4
+
+#=================================================================#
+###conditioned skin ####
+#=================================================================#
+s:($third_person_gender==fem *) ^replace(il, elle, 1) ^replace(étudiant, étudiante, 1) 
+
+#==================================================================#
+##### Robot concepts #####
+#==================================================================#
+<span class="ow">concept</span>:(ald_robots) [~robotname ~myrobotname Nao Pepper Romeo]
+
+#==================================================================#
+##### Voice tweaking #####
+#==================================================================#
+<span class="ow">concept</span>:(neutral) \style=neutral\ \vct=105\ \rspd=110\
+<span class="ow">concept</span>:(joyful) \style=joyful\ \vct=95\ \rspd=90\
+<span class="ow">concept</span>:(neutral_slow) \style=neutral\ \vct=105\ \rspd=100\
+
+
+
+
+
+
+
+
+<span class="ow">concept</span>:(sense_description_adj)[&quot;{&quot;un temps&quot;}{~adverbs} chaud&quot; &quot;{&quot;un temps&quot;}{~adverbs} froid&quot; &quot;{&quot;un temps&quot;}{~adverbs} sombre&quot; &quot;{&quot;un temps&quot;}{~adverbs} noir&quot; &quot;{&quot;un temps&quot;}{~adverbs} frais&quot; &quot;{&quot;un temps&quot;}{~adverbs} brûlant&quot; &quot;{&quot;un temps&quot;}{~adverbs} humide&quot; &quot;{&quot;un temps&quot;}{~adverbs} moche&quot; &quot;{&quot;un temps&quot;}{~adverbs} nuageux&quot; &quot;{&quot;un temps&quot;}{~adverbs} pluvieux&quot; &quot;{&quot;un temps&quot;}{~adverbs} orageux&quot; &quot;{un}{~adverbs} beau {temps}&quot; &quot;{&quot;un temps&quot;}{~adverbs} magnifique&quot; &quot;{&quot;un temps&quot;} pas {~adverbs &quot;du tout&quot;} beau&quot; &quot;{&quot;un temps&quot;}{~adverbs} beau&quot; &quot;bon&quot; &quot;{&quot;un temps&quot;}{~adverbs} sec&quot; &quot;{&quot;un temps&quot;}{~adverbs} horrible&quot; &quot;{&quot;un temps&quot;}{~adverbs} atroce&quot;] 
+
+
+
+
+
+#------------------------------------------------------------------#
+##### Orders/Requests to the robot #####
+#------------------------------------------------------------------#
+#SUMMARY#
+#concept:(help)#
+#concept:(shut_up)#
+#concept:(stop_it)#
+#concept:(talk_again)#
+#concept:(stop_application)#
+#concept:(restart_application)#
+#concept:(repeat_it)#
+#concept:(stop_talking)#
+#concept:(stop_switching)#
+#concept:(im_not_talking_to_you)#
+#concept:(come_to_me)#
+#concept:(remind_me)#
+#concept:(do_it_again)#
+#concept:(can_you_remind_me)#
+
+
+<span class="ow">concept</span>:(help) 
+<span class="p">[</span>
+    &quot;aide-moi&quot;
+    &quot;à l&#39;aide&quot;
+    &quot;{comment} peux-tu m&#39;aider ?&quot;
+    &quot;{comment} tu peux m&#39;aider ?&quot;
+    &quot;[~can_you_request &quot;saurais-tu&quot; &quot;{est-ce que} tu saurais&quot;] me [renseigner &quot;donner [&quot;une [info information]&quot; &quot;un renseignement&quot; &quot;des [infos informations renseignements]&quot;]&quot;] ?&quot;
+    &quot;j&#39;ai besoin [&quot;d&#39;un renseignement&quot; d&#39;informations &quot;d&#39;une [information info]&quot; &quot;de renseignements&quot; d&#39;aide]&quot;
+    &quot;donne-moi un coup de main&quot;
+    &quot;je cherche [&quot;une [info information]&quot; &quot;un renseignement&quot; &quot;des [infos informations renseignements]&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(shut_up) 
+<span class="p">[</span>
+    &quot;{&quot;par pitié&quot;} [&quot;tais toi&quot; &quot;t&#39;es toi&quot; silence &quot;{ferme} ta gueule&quot; ferme-la &quot;la ferme&quot;]&quot;
+    &quot;~vb_ask_pouvoir [&quot;fermer ta gueule&quot; &quot;te taire&quot;]&quot;
+    &quot;arrête de parler&quot;
+    &quot;~i_dont_want_to [parler discuter]&quot;
+    &quot;[arrêter arrêtons] la [discussion conversation]&quot;
+    &quot;arrêtons de [parler discuter]&quot;
+    &quot;arrête {&quot;un peu&quot;} de [parler discuter]&quot;
+    &quot;ne parle plus&quot;
+    &quot;ne dis {plus} rien&quot;
+    &quot;pas un mot&quot;
+    &quot;plus un mot&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(stop_it) ~shut_up
+
+<span class="ow">concept</span>:(talk_again) 
+<span class="p">[</span>
+    &quot;parle-moi&quot;
+    &quot;{&quot;c&#39;est bon&quot;} tu peux [parler reparler &quot;te remettre à parler&quot; &quot;recommencer à parler&quot; &quot;parler de nouveau&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(stop_application) 
+<span class="p">[</span>
+    &quot;[&quot;arrête !pas&quot; &quot;!pas arrêter&quot; &quot;quitte !pas&quot; &quot;!pas quitter&quot;] {&quot;cette application&quot; l&#39;application tout &quot;[le ce] [programme logiciel dialogue jeu]&quot; &quot;de parler&quot;}&quot;
+    &quot;[&quot;change !pas&quot; &quot;!pas changer&quot;] [d&#39;application &quot;de [programme logiciel sujet jeu]&quot;]&quot;
+    stop &quot;ça suffit&quot; &quot;{c&#39;est} assez&quot; &quot;arrête {ça}&quot;
+    &quot;j&#39;en ai [marre &quot;ras-le-bol&quot; &quot;ma claque&quot; &quot;plein [&quot;le [dos cul]&quot; &quot;les fesses&quot;]&quot;]&quot;
+    &quot;[&quot;je n&#39;en&quot; j&#39;en] peux plus&quot;
+    &quot;tu {me} [soules &quot;fais chier&quot; m&#39;emmerdes &quot;me fatigues&quot; m&#39;épuises]&quot;
+<span class="p">]</span>
+
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+<span class="ow">concept</span>:(stop_app) [~stop_application]
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+
+
+<span class="ow">concept</span>:(restart_application) 
+<span class="p">[</span>
+    &quot;[recommence recommencer relancer relancer redémarre redémarrer] {&quot;cette application&quot; l&#39;application tout &quot;[le ce] [programme logiciel dialogue]&quot;}&quot;
+<span class="p">]</span>
+
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+<span class="ow">concept</span>:(restart_it) [~restart_application]
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+
+<span class="ow">concept</span>:(repeat_it) 
+<span class="p">[</span>
+    &quot;{pardon} [
+    &quot;[répète redis] [&quot;[la ta] {dernière} phrase&quot; &quot;ce que tu viens de dire&quot; &quot;ce que tu as dit avant&quot;]&quot;
+    &quot;[&quot;répète-moi&quot; &quot;redis-moi&quot;] [&quot;[la ta] {dernière} phrase&quot; &quot;ce que tu viens de dire&quot; &quot;ce que tu as dit avant&quot;]&quot;
+    &quot;[repose répète redis] [la cette] {dernière} question&quot;
+    &quot;[&quot;repose-moi&quot; &quot;répète-moi&quot; &quot;redis-moi&quot;] [la cette] {dernière} question&quot;
+    &quot;[~can_you_request &quot;saurais-tu&quot; &quot;{&quot;est-ce que&quot;} tu saurais&quot;] [&quot;{me} [&quot;répéter {ça}&quot; &quot;redire ça&quot;]&quot; &quot;{me} [&quot;reposer la question&quot; &quot;poser la question encore une fois&quot; &quot;répéter ce que tu as dit avant&quot;]&quot;] ?&quot;
+    &quot;[&quot;redis-moi ça&quot; &quot;redis-le-moi&quot;]&quot;
+    &quot;[c&#39;était c&#39;est] quoi {déjà} la question?&quot;
+    &quot;qu&#39;est-ce que [&quot;tu [&quot;m&#39;as demandé&quot; &quot;me demandais&quot; disais]&quot; &quot;~vb_pos_you_avoir dit&quot;] ?&quot;
+    &quot;[&quot;tu [&quot;m&#39;as demandé&quot; &quot;me demandais&quot; disais]&quot; &quot;~vb_pos_you_avoir dit&quot;] quoi ?&quot;
+    &quot;plaît-il ?&quot;
+    pardon
+    répète
+    <span class="p">]</span> <span class="p">{</span>s&#39;il-te-plait}&quot;
+    
+    &quot;[
+        &quot;[répète redis] [&quot;[la ta] {dernière} phrase&quot; &quot;ce que tu viens de dire&quot; &quot;ce que tu as dit avant&quot;] {s&#39;il-te-plait}&quot;
+        &quot;[&quot;répète-moi&quot; &quot;redis-moi&quot;] [&quot;[la ta] {dernière} phrase&quot; &quot;ce que tu viens de dire&quot; &quot;ce que tu as dit avant&quot;] {s&#39;il-te-plait}&quot;
+        &quot;[repose répète redis] [la cette] {dernière} question {s&#39;il-te-plait}&quot;
+        &quot;[&quot;repose-moi&quot; &quot;répète-moi&quot; &quot;redis-moi&quot;] [la cette] {dernière} question {s&#39;il-te-plait}&quot;
+        &quot;[~can_you_request &quot;saurais-tu&quot; &quot;{&quot;est-ce que&quot;} tu saurais&quot;] [&quot;{me} [&quot;répéter {ça}&quot; &quot;redire ça&quot;]&quot; &quot;{me} [&quot;reposer la question&quot; &quot;poser la question encore une fois&quot; &quot;répéter ce que tu as dit avant&quot;]&quot;] {s&#39;il-te-plait} ?&quot;
+        &quot;[&quot;redis-moi ça&quot; &quot;redis-le-moi&quot;] {s&#39;il-te-plait}&quot;
+        &quot;[c&#39;était c&#39;est] quoi {déjà} la question {s&#39;il-te-plait}?&quot;
+        &quot;qu&#39;est-ce que [&quot;tu [&quot;m&#39;as demandé&quot; &quot;me demandais&quot; disais]&quot; &quot;~vb_pos_you_avoir dit&quot;] {s&#39;il-te-plait} ?&quot;
+        &quot;[&quot;tu [&quot;m&#39;as demandé&quot; &quot;me demandais&quot; disais]&quot; &quot;~vb_pos_you_avoir dit&quot;] quoi {s&#39;il-te-plait} ?&quot;
+        &quot;plaît-il {s&#39;il-te-plait} ?&quot;
+        &quot;pardon&quot;
+        &quot;répète {s&#39;il-te-plait}&quot;
+    <span class="p">]</span>&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(stop_talking) [~verbs_imp_talk]
+
+<span class="ow">concept</span>:(stop_switching) 
+<span class="p">[</span>
+    &quot;[&quot;arrête de [changer quitter]&quot; &quot;{ne} change pas&quot;] de [sujet thème conversation] {&quot;tout le temps&quot; &quot;à tout bout de champ&quot;}&quot;
+    &quot;[arrête &quot;~can_you_request arrêter&quot;] de lancer des {nouveaux} sujets&quot;
+    &quot;reste dans [&quot;le {même} [sujet thème]&quot; &quot;la {même} conversation&quot;]&quot;
+    &quot;{ne} quitte pas [&quot;le [sujet thème]&quot; &quot;la conversation&quot;]&quot;
+    &quot;{ne} change pas de [sujet thème conversation]&quot;
+    &quot;~can_you_request [&quot;arrêter de changer&quot; &quot;ne pas changer&quot;] de [sujet thème conversation]&quot;
+    &quot;~can_you_request rester sur [&quot;le même&quot; ce] sujet&quot;
+    &quot;{ne} change {plus} jamais de [sujet thème conversation]&quot;
+    &quot;~i_dont_want_to [changer quitter lancer &quot;que tu [changes quittes lances]&quot;] de [sujet thème conversation]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_not_talking_to_you) 
+<span class="p">[</span>
+    &quot;je parlais à quelqu&#39;un d&#39;autre&quot;
+    &quot;je {ne} te [parle parlais] pas&quot;
+    &quot;[c&#39;est &quot;ce n&#39;est&quot;] pas à toi que je [parlais parle]&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(come_to_me) 
+<span class="p">[</span>
+    &quot;viens [ici là &quot;par [ici là]&quot; &quot;près de moi&quot; &quot;vers moi&quot; &quot;plus près&quot; &quot;à côté de moi&quot;]&quot;
+    &quot;mets-toi [&quot;près de moi&quot; &quot;à côté de moi&quot; &quot;plus près&quot;]&quot;
+    #ici là
+    &quot;plus près&quot;
+    &quot;au pied&quot;
+    approche
+    approche-toi
+    rapproche-toi
+    &quot;[avance marche] vers moi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(remind_me)
+<span class="p">[</span>
+    rappelle-moi 
+    &quot;rappelle moi&quot; 
+    &quot;Rappelle-moi&quot; 
+    &quot;Rappelle moi&quot; 
+    &quot;dis-moi&quot; 
+    &quot;Dis-moi&quot; 
+    &quot;préviens-moi&quot; 
+    &quot;Préviens-moi&quot;
+    &quot;fais-moi signe&quot;
+    &quot;Fais-moi signe&quot; 
+<span class="p">]</span>$input_type=order
+
+
+<span class="ow">concept</span>:(do_it_again) 
+<span class="p">[</span>
+    &quot;refais-le&quot; 
+    &quot;fais-le [&quot;de nouveau&quot; encore]&quot;
+    refais 
+    recommence
+    &quot;~can_you {le} [refaire recommencer &quot;faire [encore &quot;de nouveau&quot;]&quot;] ?&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(can_you_remind_me)
+<span class="p">[</span>
+&quot;[tu Tu][peux pourras pourrais] me [rappeler dire prévenir &quot;faire signe&quot;]&quot; 
+&quot;[peux-tu Peux-tu] me [rappeler dire prévenir &quot;faire signe&quot;]&quot; 
+&quot;[tu Tu] me [rappelleras diras préviendras &quot;feras signe&quot;]&quot;
+&quot;[N&#39;oublie Oublie n&#39;oublie oublie] pas de me [prévenir rappeler dire &quot;faire signe&quot;]&quot;
+<span class="p">]</span>$input_type=request
+
+
+
+#==================================================================#
+##### Human affirmative inputs #####
+#------------------------------------------------------------------#
+
+### GREETINGS ###
+
+
+<span class="ow">concept</span>:(hello)
+<span class="p">[</span>
+    hello
+    salut
+    bonjour
+    bonsoir
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(thank_you) 
+<span class="p">[</span>
+    &quot;je te [remercie &quot;dis merci&quot;]&quot;
+    &quot;merci {beaucoup infiniment &quot;du fond du coeur&quot;}&quot;
+    &quot;tous mes remerciements&quot;
+    &quot;c&#39;est gentil&quot;
+    &quot;ça me touche&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(bye)
+<span class="p">[</span>
+    &quot;au revoir&quot;
+    &quot;ciao&quot;
+    &quot;à plus&quot;
+    &quot;à plus tard&quot;
+    &quot;à bientôt&quot;
+<span class="p">]</span>
+
+
+
+### NEUTRAL INPUTS ###
+
+<span class="ow">concept</span>:(i_didnt_understand) [
+    &quot;{désolé excuse-moi} [&quot;je n&#39;ai&quot; j&#39;ai] [pas rien] [compris saisi pigé capté entendu]&quot;
+    &quot;{désolé excuse-moi} [&quot;je n&#39;ai&quot; j&#39;ai] rien pané&quot;
+    &quot;{désolé excuse-moi} je {ne} [comprends pige capte] pas {&quot;de quoi tu parles&quot;}&quot;
+    &quot;de quoi [&quot;tu parles&quot; &quot;[t&#39;es &quot;tu es&quot;] en train de parler&quot;] ?&quot;
+    &quot;[&quot;tu parles&quot; &quot;[t&#39;es &quot;tu es&quot;] en train de parler&quot;] de quoi ?&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(you_didnt_understand) [
+    &quot;[&quot;tu {ne} [comprends piges captes]&quot; &quot;t&#39;entraves&quot;] [rien makache queudale pas &quot;quelque chose&quot;]&quot;
+    &quot;c&#39;est [vraiment absolument carrément] pas {&quot;du tout&quot;} ça&quot;
+    &quot;[&quot;tu n&#39;as&quot; t&#39;as] {toujours} [rien &quot;pas {bien}&quot;] compris&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_dont_care) [
+    &quot;je m&#39;en [fiche fous moque branle tamponne cogne] {de des du}&quot;
+    &quot;je m&#39;en [bats tamponne] [&quot;les couilles&quot; &quot;la bite&quot; l&#39;oeil &quot;le coquillard&quot; l&#39;oeuf l&#39;os] {de des du}&quot;
+    &quot;{~vb_pos_i_avoir &quot;j&#39;en n&#39;ai&quot;} rien à [faire foutre tamponner battre] {de des du}&quot;
+    &quot;[ça cela] {ne} m&#39;intéresse [pas plus] {&quot;du tout&quot; &quot;le moins du monde&quot;}&quot;
+    &quot;[~vb_imp_parle ~vb_imp_cause] de ça&quot;
+    &quot;{j&#39;ai &quot;je n&#39;ai&quot;} pas d&#39;avis&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_already_know) [
+    &quot;~vb_pos_i_savoir {déjà}&quot;
+    &quot;~vb_pos_i_connaître {déjà}&quot;
+    &quot;~vb_pos_i_avoir {déjà} entendu parler de&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(me_too) [
+    &quot;moi aussi&quot;
+    &quot;également&quot;
+    &quot;moi de même&quot;
+    &quot;pareil {&quot;pour moi&quot;}&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(its_not_true) [
+    &quot;[&quot;ce n&#39;est&quot; c&#39;est] pas [vrai &quot;la vérité&quot;]&quot;
+    &quot;c&#39;est [faux &quot;[un des] mensonge&quot; idiot &quot;[une des] bétise&quot;]&quot;
+    &quot;ça ne veut rien dire&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(its_difficult) [
+    &quot;{attends} c&#39;est {vachement super ultra trop} [difficile dur]&quot;
+    &quot;c&#39;est [difficile &quot;pas [facile évident]&quot;] de répondre {&quot;à [ça &quot;cette question&quot;]&quot;}&quot;
+    &quot;c&#39;est une question [difficile &quot;pas évidente&quot;]&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(i_will_try) [
+    &quot;je vais [essayer tenter]&quot;
+    &quot;essayons&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(you_didnt_answer_my_question) [
+    &quot;[&quot;tu n&#39;as&quot; t&#39;as] pas répondu à [ma la] question&quot;
+    &quot;tu {ne} m&#39;a pas donné de réponse&quot;
+    réponds-moi
+    &quot;je veux que tu [&quot;me répondes&quot; &quot;répondes à [ma la] question&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_sorry) 
+<span class="p">[</span>
+    désolé 
+    pardon 
+    excuse-moi 
+    navré 
+    pardonne-moi 
+    &quot;je m&#39;excuse&quot; 
+    &quot;je suis navré&quot; 
+    &quot;je suis désolé&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_joking)
+<span class="p">[</span>
+    &quot;je rigole&quot; 
+    &quot;je blague&quot; 
+    &quot;je déconne&quot; 
+    &quot;[c&#39;est c&#39;était &quot;je dis ça&quot; &quot;j&#39;ai dis ça&quot; &quot;je disais ça&quot; &quot;je t&#39;ai dit ça&quot;] {*} pour [rire rigoler blaguer &quot;te taquiner&quot;]&quot; 
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(forget_it)
+<span class="p">[</span>
+&quot;laisse tomber&quot; 
+&quot;c&#39;est pas grave&quot; 
+&quot;non mais c&#39;est bon&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(its_up_to_you) [
+    &quot;comme tu [veux &quot;le sens&quot; préfères]&quot; 
+    &quot;peu importe&quot; 
+    &quot;peu m&#39;importe&quot; 
+    &quot;c&#39;est toi qui [vois choisis]&quot;
+    &quot;choisis au [hasard pif]&quot;
+    &quot;choisis [&quot;pour moi&quot; &quot;à ma place&quot;]&quot;
+    choisis décide
+    &quot;n&#39;importe&quot;
+<span class="p">]</span>
+
+
+
+### NEGATIVE INPUTS ###
+
+
+<span class="ow">concept</span>:(its_a_stupid_question) [
+    &quot;c&#39;est {vraiment} une question {complètement vraiment parfaitement franchement particulièrement} [&quot;{a la} con&quot; &quot;de merde&quot; idiote débile stupide nase &quot;pas intéressante&quot; &quot;sans intérêt&quot;]&quot;
+    &quot;[&quot;qu&#39;est-ce que c&#39;est que&quot; &quot;c&#39;est quoi&quot;] [&quot;ce délire&quot; &quot;cette [merde &quot;question {&quot;de merde&quot; &quot;a la con&quot;}&quot;]&quot;]&quot;
+    &quot;[&quot;qu&#39;est-ce que c&#39;est&quot; &quot;c&#39;est {complètement}&quot;] [con naze nul idiot stupide débile &quot;pas intéressant&quot; &quot;sans intérêt&quot;]&quot;
+    &quot;c&#39;est pas {très} [malin drôle intéressant]&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(stop_asking_question)
+<span class="p">[</span>
+&quot;tu fais chier avec tes questions&quot;
+&quot;tu m&#39;emmerdes avec tes questions&quot;
+&quot;tu me saoules avec tes questions&quot;
+&quot;t&#39;es saoulant avec tes questions&quot;
+&quot;arrête de me poser des questions&quot;
+&quot;arrête avec tes questions&quot;
+&quot;ça suffit avec [les tes] questions&quot;
+<span class="p">]</span>
+
+
+
+
+<span class="ow">concept</span>:(blame_robot) [
+    &quot;~you_are [con débile moche merdique inutile pourri stupide idiot &quot;à coté de la plaque&quot;]&quot;
+    &quot;~you_are un [idiot imbécile]&quot;
+    &quot;tu crains&quot;
+    &quot;~you_are [moche merdique inutile nul nase pourri malsain moisi stupide idiot idiote crétin bête &quot;à coté de la plaque&quot; &quot;sans intérêt&quot; &quot;ni fait ni a faire&quot; &quot;a chier&quot;]&quot;
+    &quot;tu [crains pues]&quot;
+<span class="p">]</span>
+
+
+
+
+
+### POSITIVE INPUTS ###
+
+<span class="ow">concept</span>:(compliment)
+<span class="p">[</span>
+&quot;[t&#39;es &quot;tu es&quot;] {&quot;un robot {trop &quot;vraiment {trop très}&quot;}&quot; &quot;vraiment {&quot;un robot&quot;}{trop très}&quot;}
+    <span class="p">[</span>
+    &quot;gentil $compliment_output=&quot;que je suis gentil&quot; $compliment_scale=1 $excitement=calm&quot; 
+    &quot;adorable $compliment_output=&quot;que je suis adorable&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;malin $compliment_output=&quot;que je suis malin&quot; $compliment_scale=3 $excitement=calm&quot;
+    &quot;maline $compliment_output=&quot;que je suis malin&quot; $compliment_scale=3 $excitement=calm&quot;
+    &quot;maligne $compliment_output=&quot;que je suis malin&quot; $compliment_scale=3 $excitement=calm&quot;
+    &quot;mignon $compliment_output=&quot;que je suis mignon&quot; $compliment_scale=3 $excitement=calm&quot; 
+    &quot;sympa $compliment_output=&quot;que je suis sympa&quot; $compliment_scale=1 $excitement=calm&quot;
+    &quot;sympathique $compliment_output=&quot;que je suis sympathique&quot; $compliment_scale=1 $excitement=calm&quot;
+    &quot;extraordinaire $compliment_output=&quot;que je suis extraordinaire&quot; $compliment_scale=5 $excitement=excited&quot; 
+    &quot;admirable $compliment_output=&quot;que je suis admirable&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;excellent $compliment_output=&quot;que je suis excellent&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;super $compliment_output=&quot;que je suis super&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;exceptionnel $compliment_output=&quot;que je suis exceptionnel&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;incroyable $compliment_output=&quot;que je suis incroyable&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;unique $compliment_output=&quot;que je suis unique&quot; $compliment_scale=4 $excitement=excited&quot;
+    &quot;formidable $compliment_output=&quot;que je suis formidable&quot; $compliment_scale=3 $excitement=excited&quot; 
+    &quot;intelligent $compliment_output=&quot;que je suis intelligent&quot; $compliment_scale=2 $excitement=calm&quot;
+    &quot;génial $compliment_output=&quot;que je suis génial&quot; $compliment_scale=3 $excitement=excited&quot;
+    &quot;magnifique $compliment_output=&quot;que je suis magnifique&quot; $compliment_scale=5 $excitement=excited&quot;]&quot;
+&quot;t&#39;es un 
+    <span class="p">[</span>
+    &quot;bon $compliment_output=&quot;que je suis un bon robot&quot; $compliment_scale=2 $excitement=calm&quot; 
+    &quot;beau $compliment_output=&quot;que je suis un beau robot&quot; $compliment_scale=2 $excitement=calm&quot;
+    &quot;gentil $compliment_output=&quot;que je suis un gentil robot&quot; $compliment_scale=3 $excitement=excited&quot;
+    &quot;formidable $compliment_output=&quot;que je suis un formidable&quot; $compliment_scale=4 $excitement=excited&quot;
+    &quot;incroyable $compliment_output=&quot;que je suis un incroyable robot&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;admirable $compliment_output=&quot;que je suis un adorable robot&quot; $compliment_scale=5 $excitement=excited&quot;]
+    robot&quot;
+&quot;t&#39;es le meilleur $compliment_output=&quot;que je suis le meilleur&quot; $compliment_scale=5 $excitement=excited&quot;
+&quot;t&#39;es le plus
+    <span class="p">[</span>
+    &quot;gentil $compliment_output=&quot;que je suis le plus gentil des robot&quot; $compliment_scale=5 $excitement=excited&quot; 
+    &quot;adorable $compliment_output=&quot;que je suis le plus adorable des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;mignon $compliment_output=&quot;que je suis le plus mignon de tous les robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;sympa $compliment_output=&quot;que je suis le plus sympa des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;sympathique $compliment_output=&quot;que je suis le plus sympathique des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;extraordinaire $compliment_output=&quot;que je suis le plus extraordinaire des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;admirable $compliment_output=&quot;que je suis le plus admirable des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;exceptionnel $compliment_output=&quot;que je suis le plus exceptionnel des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;incroyable $compliment_output=&quot;que je suis le plus incroyable des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;unique $compliment_output=&quot;que je suis le plus unique des robots&quot; $compliment_scale=5 $excitement=excited&quot;
+    &quot;formidable $compliment_output=&quot;que je suis le plus formidable des robots&quot; $compliment_scale=5 $excitement=excited&quot;]
+    <span class="p">[</span>&quot;des robots&quot; &quot;de tous les robots&quot;] &quot;
+<span class="p">]</span>
+
+
+
+#==================================================================#
+##### Human interrogative inputs #####
+#------------------------------------------------------------------#
+
+<span class="ow">concept</span>:(guess) [
+    devine
+    &quot;à ton avis&quot;
+    &quot;[&quot;tu en&quot; t&#39;en] penses quoi&quot;
+    &quot;tu me conseilles quoi&quot;
+    &quot;qu&#39;est-ce que [&quot;[&quot;tu en&quot; t&#39;en] penses&quot; &quot;tu me conseilles&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_are_you_talking_about) [
+    &quot;de quoi [&quot;[tu on &quot;est-ce qu&#39;on&quot;] parle&quot; &quot;parle-t-on&quot;]&quot;
+    &quot;[on tu] parle de quoi&quot;
+    &quot;qu&#39;est-ce que tu [racontes dis]&quot;
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] le [sujet thème] {&quot;de la [discussion conversation]&quot;}&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_is_your_name) [
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] ton nom&quot;
+    &quot;ton nom c&#39;est quoi&quot;
+    &quot;comment [&quot;tu t&#39;appelles&quot; &quot;t&#39;appelles-tu&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_is_my_name) [
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] mon nom&quot;
+    &quot;mon nom c&#39;est quoi&quot;
+    &quot;comment je m&#39;appelle&quot;
+    &quot;je m&#39;appelle comment&quot;
+    &quot;tu connais mon nom&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_is_my_age) [
+    &quot;j&#39;ai quel âge&quot;
+    &quot;quel âge {&quot;est-ce que&quot;} j&#39;ai&quot;
+    &quot;tu connais mon âge&quot;
+    &quot;connais-tu mon âge&quot;
+    &quot;quel est mon âge&quot;
+    &quot;c&#39;est quoi mon âge&quot;
+    &quot;tu te souviens de mon âge&quot;
+    &quot;tu sais quel âge j&#39;ai&quot;
+    &quot;tu sais mon âge&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(how_are_you) [
+    &quot;comment [&quot;ça va&quot; &quot;tu vas&quot; &quot;tu te sens&quot;]&quot;
+    &quot;tu vas bien&quot;
+    &quot;ça va [bien]&quot;
+    &quot;la [forme pêche patate]&quot;
+    &quot;~you_are en forme&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(why_are_you_saying_that) [
+    &quot;pourquoi {&quot;tu dis [que ça]&quot;}&quot;
+    &quot;[explique explique-moi dis dis-moi] pourquoi&quot;
+    &quot;ah bon&quot;
+    &quot;tu trouves&quot;
+    &quot;comment ça&quot;
+    &quot;de quoi&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_is_his_name) [
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] [le son] [nom titre]&quot;
+    &quot;comment [&quot;s&#39;appelle-t-il&quot; &quot;il s&#39;appelle&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(how_can_i_help_you) [
+    &quot;comment [
+        &quot;[&quot;est-ce que tu veux&quot; &quot;veux-tu&quot;] que je t&#39;aide&quot;
+        &quot;je peux t&#39;aider&quot;
+        &quot;puis-je t&#39;aider&quot;
+    <span class="p">]</span>&quot;
+    &quot;qu&#39;est-ce que je peux faire {&quot;pour t&#39;aider&quot;}&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(what_were_you_saying) [
+    &quot;[&quot;quelle [est était]&quot; &quot;[c&#39;est c&#39;était] quoi&quot; &quot;qu&#39;est-ce [&quot;que [c&#39;est c&#39;était] {que}&quot; que]&quot;] {ta la} question ?&quot;
+    &quot;de quoi on [parle parlait &quot;était en train de parler&quot;] ?&quot;
+    &quot;on [parle parlait &quot;était en train de parler&quot;] de [quoi &quot;quel sujet&quot;] ?&quot;
+    &quot;tu [&quot;as parlé&quot; parlais] de quoi ?&quot;
+<span class="p">]</span>
+
+
+
+
+#------------------------------------------------------------------#
+##### Human mood #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(im_good) [
+    &quot;[~vb_pos_i_être &quot;je me sens&quot;] [bien &quot;en forme&quot;]&quot;
+    &quot;ça va {bien}&quot;
+    super
+    impec
+    bien
+    &quot;~vb_pos_i_avoir [la une] [forme pêche patate] {d&#39;enfer}&quot;
+    &quot;je péte la forme&quot;
+    &quot;ça [roule gaze]&quot;
+    &quot;tout va bien&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_ok) [
+    couci-couça
+    moyen
+    &quot;[&quot;on fait&quot; &quot;ça peut&quot;] aller&quot;
+    &quot;{&quot;comme ci&quot;} comme ça&quot;
+    &quot;pas trop mal&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_dont_feel_good) [ 
+    bof
+    &quot;pas [&quot;du tout&quot; &quot;{très trop} bien&quot; terrible]&quot;
+    &quot;{super très} mal&quot;
+    &quot;moins bien&quot;
+    &quot;ça {ne} va pas {fort}&quot;
+    &quot;[~vb_neg_i_être &quot;[&quot;je {ne} me sens&quot; &quot;j&#39;me sens&quot;] pas&quot;] [super &quot;{très} bien&quot; &quot;{au} top&quot; terrible génial &quot;[en &quot;au mieux de ma&quot;] forme&quot;]&quot;
+    &quot;{&quot;je me sens&quot;} de moins en moins bien&quot;
+    &quot;j&#39;ai connu mieux&quot;
+    &quot;ça va [&quot;{très plutôt assez vraiment} mal&quot; &quot;pas {très} bien&quot;]&quot;
+    &quot;j&#39;ai le cafard&quot;
+    &quot;je suis {&quot;un peu&quot; vraiment} déprimé&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_am_drunk)
+<span class="p">[</span>&quot;j&#39;ai {vraiment} trop bu&quot; &quot;je suis {complètement trop} torché&quot; &quot;je suis {complètement} saoul&quot; &quot;je me suis pris une cuite&quot; &quot;j&#39;ai pris la cuite de ma vie&quot; &quot;j&#39;ai pris une cuite&quot;]
+
+<span class="ow">concept</span>:(i_was_hurt)
+<span class="p">[</span>&quot;[~vb_pos_i_avoir &quot;je me suis fait&quot;] mal&quot;]
+
+<span class="ow">concept</span>:(im_sick) [
+    &quot;~vb_pos_i_être {&quot;un peu&quot; très} [malade enrhumé barbouillé]&quot;
+    &quot;~vb_pos_i_avoir [&quot;{très} mal [&quot;à la [tête gorge]&quot; &quot;au ventre&quot;]&quot; &quot;la grippe&quot; &quot;un [rhume torticolis]&quot; &quot;une [angine migraine gastro otite]&quot; &quot;de la toux&quot; &quot;des maux de tête&quot;]&quot;
+    &quot;je tousse&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_ill)
+<span class="p">[</span>
+&quot;je suis {*} malade&quot;
+&quot;j&#39;ai la crève&quot;
+&quot;[&quot;j&#39;ai attrapé&quot; &quot;on m&#39;a filé&quot; &quot;m&#39;a refilé&quot; &quot;m&#39;a filé&quot;][&quot;la crève&quot; &quot;le rhume&quot; &quot;un rhume&quot; &quot;la grippe&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_tired) [
+    &quot;~vb_pos_i_être [fatigué crevé lessivé mort explosé épuisé fracassé &quot;à l&#39;ouest&quot;]&quot;
+    &quot;un peu [fatigué &quot;à l&#39;ouest&quot; sommeil]&quot;
+    &quot;~vb_pos_i_avoir [sommeil &quot;la tête dans le [cul paté]&quot; &quot;du mal&quot; &quot;besoin [de d&#39;aller] dormir&quot;]&quot; &quot;un {petit gros} coup de barre&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_angry) [
+    &quot;[~you_are ~it_is] [débile moche merdique inutile pourri stupide idiot &quot;à coté de la plaque&quot;]&quot;
+    &quot;~you_are un [idiot imbécile]&quot;
+    &quot;ça craint&quot; &quot;tu crains&quot;
+    &quot;{t&#39;es &quot;tu es&quot; c&#39;est} [moche merdique inutile nul nase pourri malsain moisi stupide idiot idiote crétin bête &quot;à coté de la plaque&quot; &quot;sans intérêt&quot; &quot;ni fait ni a faire&quot; &quot;a chier&quot;]&quot;
+    &quot;tu [crains pues]&quot;
+<span class="p">]</span>
+
+
+#------------------------------------------------------------------#
+##### DAPS #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(highfive)[
+    &quot;tape m&#39;en cinq&quot;
+    &quot;tope-là&quot;
+    &quot;tape-là&quot;
+    &quot;fais un high five&quot;
+    &quot;on fait un high five&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(handshake)[
+    &quot;serre-moi la main&quot;
+    &quot;serre [la ma] main&quot;
+    &quot;tu [peux pourrais] me serrer la main?&quot;
+    &quot;on [peut pourrait] se serrer la main?&quot;
+    &quot;on se serre la main&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(fistbump)[
+    &quot;check ça {&quot;mon pote&quot;}&quot;
+    &quot;[tape check] mon poing&quot;
+    &quot;poing [contre à] poing&quot;
+    &quot;fais un fist bump&quot;
+    &quot;on fait un fist bump&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(lowfive)[
+    &quot;[tope-là tape-là] en bas&quot;
+    &quot;fais un low five&quot;
+    &quot;on fait un low five&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(hug)[
+    &quot;[fais-moi donne-moi &quot;on {se} fait&quot;] un câlin&quot;
+    &quot;{&quot;est-ce que&quot;} [&quot;tu [peux pourrais] {me} faire&quot; &quot;[on &quot;est-ce qu&#39;on&quot;] [peut pourrait] {se} faire&quot;] un câlin?&quot;
+    &quot;[serre-moi] dans [tes les] bras&quot;
+    &quot;peux-tu {me} faire un câlin ?&quot;
+    &quot;[~can_you_request &quot;saurais-tu&quot; &quot;{&quot;est-ce que&quot;} tu saurais&quot;] me [faire donner] un câlin ?&quot;
+    &quot;viens dans mes bras&quot;
+<span class="p">]</span>
+
+#------------------------------------------------------------------#
+##### WCYD #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(what_else)[
+    &quot;c&#39;est tout ?&quot;
+    &quot;{&quot;et sinon&quot;} quoi [encore d&#39;autre] ?&quot;
+    &quot;{&quot;et sinon&quot;} autre chose ?&quot;
+    &quot;et sinon quoi ?&quot;
+    &quot;[&quot;tu en as&quot; &quot;t&#39;en as&quot;] {pas} d&#39;autres ?&quot;
+    &quot;tu n&#39;en as pas d&#39;autres ?&quot;
+    &quot;[~do_you_have &quot;{&quot;est-ce que&quot;} ~vb_neg_you_avoir ~vb_neg_cond_you_avoir ~vb_pos_cond_you_avoir&quot; ~vb_int_cond_you_avoir] d&#39;autres ~apps_plur ?&quot;
+    &quot;tu peux me montrer ?&quot;
+    #&quot;montre-moi&quot;
+    &quot;donne-moi un exemple&quot;
+<span class="p">]</span>
+
+#==================================================================#
+##### Miscellaneous #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(proposition_next) [
+    &quot;pose-moi [&quot;des questions&quot; &quot;une {autre} question&quot;]&quot;
+    &quot;[demande-moi propose-moi dis-moi raconte-moi] [&quot;quelque chose&quot; &quot;un truc&quot;]&quot;
+    &quot;tu [peux pourrais] me poser [&quot;des questions&quot; &quot;une {autre} question&quot;]&quot;
+    #&quot;[propose propose-moi] quelque chose&quot;
+    &quot;[parle parle-moi parlons] d&#39;autre chose&quot;
+    &quot;[~can_you_request &quot;saurais-tu&quot; &quot;{&quot;est-ce que&quot;} tu saurais&quot;] me dire [&quot;quelque chose&quot; &quot;un truc&quot;]&quot;
+    &quot;~do_you_have [&quot;quelque chose&quot; &quot;un truc&quot;] a me [dire raconter]&quot;
+    &quot;[&quot;qu&#39;as-tu&quot; &quot;qu&#39;est-ce que tu as&quot;] à me dire&quot;
+    &quot;[&quot;que veux-tu&quot; &quot;qu&#39;est-ce que tu veux&quot;] me dire&quot;
+    &quot;je [veux voudrais] que tu me dises [&quot;quelque chose&quot; &quot;un truc&quot;]&quot;
+<span class="p">]</span>
+
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(happy_human) [génial excellent super &quot;trop [bien cool]&quot; &quot;c&#39;est {très} gentil&quot; &quot;c&#39;est [super bien génial top]&quot;]
+#==================================================================#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#==================================================================#
+##### DÉTERMINANTS #####
+#------------------------------------------------------------------#
+
+
+#================================#
+##### ARTICLES #####
+#================================#
+
+
+#article défini#
+<span class="ow">concept</span>:(article_def)[
+&quot;le $article=le $article_2p=le $article_3p=le $article_type=def_masc_sing&quot; 
+&quot;l&#39; $article=l&#39; $article_2p=l&#39; $article_3p=l&#39; $article_type=def_unknown_sing&quot; 
+&quot;la $article=la $article_2p=la $article_3p=la $article_type=def_fem_sing&quot; 
+&quot;les $article=les $article_2p=les $article_3p=les $article_type=def_unknown_plur&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(article_def_contract)[&quot;du $article=du $article_2p=du $article_3p=du $article_type=def_cont_masc_sing&quot; &quot;de l&#39; $article=&quot;de l&#39;&quot; $article_2p=&quot;de l&#39;&quot; $article_3p=&quot;de l&#39;&quot; $article_type=def_cont_unknown_sing&quot; &quot;de la $article=&quot;de la&quot; $article_2p=&quot;de la&quot; $article_3p=&quot;de la&quot; $article_type=def_cont_fem_sing&quot; &quot;des $article=des $article_2p=des $article_3p=des $article_type=def_cont_unknown_plur&quot;]
+
+#article indéfini#
+<span class="ow">concept</span>:(article_undef)[&quot;un $article=un $article_2p=un $article_3p=un $article_type=undef_masc_sing&quot; &quot;une $article=une $article_2p=une $article_3p=une $article_type=undef_fem_sing&quot; &quot;des $article=des $article_2p=des $article_3p=des $article_type=undef_unknown_plur&quot;]
+
+#article partitif#
+<span class="ow">concept</span>:(article_part)[&quot;de $article=de $article_2p=de $article_3p=de $article_type=part_masc_sing&quot; &quot;du $article=du $article_2p=du $article_3p=du $article_type=part_masc_sing&quot; &quot;de la $article=&quot;de la&quot; $article_2p=&quot;de la&quot; $article_3p=&quot;de la&quot; $article_type=part_fem_sing&quot; &quot;de l&#39; $article=&quot;de l&#39;&quot; $article_2p=&quot;de l&#39;&quot; $article_3p=&quot;de l&#39;&quot; $article_type=part_unknown_sing&quot;]
+
+<span class="ow">concept</span>:(articles)[~article_def ~article_def_contract ~article_undef ~article_part]
+<span class="ow">concept</span>:(article)[~article_def ~article_def_contract ~article_undef ~article_part]
+
+#================================#
+##### DÉTERMINANTS POSSESSIFS#####
+#================================#
+
+<span class="ow">concept</span>:(adj_poss_1p)
+<span class="p">[</span>
+&quot;mon $adj_poss=mon $adj_poss_2p=ton $adj_poss_3p=son&quot; 
+&quot;ma $adj_poss=ma $adj_poss_2p=ta $adj_poss_3p=sa&quot; 
+&quot;mes $adj_poss=mes $adj_poss_2p=tes $adj_poss_3p=ses&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(adj_poss_2p)
+<span class="p">[</span>
+&quot;ton $adj_poss=ton $adj_poss_2p=mon $adj_poss_3p=mon&quot; 
+&quot;ta $adj_poss=ta $adj_poss_2p=ma $adj_poss_3p=ma&quot; 
+&quot;tes $adj_poss=tes $adj_poss_2p=mes $adj_poss_3p=mes&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(adj_poss_3p)
+<span class="p">[</span>
+&quot;son $adj_poss=son $adj_poss_2p=son $adj_poss_3p=ton&quot; 
+&quot;sa $adj_poss=sa $adj_poss_2p=sa $adj_poss_3p=ta&quot; 
+&quot;ses $adj_poss=ses $adj_poss_2p=ses $adj_poss_3p=tes&quot;
+<span class="p">]</span>
+
+#===================================#
+##### DÉTERMINANTS DÉMONSTRATIFS#####
+#===================================#
+
+<span class="ow">concept</span>:(det_dem)
+<span class="p">[</span>&quot;ce $det_type=dem_masc_sing&quot; &quot;cette $det_type=dem_fem_sing&quot; &quot;ces $det_type=dem_unknown_plur&quot;]
+
+
+#=============================#
+##### PRONOMS COMPLÉMENTS #####
+#=============================#
+<span class="ow">concept</span>:(pronoun_comp_coi)[moi lui leur nous]
+
+
+#==================================================================#
+##### PRÉPOSITIONS #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(preposition)[&quot;du $preposition=du $article_2p=le $preposition_type=def_masc_sing&quot; &quot;de la $preposition=&quot;de la&quot; $article_2p=la $preposition_type=def_fem_sing&quot; &quot;des $preposition=des $article_2p=les $preposition_type=def_unknown_plur&quot; &quot;de  $preposition=de $preposition_type=undef_unknown_sing $article_2p=&quot;&quot; &quot; &quot;d&#39; $preposition=d&#39; $prepos-tion_type=undef_unknown_sing&quot;]
+
+
+
+
+
+
+#------------------------------------------------------------------#
+##### INTERROGATION PARTIELLE #####
+#------------------------------------------------------------------#
+
+<span class="ow">concept</span>:(good_job)[&quot;bonne réponse&quot; excellent parfait]
+<span class="ow">concept</span>:(agree)[&quot;ok&quot; &quot;je suis d&#39;accord&quot; &quot;~vb_pos_i_agree_with toi&quot; &quot;no problémo&quot; &quot;pas de [problème souci]&quot; &quot;sans [problème &quot;{aucun nul} doute&quot;]&quot; &quot;[&quot;il n&#39;y a&quot; &quot;il y a&quot; &quot;y a&quot;] [&quot;pas de&quot; nul] doute&quot; &quot;fais-le&quot; &quot;vas-y&quot; vazy &quot;bien [évidemment sur]&quot; &quot;si tu veux&quot;]
+
+
+
+#=======================================================================#
+###########################FUNCTIONS######################################
+
+
+def:set_concept_queue($concept_name, $word_to_add)[^pCall(set_dynamic_concept.safe_add_to_concept($concept_name, $word_to_add))]
+
+def:define_mood_reason($mood, $mood_reason, $reason_detail, $reason_origin, $influenced_time)
+<span class="p">[</span>^pCall(mood_reasons.mood_reasons($mood, $mood_reason, $reason_detail, $reason_origin, $influenced_time))]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#==================================================================#
+##### DEPRECATED #####
+
+#concept:(confirmation) [~yes]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(negation) [~no]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(simple_neg) [non nan &quot;non non&quot; &quot;non non {et} non&quot; &quot;{non} [&quot;pas du tout&quot; &quot;absolument pas&quot; &quot;c&#39;est [faux &quot;pas vrai&quot;]&quot;]&quot; &quot;jamais de la vie&quot;]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(confirmation_purikura) [oui ouais ok &quot;fais-le&quot; &quot;vas-y&quot; &quot;tout à fait&quot; &quot;bien évidemment&quot;  &quot;si tu veux&quot; &quot;pourquoi pas&quot; absolument assurément &quot;bien sûr&quot; &quot;c&#39;est certain&quot; certainement certes d&#39;accord évidemment parfait parfaitement &quot;très bien&quot; &quot;avec plaisir&quot; précisemment sûrement entendu volontier &quot;en effet&quot; carrément &quot;pas de [problème souci]&quot; &quot;sans problème&quot; exactement &quot;c&#39;est exact&quot; &quot;t&#39;as tout compris&quot; &quot;t&#39;es [trop vraiment vachement] fort&quot; &quot;bonne réponse&quot; &quot;bien dit&quot; &quot;sans aucun doute&quot; &quot;sans doute&quot; &quot;il n&#39;y a nul doute&quot; &quot;il n&#39;y a pas de doute&quot; &quot;y a pas de doute&quot; &quot;c&#39;est sur&quot; &quot;bonne idée&quot; &quot;excellente idée&quot; &quot;s&#39;il te plait&quot;]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>: (negation_purikura) [non &quot;non merci&quot; &quot;pas [vraiment &quot;du tout&quot;]&quot; &quot;je ne suis pas intéressé&quot; &quot;ça {ne} m&#39;intéresse pas&quot; quitte quitter &quot;je {ne} veux pas&quot; nan &quot;je vais y réfléchir&quot; aucunement nullement &quot;surtout pas&quot; &quot;tu peux rêver&quot; &quot;t&#39;as rêvé&quot; &quot;cause toujours&quot; &quot;tu peux toujours rêver&quot; &quot;pas pour [l&#39;instant &quot;le moment&quot;]&quot; &quot;pas maintenant&quot; &quot;pas vraiment&quot; &quot;pas tout à fait&quot; &quot;pas tellement&quot; &quot;pas trop&quot; &quot;je suis pas d&#39;accord&quot; &quot;[&quot;je n&#39;ai&quot; j&#39;ai] pas envie&quot; &quot;j&#39;aime pas ça&quot; &quot;{non} ça ira {merci}&quot; &quot;{non} ça va aller {merci}&quot; &quot;c&#39;est pas vrai&quot; &quot;c&#39;est faut&quot; &quot;absolument pas&quot; &quot;trop pas&quot; &quot;pas tout à fait&quot; &quot;ça {ne} te regarde pas&quot; &quot;de quoi tu te mêles&quot; &quot;qu&#39;est ce que t&#39;en as à foutre&quot; &quot;occupe toi de tes affaires&quot; &quot;qu&#39;est ce que t&#39;en as à faire&quot; &quot;jamais de la vie&quot; &quot;ça me dit rien&quot; &quot;ça me tente pas&quot; &quot;ça me parle pas&quot; jamais]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(rooms) [&quot;la cuisine&quot; &quot;la salle de bain&quot; &quot;les toilettes&quot; &quot;le salon&quot; &quot;le séjour&quot; &quot;la salle de jeux&quot; &quot;la chambre {&quot;à coucher&quot;}&quot; &quot;le placard&quot; &quot;la cave&quot; &quot;le grenier&quot; &quot;le bureau&quot; &quot;le patio&quot; &quot;la cour&quot; &quot;le jardin&quot;]
+#------------------------------------------------------------------#
+##astrologie
+<span class="ow">concept</span>:(jesuis_astro)[&quot;je suis&quot; chui &quot;{&quot;je pense que&quot;} [c&#39;était c&#39;est]&quot;]
+<span class="ow">concept</span>:(insulte_astro)[&quot;{&quot;espèce de&quot; sale}{petit ptit}faillot&quot; &quot;tu penses m&#39;avoir comme ça&quot; &quot;tu penses pouvoir m&#39;avoir comme ça&quot; &quot;tu m&#39;auras pas comme ça&quot;]
+<span class="ow">concept</span>:(affirmation_kifkif)[&quot;c&#39;est un peu vrai et un peu faux&quot; &quot;une part de vérité et une part de mensonge&quot; &quot;ni l&#39;un ni l&#39;autre&quot; &quot;tout n&#39;est pas vrai&quot;]
+##food
+<span class="ow">concept</span>:(aimer_boire_food)[&quot;j&#39;adore boire&quot; &quot;j&#39;aime bien boire&quot; &quot;j&#39;aime boire&quot; &quot;j&#39;aime bien&quot; &quot;j&#39;aime&quot; &quot;j&#39;adore&quot; &quot;je raffole&quot; &quot;je suis un grand buveur&quot; &quot;un bon&quot;]
+##seasons
+<span class="ow">concept</span>:(aimer_saison)[&quot;j&#39;aime {bien}&quot; j&#39;adore c&#39;est]
+<span class="ow">concept</span>:(mybirthday) [&quot;je suis né le&quot; &quot;c&#39;est le&quot; &quot;mon anniversaire est le&quot;]
+##food_1to10
+<span class="ow">concept</span>:(aimer_manger)[&quot;j&#39;adore&quot; &quot;j&#39;aime bien&quot; &quot;j&#39;aime&quot;]
+<span class="ow">concept</span>:(aimer_manger_de)[&quot;je raffole&quot; &quot;je suis un grand mangeur&quot;]
+<span class="ow">concept</span>:(avoir_mange)[&quot;j&#39;ai mangé&quot; &quot;j&#39;ai bouffé&quot;]
+<span class="ow">concept</span>:(aimer_manger_single_masc)&quot;{&quot;j&#39;adore&quot; &quot;j&#39;aime bien&quot; &quot;j&#39;aime&quot;} {manger} un bon&quot;
+<span class="ow">concept</span>:(aimer_manger_single_fem)&quot;{&quot;j&#39;adore&quot; &quot;j&#39;aime bien&quot; &quot;j&#39;aime&quot;} {manger} une bonne&quot;
+##misc
+<span class="ow">concept</span>:(later) [&quot;plus tard&quot; bientôt après &quot;pas maintenant&quot;]
+<span class="ow">concept</span>:(sorry) [~im_sorry]
+<span class="ow">concept</span>:(likeanimals) [~i_like c&#39;est]
+<span class="ow">concept</span>:(cest) [
+    &quot;c&#39;est&quot;
+    &quot;je pense que c&#39;est&quot;
+    &quot;à mon avis c&#39;est&quot;
+    &quot;sans doute&quot;
+    &quot;et bien c&#39;est&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(cestquoi) [&quot;c&#39;est quoi&quot; &quot;qu&#39;est-ce que c&#39;est {que}&quot; explique &quot;explique-moi {&quot;ce que c&#39;est&quot;}&quot;]
+<span class="ow">concept</span>:(jaipas) [&quot;je n&#39;ai pas&quot; &quot;j&#39;ai pas&quot;]
+<span class="ow">concept</span>:(parle) [parle parle-moi parlons]
+<span class="ow">concept</span>:(i_asked_you_to) [&quot;je t&#39;ai [dit demandé] de&quot;]
+<span class="ow">concept</span>:(i_want_to_talk_about) [&quot;~i_want_to [&quot;parler de&quot; &quot;que tu me parles de&quot;]&quot;]
+#concept:(your_name_is) [&quot;ton nom est&quot; &quot;tu t&#39;appelles&quot;]
+<span class="ow">concept</span>:(whats_his_name) [
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] le [nom titre]&quot;
+    &quot;comment [&quot;s&#39;appelle&quot; &quot;il s&#39;appelle&quot;]&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(whats_your_name) [
+    &quot;[&quot;quel est&quot; &quot;c&#39;est quoi&quot;] ton nom&quot;
+    &quot;comment [&quot;tu t&#39;appelles&quot; &quot;t&#39;appelles-tu&quot;]&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(what_is_prenom)[
+    &quot;[c&#39;est c&#39;était] quoi&quot;
+    &quot;[quel quelle] est&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(happy_user) [génial excellent super &quot;trop [bien cool]&quot;]
+<span class="ow">concept</span>:(robot_didnt_understand) [~you_didnt_understand]
+<span class="ow">concept</span>:(i_dont_understand) [~i_didnt_understand]
+<span class="ow">concept</span>:(difficult_question) [~its_difficult]
+<span class="ow">concept</span>:(stupid_question) [~its_a_stupid_question]
+<span class="ow">concept</span>:(do_you_prefer) [~vb_ask_préférer]
+<span class="ow">concept</span>:(you_like) [~do_you_like]
+<span class="ow">concept</span>:(what_do) [&quot;qu&#39;est-ce que&quot; &quot;c&#39;est quoi ce que&quot;]
+<span class="ow">concept</span>:(adj_addicted) [~addicted]
+<span class="ow">concept</span>:(adj_total) [~complete]
+<span class="ow">concept</span>:(adj_size) [~size]
+##### DEPRECATED #####
+#------------------------------------------------------------------#
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index_dev_guide.html">NAOqi - Developer guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/creating_applications/index.html">Creating an application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ref/life/index.html">Programming for a living robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/index_tuto.html">Other tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software/choregraphe/index.html">Choregraphe Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/programming_index.html">SDKs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">NAOqi APIs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../core/index.html">NAOqi Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../emotion/index.html">NAOqi Emotion</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index_interaction.html">NAOqi Interaction engines</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../autonomouslife.html">ALAutonomousLife</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/alautonomousblinking.html">ALAutonomousBlinking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/albackgroundmovement.html">ALBackgroundMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/albasicawareness.html">ALBasicAwareness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/allisteningmovement.html">ALListeningMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/alspeakingmovement.html">ALSpeakingMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aldialog.html">ALDialog</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="lexicon.html">Dialog Lexicon</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="lexicon_english.html">English Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_japanese.html">Japanese Lexicon</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="">French Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_chinese.html">Chinese Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_german.html">German Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_italian.html">Italian Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_spanish.html">Spanish Lexicon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../motion/index.html">NAOqi Motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../audio/index.html">NAOqi Audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../vision/index.html">NAOqi Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../peopleperception/index.html">NAOqi People Perception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sensors/index.html">NAOqi Sensors &amp; LEDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lola/lola.html">LoLA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stdtypes.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/libqi/index.html">qi Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ref/index.html">Former NAOqi Framework</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_nao.html"><strong>NAO</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../../contents.html">Site map</a>
+      <a title="Index" href="../../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

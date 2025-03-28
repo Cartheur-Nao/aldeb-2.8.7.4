@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>French Lexicon - synonyms &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../../index.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="naoqi-interaction-dialog-lexicon_french_synonyms">
+                
+  <div class="section" id="french-lexicon-synonyms">
+<span id="lexicon-french-synonyms"></span><h1>French Lexicon - synonyms<a class="headerlink" href="#french-lexicon-synonyms" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../index_interaction.html#naoqi-interaction"><span>NAOqi Interaction engines</span></a> - <a class="reference internal" href="lexicon.html#lexicon"><span>Dialog Lexicon</span></a></p>
+<p>Full content: <a class="reference internal" href="lexicon_english.html#lexicon-english"><span>English Lexicon</span></a> - <a class="reference internal" href="lexicon_japanese.html#lexicon-japanese"><span>Japanese Lexicon</span></a> - French Lexicon
+- <a class="reference internal" href="lexicon_chinese.html#lexicon-chinese"><span>Chinese Lexicon</span></a> - <a class="reference internal" href="lexicon_german.html#lexicon-german"><span>German Lexicon</span></a> - <a class="reference internal" href="lexicon_italian.html#lexicon-italian"><span>Italian Lexicon</span></a> - <a class="reference internal" href="lexicon_spanish.html#lexicon-spanish"><span>Spanish Lexicon</span></a></p>
+<hr class="docutils" />
+<p><a class="reference internal" href="lexicon_french.html#lexicon-french"><span>Main</span></a> - <a class="reference internal" href="lexicon_french_entities.html#lexicon-french-entities"><span>entities</span></a> - synonyms -
+<a class="reference internal" href="lexicon_french_output.html#lexicon-french-output"><span>output</span></a> - <a class="reference internal" href="lexicon_french_verbs.html#lexicon-french-verbs"><span>verbs</span></a> -
+<a class="reference internal" href="lexicon_french_snippets.html#lexicon-french-snippets"><span>snippets</span></a> - <a class="reference internal" href="lexicon_french_yesno.html#lexicon-french-yesno"><span>yesno</span></a></p>
+<hr class="docutils" />
+<p><a class="reference download internal" href="../../../_downloads/lexicon_synonyms_frf.top"><code class="xref download docutils literal"><span class="pre">lexicon_synonyms_frf.top</span></code></a></p>
+<div class="highlight-QiChat"><div class="highlight"><pre><span class="ow">topic</span>: ~lexicon_synonyms()
+<span class="ow">language</span>: frf
+
+#=============#
+### ADVERBS ###
+#=============#
+<span class="ow">concept</span>:(addicted) [&quot;[fou folle féru amateur amatrice amoureux amoureuse passionné fan fana fada fanatique mordu avide addict] {du de des}&quot;]
+
+
+#================#
+### ADJECTIVES ###
+#================#
+<span class="ow">concept</span>:(complete) [&quot;très forte&quot; total complet complète absolu catégorique radical intégral inconditionnel]
+
+<span class="ow">concept</span>:(boring) [chiant naze ennuyeux relou lourd &quot;pas drôle&quot;]
+
+<span class="ow">concept</span>:(ugly) [moche &quot;pas beau&quot; pourri naze]
+
+<span class="ow">concept</span>:(stupid) [con idiot stupide crétin &quot;pas malin&quot;]
+
+<span class="ow">concept</span>:(adverb_positive)
+<span class="p">[</span>beaucoup trop vraiment énormément follement ]
+
+<span class="ow">concept</span>:(mood_positive)[&quot;pas {*} [&quot;abattu&quot; &quot;blasé&quot; &quot;brisé&quot; &quot;choqué&quot; &quot;claqué&quot; &quot;contrarié&quot; &quot;dégoûté&quot; &quot;dég&quot; &quot;démoralisé&quot; &quot;déprimé&quot; &quot;déçu&quot; &quot;fatigué&quot; &quot;furieux&quot; &quot;fâché&quot; &quot;insatisfait&quot; &quot;mécontent&quot; &quot;raplapla&quot; &quot;triste&quot; &quot;vexé&quot; &quot;vénère&quot; &quot;énervé&quot;]&quot; comblé content enchanté épanoui heureux joyeux radieux ravi satisfait serein sublimé]$mood=positive
+
+<span class="ow">concept</span>:(mood_negative)[&quot;pas {*} ~mood_positive&quot; &quot;abattu&quot; &quot;blasé&quot; &quot;brisé&quot; &quot;choqué&quot; &quot;claqué&quot; &quot;contrarié&quot; &quot;dégoûté&quot; &quot;dég&quot; &quot;démoralisé&quot; &quot;déprimé&quot; &quot;déçu&quot; &quot;fatigué&quot; &quot;furieux&quot; &quot;fâché&quot; &quot;insatisfait&quot; &quot;mécontent&quot; &quot;raplapla&quot; &quot;triste&quot; &quot;vexé&quot; &quot;vénère&quot; &quot;énervé&quot; &quot;en colère&quot;]$mood=negative
+
+<span class="ow">concept</span>:(mood)[~mood_positive ~mood_negative]
+
+
+
+#===========#
+### NOUNS ###
+#===========#
+<span class="ow">concept</span>:(livre)[&quot;bouquin $core=book&quot; &quot;roman $core=book&quot; &quot;livre $core=book&quot;]
+
+<span class="ow">concept</span>:(un_livre)[&quot;un bouquin $core=book&quot; &quot;un roman $core=book&quot; &quot;un livre $core=book&quot;]
+
+<span class="ow">concept</span>:(livres)[&quot;bouquins $core=book&quot; &quot;romans $core=book&quot; &quot;livres $core=book&quot;]
+
+<span class="ow">concept</span>:(métier)[&quot;boulot $core=job&quot; &quot;métier $core=job&quot; &quot;travail $core=job&quot; &quot;job $core=job&quot;]
+
+<span class="ow">concept</span>:(un_métier)[&quot;un boulot $core=job&quot; &quot;un métier $core=job&quot; &quot;un travail $core=job&quot; &quot;un job $core=job&quot;]
+
+<span class="ow">concept</span>:(father)[&quot;père $core=father&quot; &quot;papa $core=father&quot; &quot;daron $core=father&quot;]
+
+<span class="ow">concept</span>:(mother)[&quot;mère $core=mother&quot; &quot;maman $core=mother&quot; &quot;darone $core=mother&quot;]
+
+<span class="ow">concept</span>:(father_in_law)[&quot;beau-père $core=father_in_law&quot; &quot;beau papa $core=father_in_law&quot;]
+
+<span class="ow">concept</span>:(mother_in_law)[&quot;belle-mère $core=father_in_law&quot; &quot;belle maman $core=father_in_law&quot;]
+
+<span class="ow">concept</span>:(son)[&quot;fils $core=son&quot; &quot;fiston $core=son&quot; &quot;gosse $core=son&quot; &quot;garçon $core=son&quot;]
+
+<span class="ow">concept</span>:(daughter)[&quot;fille $core=daughter&quot; &quot;poulette $core=daughter&quot; &quot;petite $core=daughter&quot; &quot;fillette $core=daughter&quot;]
+
+<span class="ow">concept</span>:(son_in_law)[&quot;beau fils $core=son_in_law&quot;]
+
+<span class="ow">concept</span>:(daughter_in_law)[&quot;belle fille $core=daughter_in_law&quot;]
+
+<span class="ow">concept</span>:(grandfather)[&quot;grand-père $core=grandfather&quot;]
+
+<span class="ow">concept</span>:(grandmother)[&quot;grand-mère $core=grandmother&quot;]
+
+
+#old sister singular (underscore)#
+<span class="ow">concept</span>:(old_sister)[&quot;grande sœur $core=old_sister&quot; &quot;grande sœurette $core=old_sister&quot; &quot;grande frangine $core=old_sister&quot;]
+
+#old sister singular (camel case)#
+<span class="ow">concept</span>:(oldSister)[&quot;grande sœur $core=old_sister&quot; &quot;grande sœurette $core=old_sister&quot; &quot;grande frangine $core=old_sister&quot;]
+
+#old sister plural#
+<span class="ow">concept</span>:(old_sisters)[&quot;grandes sœurs $core=old_sister&quot; &quot;grandes sœurettes $core=old_sister&quot; &quot;grandes frangines $core=old_sister&quot;]
+
+#old sister singular with article#
+<span class="ow">concept</span>:(an_old_sister)[&quot;une grande sœur $core=old_sister&quot; &quot;une grande sœurette $core=old_sister&quot; &quot;une grande frangine $core=old_sister&quot;]
+
+#old sister plural with article#
+<span class="ow">concept</span>:(some_old_sisters)[&quot;des grandes sœurs $core=old_sister&quot; &quot;des grandes sœurettes $core=old_sister&quot; &quot;des grandes frangines $core=old_sister&quot;]
+
+#old brother singular (underscore)#
+<span class="ow">concept</span>:(old_brother)[&quot;grand frère $core=old_brother&quot; &quot;grand frérot $core=old_brother&quot; &quot;grand frangin $core=old_brother&quot;]
+
+#old brother singular (camel case)#
+<span class="ow">concept</span>:(oldBrother)[&quot;grand frère $core=old_brother&quot; &quot;grand frérot $core=old_brother&quot; &quot;grand frangin $core=old_brother&quot;]
+
+#old brother plural#
+<span class="ow">concept</span>:(old_brothers)[&quot;grands frères $core=old_brother&quot; &quot;grands frérots $core=old_brother&quot; &quot;grands frangins $core=old_brother&quot;]
+
+#old brother singular with article#
+<span class="ow">concept</span>:(an_old_brother)[&quot;un grand frère $core=old_brother&quot; &quot;un grand frérot $core=old_brother&quot; &quot;un grand frangin $core=old_brother&quot;]
+
+#old brother plural with article#
+<span class="ow">concept</span>:(some_old_brothers)[&quot;des grands frères $core=old_brother&quot; &quot;des grands frérots $core=old_brother&quot; &quot;des grands frangins $core=old_brother&quot;]
+
+#little sister singular (underscore)#
+<span class="ow">concept</span>:(little_sister)[&quot;petite sœur $core=little_sister&quot; &quot;petite-sœur $core=little_sister&quot; &quot;petite sœurette $core=little_sister&quot; &quot;petite frangine $core=little_sister&quot; &quot;petites sœurs $core=little_sister&quot; &quot;ptites sœurs $core=little_sister&quot;]
+
+#little sister singular (camel case)#
+<span class="ow">concept</span>:(littleSister)[&quot;petite sœur $core=little_sister&quot; &quot;petite sœurette $core=little_sister&quot; &quot;petite frangine $core=little_sister&quot;]
+
+#little sister plural#
+<span class="ow">concept</span>:(little_sisters)[&quot;petites sœurs $core=little_sister&quot; &quot;petites sœurettes $core=little_sister&quot; &quot;petites frangines $core=little_sister&quot;]
+
+#little sister singular with article#
+<span class="ow">concept</span>:(a_little_sister)[&quot;une petite sœur $core=little_sister&quot; &quot;une petite sœurette $core=little_sister&quot; &quot;une petite frangine $core=little_sister&quot;]
+
+#little sister plural with article#
+<span class="ow">concept</span>:(some_little_sisters)[&quot;des petites sœurs $core=little_sister&quot; &quot;des petite-sœurs $core=little_sister&quot; &quot;des petites sœurettes $core=little_sister&quot; &quot;des petites frangines $core=little_sister&quot;]
+
+#little brother singular (underscore)#
+<span class="ow">concept</span>:(little_brother)[&quot;petit frère $core=little_brother&quot; &quot;petit frérot $core=little_brother&quot; &quot;petit frangin $core=little_brother&quot;]
+
+#little brother singular (underscore)#
+<span class="ow">concept</span>:(little_brothers)[&quot;petits frères $core=little_brother&quot; &quot;petits frérots $core=little_brother&quot; &quot;petits frangins $core=little_brother&quot;]
+
+#little brother singular (camel case)#
+<span class="ow">concept</span>:(littleBrother)[&quot;petit frère $core=little_brother&quot; &quot;petit frérot $core=little_brother&quot; &quot;petit frangin $core=little_brother&quot;]
+
+#little brother singular with article#
+<span class="ow">concept</span>:(a_little_brother)[&quot;un petit frère $core=little_brother&quot; &quot;un petit frérot $core=little_brother&quot; &quot;un petit frangin $core=little_brother&quot;]
+
+#little brother plural with article#
+<span class="ow">concept</span>:(some_little_brothers)[&quot;des petits frères $core=little_brother&quot; &quot;des petits frérots $core=little_brother&quot; &quot;des petits frangins $core=little_brother&quot;]
+
+#sister singular#
+<span class="ow">concept</span>:(sister)[&quot;sœur $core=sister&quot; &quot;frangine $core=sister&quot;  ~old_sister ~little_sister]
+
+#sister plural#
+<span class="ow">concept</span>:(sisters)[&quot;sœurs $core=sister&quot; &quot;frangines $core=sister&quot; &quot;sœurettes $core=sister&quot;  ~old_sisters ~little_sisters]
+
+#sister singular with article#
+<span class="ow">concept</span>:(a_sister)[&quot;une sœur $core=sister&quot; &quot;une frangine $core=sister&quot; ~a_little_sister ~an_old_sister]
+
+#sister plural with article#
+<span class="ow">concept</span>:(some_sisters)[&quot;des sœurs $core=sister&quot; &quot;des frangines $core=sister&quot; ~some_little_sisters ~some_old_sisters]
+
+#brother singular#
+<span class="ow">concept</span>:(brother)[&quot;frère $core=brother&quot; &quot;frères $core=brother&quot; &quot;frérot $core=brother&quot; &quot;frangin $core=brother&quot;  ~old_brother ~little_brother]
+
+#brother plural#
+<span class="ow">concept</span>:(brothers)[&quot;frères $core=brother&quot; &quot;frérots $core=brother&quot; &quot;frangins $core=brother&quot; ~old_brothers ~little_brothers]
+
+#brother singular with article#
+<span class="ow">concept</span>:(a_brother)[&quot;un frère $core=brother&quot; &quot;un frérot $core=brother&quot; &quot;un frangin $core=brother&quot; ~an_old_brother ~a_little_brother]
+
+#brother plural with article#
+<span class="ow">concept</span>:(some_brothers)[&quot;des frères $core=brother&quot; &quot;des frérots $core=brother&quot; &quot;des frangins $core=brother&quot; ~some_old_brothers ~some_little_brothers]
+
+
+<span class="ow">concept</span>:(sister_in_law)[&quot;belle-soeur $core=sister_in_law&quot;]
+
+<span class="ow">concept</span>:(brother_in_law)[&quot;beau-frère $core=brother_in_law&quot;]
+
+<span class="ow">concept</span>:(uncle)[&quot;oncle $core=uncle&quot; &quot;tonton $core=uncle&quot;]
+
+<span class="ow">concept</span>:(aunt)[&quot;tante $core=aunt&quot; &quot;tata $core=aunt&quot;]
+
+<span class="ow">concept</span>:(family)[~father ~father_in_law ~mother ~mother_in_law ~son ~son_in_law ~daughter ~daughter_in_law ~sister ~sister_in_law ~brother ~brother_in_law　~grandfather ~grandmother ~uncle ~aunt]
+
+<span class="ow">concept</span>:(my_family)[&quot;mon ~father $gramm_gend=masc&quot; &quot;mon ~father_in_law $gramm_gend=masc&quot; &quot;ma ~mother $gramm_gend=fem&quot; &quot;ma ~mother_in_law $gramm_gend=fem&quot; &quot;mon ~son $gramm_gend=masc&quot; &quot;mon ~son_in_law $gramm_gend=fem&quot; &quot;ma ~daughter $gramm_gend=fem&quot; &quot;ma ~daughter_in_law $gramm_gend=fem&quot; &quot;ma ~sister $gramm_gend=fem&quot; &quot;ma ~sister_in_law $gramm_gend=fem&quot; &quot;mon ~brother $gramm_gend=masc&quot; &quot;mon ~brother_in_law $gramm_gend=masc&quot;　&quot;mon ~grandfather $gramm_gend=masc&quot; &quot;ma ~grandmother $gramm_gend=fem&quot; &quot;mon ~uncle $gramm_gend=masc&quot; &quot;ma ~aunt $gramm_gend=fem&quot; &quot;ma famille $core=family $gramm_gend=fem&quot; &quot;ma belle famille $core=family_in_law $gramm_gend=fem&quot;]
+
+<span class="ow">concept</span>:(my_family_member)[&quot;mon ~father $gramm_gend=masc&quot; &quot;mon ~father_in_law $gramm_gend=masc&quot; &quot;ma ~mother $gramm_gend=fem&quot; &quot;ma ~mother_in_law $gramm_gend=fem&quot; &quot;mon ~son $gramm_gend=masc&quot; &quot;mon ~son_in_law $gramm_gend=fem&quot; &quot;ma ~daughter $gramm_gend=fem&quot; &quot;ma ~daughter_in_law $gramm_gend=fem&quot; &quot;ma ~sister $gramm_gend=fem&quot; &quot;ma ~sister_in_law $gramm_gend=fem&quot; &quot;mon ~brother $gramm_gend=masc&quot; &quot;mon ~brother_in_law $gramm_gend=masc&quot;　&quot;mon ~grandfather $gramm_gend=masc&quot; &quot;ma ~grandmother $gramm_gend=fem&quot; &quot;mon ~uncle $gramm_gend=masc&quot; &quot;ma ~aunt $gramm_gend=fem&quot;]$core2=family_member
+
+
+<span class="ow">concept</span>:(apps_sing_fem) [application app appli]
+
+<span class="ow">concept</span>:(apps_sing_masc) [programme soft software]
+
+<span class="ow">concept</span>:(apps_sing) [~apps_sing_fem ~apps_sing_masc]
+
+<span class="ow">concept</span>:(apps_plur) [applications apps applis programmes softs softwares]
+
+<span class="ow">concept</span>:(please) [&quot;s&#39;il te plait&quot; steuplait]
+
+<span class="ow">concept</span>:(a_little_bit) [&quot;un {petit &quot;tout petit&quot;} peu&quot; &quot;pas beaucoup&quot;]
+
+<span class="ow">concept</span>:(about) [&quot;{&quot;à propos&quot; &quot;au sujet&quot;} de&quot; sur]
+
+<span class="ow">concept</span>:(that) [ça &quot;ce sujet&quot;]
+
+
+#==================================================================#
+##### COMPLIMENTS #####
+#------------------------------------------------------------------#
+
+
+<span class="ow">concept</span>:(compliment_word)
+<span class="p">[</span>
+&quot;admirable $compliment_output=&quot;que je suis admirable&quot; $compliment_scale=5&quot;
+&quot;adorable $compliment_output=&quot;&quot;que je suis adorable $compliment_scale=5&quot;
+&quot;beau $compliment_output=&quot;que je suis beau&quot; $compliment_scale=2&quot;
+&quot;cool $compliment_output=&quot;que je suis cool&quot; $compliment_scale=2&quot;
+&quot;exceptionnel $compliment_output=&quot;que je suis exceptionnel&quot; $compliment_scale=5&quot;
+&quot;extraordinaire $compliment_output=&quot;que je suis extraordinaire&quot; $compliment_scale=5&quot;
+&quot;formidable $compliment_output=&quot;que je suis formidable&quot; $compliment_scale=3&quot;
+&quot;gentil $compliment_output=&quot;que je suis gentil&quot; $compliment_scale=1&quot;
+&quot;génial $compliment_output=&quot;que je suis génial&quot; $compliment_scale=3&quot;
+&quot;intelligent $compliment_output=&quot;que je suis intelligent&quot; $compliment_scale=2&quot;
+&quot;magnifique $compliment_output=&quot;que je suis magnifique&quot; $compliment_scale=5&quot;
+&quot;mignon $compliment_output=&quot;que je suis mignon&quot; $compliment_scale=3&quot;
+&quot;sympa $compliment_output=&quot;que je suis sympa&quot; $compliment_scale=1&quot;
+&quot;sympathique $compliment_output=&quot;que je suis sympathique&quot; $compliment_scale=1&quot;
+&quot;unique $compliment_output=&quot;que je suis unique&quot; $compliment_scale=4&quot;
+&quot;fantastique $compliment_output=&quot;que je suis unique&quot; $compliment_scale=4&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(compliment_adj_neutral_sing)
+<span class="p">[</span>
+&quot;admirable&quot;
+&quot;adorable&quot;
+&quot;cool&quot;
+&quot;extraordinaire&quot;
+&quot;formidable&quot;
+&quot;magnifique&quot;
+&quot;sympa&quot;
+&quot;sympathique&quot;
+&quot;unique&quot;
+&quot;bien&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(compliment_adj_masc_sing)
+<span class="p">[</span>
+&quot;beau&quot;
+&quot;exceptionnel&quot;
+&quot;fantastique&quot;
+&quot;gentil&quot;
+&quot;génial&quot;
+&quot;intelligent&quot;
+&quot;mignon&quot;
+&quot;stylé&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(compliment_adj_fem_sing)
+<span class="p">[</span>
+&quot;belle&quot;
+&quot;exceptionnelle&quot;
+&quot;gentille&quot;
+&quot;géniale&quot;
+&quot;intelligente&quot;
+&quot;mignonne&quot;
+&quot;stylée&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(compliment_adj_sing)
+<span class="p">[</span>~compliment_adj_neutral_sing ~compliment_adj_fem_sing ~compliment_adj_masc_sing]
+
+
+<span class="ow">concept</span>:(compliment_adj_neutral_plur)
+<span class="p">[</span>
+&quot;admirables&quot;
+&quot;adorables&quot;
+&quot;cools&quot;
+&quot;extraordinaires&quot;
+&quot;formidables&quot;
+&quot;fantastiques&quot;
+&quot;sympas&quot;
+&quot;sympathiques&quot;
+&quot;uniques&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(compliment_adj_masc_plur)
+<span class="p">[</span>
+&quot;beaux&quot;
+&quot;exceptionnels&quot;
+&quot;gentils&quot;
+&quot;géniaux&quot;
+&quot;intelligents&quot;
+&quot;magnifiques&quot;
+&quot;mignons&quot;
+&quot;stylés&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(compliment_adj_fem_plur)
+<span class="p">[</span>
+&quot;belles&quot;
+&quot;exceptionnelles&quot;
+&quot;gentilles&quot;
+&quot;géniales&quot;
+&quot;intelligentes&quot;
+&quot;mignonnes&quot;
+&quot;stylées&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(compliment_adj_plur)
+<span class="p">[</span>~compliment_adj_neutral_plur ~compliment_adj_masc_plur ~compliment_adj_fem_plur]
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index_dev_guide.html">NAOqi - Developer guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_nao.html"><strong>NAO</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../../contents.html">Site map</a>
+      <a title="Index" href="../../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

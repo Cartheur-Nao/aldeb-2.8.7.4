@@ -1,0 +1,1077 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Spanish Lexicon &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../../index.html" />
+    <link rel="up" title="Dialog Lexicon" href="lexicon.html" />
+    <link rel="next" title="NAOqi Motion" href="../../motion/index.html" />
+    <link rel="prev" title="Italian Lexicon" href="lexicon_italian.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="naoqi-interaction-dialog-lexicon_spanish">
+                
+  <div class="section" id="spanish-lexicon">
+<span id="lexicon-spanish"></span><h1>Spanish Lexicon<a class="headerlink" href="#spanish-lexicon" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../index_interaction.html#naoqi-interaction"><span>NAOqi Interaction engines</span></a> - <a class="reference internal" href="lexicon.html#lexicon"><span>Dialog Lexicon</span></a></p>
+<p>Full content: <a class="reference internal" href="lexicon_english.html#lexicon-english"><span>English Lexicon</span></a> - <a class="reference internal" href="lexicon_japanese.html#lexicon-japanese"><span>Japanese Lexicon</span></a> - <a class="reference internal" href="lexicon_french.html#lexicon-french"><span>French Lexicon</span></a>
+- <a class="reference internal" href="lexicon_chinese.html#lexicon-chinese"><span>Chinese Lexicon</span></a>  - <a class="reference internal" href="lexicon_german.html#lexicon-german"><span>German Lexicon</span></a> - <a class="reference internal" href="lexicon_italian.html#lexicon-italian"><span>Italian Lexicon</span></a> - Spanish Lexicon</p>
+<hr class="docutils" />
+<p><a class="reference download internal" href="../../../_downloads/lexicon_spe.top"><code class="xref download docutils literal"><span class="pre">lexicon_spe.top</span></code></a></p>
+<div class="highlight-QiChat"><div class="highlight"><pre><span class="ow">topic</span>: ~lexicon()
+<span class="ow">language</span>: spe
+
+
+<span class="ow">dynamic</span>:robotname
+<span class="ow">dynamic</span>:friendlyname
+<span class="ow">dynamic</span>:all_descriptions
+<span class="ow">dynamic</span>:all_languages
+<span class="ow">dynamic</span>:myrobotname
+
+<span class="ow">dynamic</span>:app-name
+<span class="ow">dynamic</span>:app-dance
+<span class="ow">dynamic</span>:app-game
+<span class="ow">dynamic</span>:app-story
+
+<span class="ow">dynamic</span>:klg_thing
+<span class="ow">dynamic</span>:klg_definition
+<span class="ow">dynamic</span>:klg_date
+
+#==================================================================#
+##### Robot concepts #####
+<span class="ow">concept</span>:(ald_robots) [~robotname ~myrobotname Nao Pepper Peppersan Romeo]
+#==================================================================#
+
+#==================================================================#
+##### Verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(want_to) [quiero deseo gustaría encantaría necesito]
+#==================================================================#
+
+#==================================================================#
+##### 1rst person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(i_have) [tengo]
+<span class="ow">concept</span>:(i_will) [&quot;voy a&quot;]
+<span class="ow">concept</span>:(i_have_not) [&quot;no tengo&quot;]
+<span class="ow">concept</span>:(i_have_to) [&quot;tengo {que}&quot;]
+<span class="ow">concept</span>:(i_want) [quiero deseo &quot;me [gustará encantará]&quot; &quot;me [gustaría encantaría]&quot;]
+<span class="ow">concept</span>:(i_dont_want) [&quot;no ~i_want&quot;]
+<span class="ow">concept</span>:(i_want_to) [&quot;[deseo quiero] {poder}&quot; &quot;me [gustará encantará]&quot; &quot;me [gustaría encantaría]&quot; &quot;en verdad quiero&quot;]
+
+#------------------------------------------------------------------#
+##### 2nd person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(you_have) [tienes]
+<span class="ow">concept</span>:(you_have_not) [&quot;no ~you_have&quot;]
+<span class="ow">concept</span>:(do_you_need) [quieres deseas necesitas &quot;quisieras te [gustaría encantaría]&quot;]
+
+#------------------------------------------------------------------#
+##### 3rd person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(it) [esto eso aquello &quot;[esta esa] actividad&quot; &quot;[esta esa] {cosa}&quot;] #add any synonym of &quot;stuff&quot; in the list
+<span class="ow">concept</span>:(it_is) [&quot;[esto eso aquello] [es era]&quot; &quot;[creo bueno &quot;en mi opinión&quot;] es&quot; &quot;lo es sin ninguna duda&quot;]
+<span class="ow">concept</span>:(it_is_not) [&quot;[esto eso aquello] no [es era]&quot;]
+#==================================================================#
+
+#==================================================================#
+##### Adjectives and adverbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(adverbs) [realmente absolutamente completamente verdaderamente genuinamente &quot;un poco&quot; totalmente estrictamente perfectamente enormemente mucho  muy bastante]
+#==================================================================#
+
+#==================================================================#
+##### Questions to the robot #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(do_you_have) [tienes]
+<span class="ow">concept</span>:(do_you_like) [
+    &quot;te [gusta encanta]&quot;
+    prefieres
+    &quot;qué piensas sobre&quot;
+    &quot;cómo te llevas con&quot;
+    &quot;cómo van las cosas con&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(do_you_know) [&quot;sabes {&quot;[quién qué] es&quot;}&quot; &quot;has oído [de sobre]&quot;]
+<span class="ow">concept</span>:(can_you) [
+    &quot;[puedes podrías harías] {por favor}&quot;
+    &quot;{por favor} [puedes podrías harías]&quot;
+    &quot;crees que podrías&quot;
+    &quot;estás [listo disponible] para&quot;
+    &quot;sabes cómo&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(are_you) [eres estás]
+<span class="ow">concept</span>:(what_is) [&quot;{&quot;~can_you decirme&quot; sabes dime} qué [es era son eran]&quot;]
+<span class="ow">concept</span>:(can_i) [
+    &quot;[puedo podría podemos podríamos]&quot;
+    &quot;me gustaría&quot;
+    &quot;estás de acuerdo si&quot;
+    &quot;es posible [que &quot;que yo&quot;]&quot;
+<span class="p">]</span>
+#------------------------------------------------------------------#
+
+#==================================================================#
+##### Human inputs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(i_dont_know) [
+    &quot;no sé {&quot;nada sobre eso&quot;}&quot;
+    &quot;no sé nada&quot;
+    &quot;no tengo ni la menor idea&quot;
+    &quot;no lo sé&quot;
+    &quot;qué es eso&quot;
+    &quot;{nunca} oí nada {&quot;sobre eso&quot;}&quot;
+    &quot;no tengo idea&quot;
+    &quot;{tú} [decide dime]&quot;
+<span class="p">]</span>
+<span class="ow">concept</span>:(i_didnt_understand) [
+    &quot;{lo siento} no [entiendo entendí] {&quot;nada [&quot;de nada&quot; &quot;ni una cosa&quot; &quot;de lo que dijiste&quot;]&quot; &quot;lo que dijiste&quot;}&quot;
+    &quot;{lo siento} no te [entiendo entendí]&quot;
+    &quot;[&quot;no sé&quot; &quot;no lo [veo comprendo entiendo]&quot;] [&quot;a qué te refieres&quot; &quot;qué quieres decir&quot; &quot;de qué estás hablando&quot;]&quot;
+    &quot;no [veo comprendo entiendo] [&quot;a lo qué te refieres&quot; &quot;lo qué quieres decir&quot; &quot;de qué estás hablando&quot;]&quot;
+    &quot;qué es [esto eso aquello]&quot;
+    &quot;no [entiendo comprendo] {eso esto aquello}&quot;
+    &quot;qué [&quot;quieres decir&quot; quieres dices]&quot;
+    &quot;qué estás [diciendo &quot;[&quot;tratando de&quot; intentando] decir&quot; hablando]&quot;
+    &quot;[eso esto] no tiene sentido&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_dont_care) [
+    &quot;no me [importa interesa]&quot; 
+    &quot;no me importa un carajo&quot;
+    &quot;como sea&quot;
+    &quot;no tengo interés&quot;
+    &quot;no podría importarme menos&quot;
+    &quot;{&quot;de verdad&quot;} me importa [un una] [carajo mierda]&quot;
+    &quot;{esto eso aquello} no me interesa {más &quot;para nada&quot; &quot;en lo absoluto&quot;}&quot;
+    &quot;a quién le importa&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_not_sure) [
+    &quot;no [estoy soy] seguro&quot;
+    &quot;tengo {mis} dudas&quot;
+    &quot;ni idea&quot;
+    &quot;lo pensaré&quot; &quot;voy a pensarlo&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(its_up_to_you) [
+    &quot;no me importa&quot;  
+    &quot;elige tú&quot;
+    &quot;elige al azar&quot;
+    &quot;elige [para por] mí&quot;
+    &quot;como [quieras prefieras]&quot;
+    &quot;tú [eliges decides]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(do_it_again) [
+    &quot;haz [lo esto eso] [&quot;de nuevo&quot; &quot;una vez más&quot;]&quot;
+    &quot;reproduce [lo esto eso] [&quot;de nuevo&quot; &quot;una vez más&quot;]&quot;
+    &quot;vuelve a hacer [lo esto eso]&quot;
+    &quot;reanuda [lo esto eso]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(repeat_it) [
+    &quot;repite la última pregunta&quot;
+    &quot;cuál fue la pregunta&quot;
+    &quot;repite la frase&quot;
+    &quot;repite lo que dijiste&quot;
+    &quot;repítelo&quot;
+    &quot;puedes repetir&quot;
+    &quot;pregunta de nuevo&quot;
+    &quot;puedes hacerme la pregunta una vez más&quot;
+    &quot;dímelo de nuevo&quot;
+    &quot;qué dijiste&quot;
+    &quot;qué estabas diciendo&quot;
+    &quot;qué me estabas preguntado&quot;
+    &quot;dilo de nuevo&quot;
+    &quot;pregunta eso de nuevo&quot;
+    &quot;hazlo de nuevo&quot;
+    &quot;haz esta animación de nuevo&quot;
+    &quot;haz este movimiento de nuevo&quot;
+    &quot;haz eso de nuevo&quot;
+    &quot;haz este sonido de nuevo&quot;
+    &quot;haz este ruido de nuevo&quot;
+    &quot;puedes hacer esto de nuevo&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_good) [
+    &quot;estoy [bien estupendo &quot;de maravilla&quot; genial &quot;súper {bien}&quot; espléndido excelente &quot;lleno de energía&quot; &quot;de muy buen humor&quot;]&quot;
+    &quot;me siento en forma&quot;
+    &quot;súper {bien}&quot;
+    perfecto
+    &quot;todo está bien&quot;
+    &quot;{muy} bien&quot;
+    &quot;todo [bien súper perfecto]&quot;
+    &quot;estupendo&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(i_dont_feel_good)[
+    &quot;no muy bien&quot;
+    &quot;no me siento [&quot;{muy especialmente super} bien&quot; &quot;en mi mejor momento&quot; &quot;a gusto&quot; &quot;en la mejor forma&quot;]&quot;
+    &quot;he estado mejor&quot;
+    &quot;la cosa va [&quot;{muy bastante} mal&quot; pésima &quot;no demasiado bien&quot;]&quot;
+    &quot;me he hecho daño&quot;
+    &quot;estoy dolido&quot;
+    &quot;no muy bien&quot;
+    &quot;nada bien&quot;
+    malamente
+    &quot;no es mi mejor día&quot;
+    &quot;no estoy en la mejor forma&quot;
+    &quot;tengo un [esguince &quot;tobillo torcido&quot;]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_ok) [
+    &quot;regular&quot;
+    &quot;no muy mal&quot;
+    &quot;nada mal&quot;
+    &quot;bastante bien&quot;
+    aburrido
+    &quot;más o menos&quot;
+    &quot;ni fu ni fa&quot;
+    &quot;ando así así&quot;
+    &quot;más o menos&quot;
+    &quot;no tan bien&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_sick) [
+    &quot;me siento {&quot;un poco&quot; &quot;un poquito&quot; muy} [indispuesto enfermo mareado congestionado]&quot;
+    &quot;tengo un [&quot;{&quot;{muy} fuerte&quot;} [&quot;dolor de [cabeza garganta estómago cuello]&quot; resfriado catarro sarampión]&quot;]&quot;
+    &quot;tengo una [&quot;infección {&quot;en la garganta&quot; &quot;en el oído&quot; viral}&quot; migraña  gripe varicela]&quot;
+    &quot;tengo tos&quot;
+     &quot;estoy tosiendo&quot;
+     &quot;me duele la cabeza&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_tired) [
+    &quot;necesito {&quot;irme a&quot; &quot;ir a&quot;} dormir&quot;
+    &quot;[&quot;me estoy sintiendo&quot; &quot;me siento&quot;] {repentinamente &quot;de repente&quot; &quot;un [poco poquito]&quot; muy súper demasiado} [cansado quemado agotado desgastado muerto noqueado acabado &quot;fuera de [circulación juego]&quot; lento somnoliento]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(im_drunk) [
+    &quot;Tomé demasiado alcohol&quot;
+    &quot;Bebo demasiado&quot;
+    &quot;Estoy completamente borracho&quot;
+    &quot;Estoy realmente borracho&quot;
+    &quot;Voy a tener una resaca terrible&quot;
+    &quot;Estoy con resaca&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(help) [
+    &quot;[&quot;me ayudarías&quot; ayudame] {&quot;por favor&quot;}&quot;
+    &quot;~can_you ayudarme {&quot;por favor&quot;}&quot;
+    &quot;cómo ~can_you ayudarme&quot;
+    &quot;me puedes dar {&quot;algún tipo de&quot;} [información datos ayuda]&quot;
+    &quot;necesito [información datos detalles ayuda asistencia]&quot;
+    &quot;échame una mano&quot;
+    &quot;estoy buscando {cierta} información&quot;
+    &quot;estoy buscando más datos&quot;
+    &quot;estoy buscando {algo de} [ayuda asistencia]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(robot_impossible_actions)[
+    beber
+    comer
+    nadar
+    volar
+    &quot;ir al baño&quot;
+    defecar
+    <span class="p">[</span>&quot;hacer pipí&quot; mear orinar]
+    respirar
+    llorar
+    &quot;hacer aguas [menores mayores]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(robot_impossible_actions_conj)[
+    bebes
+    comes
+    nadas
+    vuelas
+    &quot;[&quot;vas al&quot; &quot;usas el&quot;] baño&quot;
+    defecas
+    &quot;haces popó&quot;
+    <span class="p">[</span>&quot;haces pipí&quot; meas orinas]
+    respiras
+    lloras
+    &quot;haces aguas [menores mayores]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(who_are_you)[&quot;quién eres&quot; &quot;sabes quién eres&quot; &quot;quiero saber quién eres&quot;]
+
+#------------------------------------------------------------------#
+##### DAPS #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(highfive) [&quot;[choca chocá dame] {los esos} cinco&quot; chócala chocála chócalas chocálas choca]
+<span class="ow">concept</span>:(handshake) [&quot;[dame dale dar] [la tu] mano&quot; &quot;apretón de manos&quot; &quot;dame [&quot;un apretón&quot; &quot;la mano&quot;]&quot; &quot;estréchame la mano&quot; &quot;sacúdeme la mano&quot; sacudemela]
+<span class="ow">concept</span>:(fistbump) [&quot;[golpea choca chocá] el puño {amigo compadre viejo güey}&quot; &quot;choca [&quot;ese puño&quot; &quot;[los esos] nudillos&quot;]&quot;]
+<span class="ow">concept</span>:(lowfive) [&quot;[chócala choca chócalas] {por} abajo&quot; &quot;choque bajo&quot; &quot;chócala por debajo&quot;]
+<span class="ow">concept</span>:(hug) [&quot;[dame dale quiero &quot;me [das puedes &quot;puedes dar&quot;]&quot; &quot;quiero que me des&quot; &quot;te [quiero puedo] {dar}&quot; &quot;quiero darte&quot;] {un} [abrazo abrázame abrázalo abrázala abrazar abracito achuchón]&quot; achúchame abrázame &quot;por que no me das un abrazo&quot; &quot;ven a mis brazos&quot;]
+
+#------------------------------------------------------------------#
+##### WCYD #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(apps_sing)[app aplicación actividad]
+<span class="ow">concept</span>:(apps_plur)[apps aplicaciones actividades]
+<span class="ow">concept</span>:(what_else)[
+    &quot;eso es todo?&quot;
+    &quot;qué más?&quot;
+    &quot;[alguna cualquier] cosa otra?&quot;
+    &quot;{no} tienes {cualquiera más} {~apps_plur}&quot;
+    &quot;{puedes podrías} mostrarme&quot;
+    &quot;dame un ejemplo&quot;
+<span class="p">]</span>
+
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(yes) [
+    e:Dialog/Yes
+    &quot;sí {&quot;por favor&quot; &quot;yo también&quot; &quot;claro&quot; &quot;por supuesto&quot; seguro}&quot;
+    &quot;sí yo [estoy soy]&quot; #[soy hago hice]&quot;
+    &quot;[&quot;muy bien&quot; &quot;de acuerdo&quot;] {seguro &quot;por qué no&quot;}&quot;
+    bien
+    &quot;de acuerdo&quot;
+    &quot;tal vez&quot;
+    &quot;por supuesto&quot;
+    &quot;claro&quot;
+    &quot;seguro&quot;
+    &quot;{de} verdad&quot;
+    &quot;vamos&quot;
+    &quot;hazlo&quot;
+    &quot;ve y hazlo&quot;
+    &quot;~it_is [cierto bien correcto]&quot;
+    &quot;~it_is verdad&quot;
+    &quot;tienes razón&quot;
+    perfecto
+    &quot;por qué no&quot;
+    absolutamente
+    naturalmente
+    totalmente
+    definitivamente
+    adelante
+    &quot;{sí} me [encantaría gustaría] hacerlo&quot;
+    &quot;[es será] un placer&quot;
+    &quot;si quieres&quot;
+    &quot;de hecho&quot;
+    &quot;no hay [problema]&quot;
+    &quot;no es ningún problema&quot;
+    &quot;sin ninguna duda&quot;
+    &quot;[buena excelente] idea&quot;
+    exactamente
+    &quot;lo tienes&quot;
+    súper
+     excelente
+    &quot;{estoy} de acuerdo&quot;
+    &quot;{eso} suena [bien genial divertido]&quot;
+    &quot;siéntete libre {&quot;de hacerlo&quot;}&quot;
+    &quot;una vez&quot;
+    &quot;hazlo&quot;
+    &quot;si quieres&quot;
+    &quot;eso creo&quot;
+    &quot;hagámoslo&quot;
+    &quot;[gran buena] idea&quot;
+    &quot;genial&quot;
+<span class="p">]</span>
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(no) [
+    e:Dialog/No
+    &quot;no {gracias suficiente bien &quot;de acuerdo&quot;}&quot;
+    &quot;de ninguna {puta} manera&quot;
+    &quot;{no} no [realmente &quot;para nada&quot; &quot;en absoluto&quot; &quot;ahora mismo&quot; exactamente &quot; mucho&quot;]&quot;
+    &quot;no me interesa&quot;
+    &quot;{no} [&quot;no quiero&quot; &quot;yo no&quot; &quot;no&quot;]&quot;
+    &quot;no estoy seguro&quot;
+    &quot;no lo creo&quot;
+    &quot;lo pensaré&quot;
+    &quot;para nada&quot;
+    &quot;[definitivamente absolutamente probablemente totalmente] no&quot;
+    &quot;en tus sueños&quot;
+    &quot;[estabas estas] soñando&quot;
+    &quot;sigue soñando&quot;
+    &quot;no por [ahora &quot;el momento&quot;]&quot;
+    &quot;no mucho&quot;
+    &quot;no [estoy soy] de acuerdo&quot;
+    &quot;no, eso servirá {gracias}&quot;
+    &quot;no, estaré bien {gracias}&quot;
+    &quot;no, está bien&quot;
+    &quot;eso no es verdad&quot;
+    &quot;eso es falso&quot;
+    &quot;absolutamente no&quot;
+    &quot;no realmente&quot;
+    &quot;no exactamente&quot;
+    &quot;todavia no&quot;
+    &quot;no es asunto tuyo&quot;
+    &quot;eso no te incumbe&quot;
+    &quot;por qué te importa&quot;
+    &quot;por qué te estás metiendo&quot;
+    &quot;a ti qué te importa&quot;
+    &quot;ocúpate de tus {propios} asuntos&quot;
+    &quot;qué tiene que ver contigo&quot;
+    &quot;nunca {&quot;en mi vida&quot;}&quot;
+    &quot;no estoy interesado&quot;
+    &quot;eso se me antoja&quot;
+    &quot;no gracias&quot;
+    &quot;no especialmente&quot;
+    &quot;otra vez&quot;
+    &quot;a lo mejor [&quot;otra vez&quot; &quot;más tarde&quot;]&quot;
+    &quot;[hoy ya ahora] no&quot;
+    &quot;ne me gusta [eso esto]&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(days) [lunes martes miércoles jueves viernes sábado domingo]
+
+#==================================================================#
+##### NUMBER #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(number_0_100)[&quot;0 $num=0&quot; &quot;cero $num=0&quot; &quot;1 $num=1&quot; &quot;uno $num=1&quot; &quot;2 $num=2&quot; &quot;dos $num=2&quot; &quot;3 $num=3&quot; &quot;tres $num=3&quot; &quot;4 $num=4&quot; &quot;cuatro $num=4&quot; &quot;5 $num=5&quot; &quot;cinco $num=5&quot; &quot;6 $num=6&quot; &quot;seis $num=6&quot; &quot;7 $num=7&quot; &quot;siete $num=7&quot; &quot;8 $num=8&quot; &quot;ocho $num=8&quot; &quot;9 $num=9&quot; &quot;nueve $num=9&quot; &quot;10 $num=10&quot; &quot;diez $num=10&quot; &quot;11 $num=11&quot; &quot;once $num=11&quot; &quot;12 $num=12&quot; &quot;doce $num=12&quot; &quot;13 $num=13&quot; &quot;trece $num=13&quot; &quot;14 $num=14&quot; &quot;catorce $num=14&quot; &quot;15 $num=15&quot; &quot;quince $num=15&quot; &quot;16 $num=16&quot; &quot;dieciséis $num=16&quot; &quot;17 $num=17&quot; &quot;diecisiete $num=17&quot; &quot;18 $num=18&quot; &quot;dieciocho $num=18&quot; &quot;19 $num=19&quot; &quot;diecinueve $num=19&quot; &quot;20 $num=20&quot; &quot;veinte $num=20&quot; &quot;21 $num=21&quot; &quot;veintiuno $num=21&quot; &quot;22 $num=22&quot; &quot;veintidós $num=22&quot; &quot;23 $num=23&quot; &quot;veintitrés $num=23&quot; &quot;24 $num=24&quot; &quot;veinticuatro $num=24&quot; &quot;25 $num=25&quot; &quot;veinticinco $num=25&quot; &quot;26 $num=26&quot; &quot;veintiséis $num=26&quot; &quot;27 $num=27&quot; &quot;veintisiete $num=27&quot; &quot;28 $num=28&quot; &quot;veintiocho $num=28&quot; &quot;29 $num=29&quot; &quot;veintinueve $num=29&quot; &quot;30 $num=30&quot; &quot;treinta $num=30&quot; &quot;31 $num=31&quot; &quot;treinta y uno $num=31&quot; &quot;32 $num=32&quot; &quot;treinta y dos $num=32&quot; &quot;33 $num=33&quot; &quot;treinta y tres $num=33&quot; &quot;34 $num=34&quot; &quot;treinta y cuatro $num=34&quot; &quot;35 $num=35&quot; &quot;treinta y cinco $num=35&quot; &quot;36 $num=36&quot; &quot;treinta y seis $num=36&quot; &quot;37 $num=37&quot; &quot;treinta y siete $num=37&quot; &quot;38 $num=38&quot; &quot;treinta y ocho $num=38&quot; &quot;39 $num=39&quot; &quot;treinta y nueve $num=39&quot; &quot;40 $num=40&quot; &quot;cuarenta $num=40&quot; &quot;41 $num=41&quot; &quot;cuarenta y uno $num=41&quot; &quot;42 $num=42&quot; &quot;cuarenta y dos $num=42&quot; &quot;43 $num=43&quot; &quot;cuarenta y tres $num=43&quot; &quot;44 $num=44&quot; &quot;cuarenta y cuatro $num=44&quot; &quot;45 $num=45&quot; &quot;cuarenta y cinco $num=45&quot; &quot;46 $num=46&quot; &quot;cuarenta y seis $num=46&quot; &quot;47 $num=47&quot; &quot;cuarenta y siete $num=47&quot; &quot;48 $num=48&quot; &quot;cuarenta y ocho $num=48&quot; &quot;49 $num=49&quot; &quot;cuarenta y nueve $num=49&quot; &quot;50 $num=50&quot; &quot;cincuenta $num=50&quot; &quot;51 $num=51&quot; &quot;cincuenta y uno $num=51&quot; &quot;52 $num=52&quot; &quot;cincuenta y dos $num=52&quot; &quot;53 $num=53&quot; &quot;cincuenta y tres $num=53&quot; &quot;54 $num=54&quot; &quot;cincuenta y cuatro $num=54&quot; &quot;55 $num=55&quot; &quot;cincuenta y cinco $num=55&quot; &quot;56 $num=56&quot; &quot;cincuenta y seis $num=56&quot; &quot;57 $num=57&quot; &quot;cincuenta y siete $num=57&quot; &quot;58 $num=58&quot; &quot;cincuenta y ocho $num=58&quot; &quot;59 $num=59&quot; &quot;cincuenta y nueve $num=59&quot; &quot;60 $num=60&quot; &quot;sesenta $num=60&quot; &quot;61 $num=61&quot; &quot;sesenta y uno $num=61&quot; &quot;62 $num=62&quot; &quot;sesenta y dos $num=62&quot; &quot;63 $num=63&quot; &quot;sesenta y tres $num=63&quot; &quot;64 $num=64&quot; &quot;sesenta y cuatro $num=64&quot; &quot;65 $num=65&quot; &quot;sesenta y cinco $num=65&quot; &quot;66 $num=66&quot; &quot;sesenta y seis $num=66&quot; &quot;67 $num=67&quot; &quot;sesenta y siete $num=67&quot; &quot;68 $num=68&quot; &quot;sesenta y ocho $num=68&quot; &quot;69 $num=69&quot; &quot;sesenta y nueve $num=69&quot; &quot;70 $num=70&quot; &quot;setenta $num=70&quot; &quot;71 $num=71&quot; &quot;setenta y uno $num=71&quot; &quot;72 $num=72&quot; &quot;setenta y dos $num=72&quot; &quot;73 $num=73&quot; &quot;setenta y tres $num=73&quot; &quot;74 $num=74&quot; &quot;setenta y cuatro $num=74&quot; &quot;75 $num=75&quot; &quot;setenta y cinco $num=75&quot; &quot;76 $num=76&quot; &quot;setenta y seis $num=76&quot; &quot;77 $num=77&quot; &quot;setenta y siete $num=77&quot; &quot;78 $num=78&quot; &quot;setenta y ocho $num=78&quot; &quot;79 $num=79&quot; &quot;setenta y nueve $num=79&quot; &quot;80 $num=80&quot; &quot;ochenta $num=80&quot; &quot;81 $num=81&quot; &quot;ochenta y uno $num=81&quot; &quot;82 $num=82&quot; &quot;ochenta y dos $num=82&quot; &quot;83 $num=83&quot; &quot;ochenta y tres $num=83&quot; &quot;84 $num=84&quot; &quot;ochenta y cuatro $num=84&quot; &quot;85 $num=85&quot; &quot;ochenta y cinco $num=85&quot; &quot;86 $num=86&quot; &quot;ochenta y seis $num=86&quot; &quot;87 $num=87&quot; &quot;ochenta y siete $num=87&quot; &quot;88 $num=88&quot; &quot;ochenta y ocho $num=88&quot; &quot;89 $num=89&quot; &quot;ochenta y nueve $num=89&quot; &quot;90 $num=90&quot; &quot;noventa $num=90&quot; &quot;91 $num=91&quot; &quot;noventa y uno $num=91&quot; &quot;92 $num=92&quot; &quot;noventa y dos $num=92&quot; &quot;93 $num=93&quot; &quot;noventa y tres $num=93&quot; &quot;94 $num=94&quot; &quot;noventa y cuatro $num=94&quot; &quot;95 $num=95&quot; &quot;noventa y cinco $num=95&quot; &quot;96 $num=96&quot; &quot;noventa y seis $num=96&quot; &quot;97 $num=97&quot; &quot;noventa y siete $num=97&quot; &quot;98 $num=98&quot; &quot;noventa y ocho $num=98&quot; &quot;99 $num=99&quot; &quot;noventa y nueve $num=99&quot; &quot;100 $num=100&quot; &quot;cien $num=100&quot; &quot;ciento $num=100&quot;]
+
+#languages#
+<span class="ow">concept</span>:(main_languages_entity)
+<span class="p">[</span>
+&quot;ASL $available_language=0&quot;
+&quot;africano $available_language=0&quot;
+&quot;árabe argelino $available_language=0&quot;
+&quot;lenguaje de señas americano $available_language=0&quot;
+&quot;amárico $available_language=0&quot;
+&quot;árabe $available_language=$Dialog/Language/LangArabic&quot;
+&quot;asamiya $available_language=0&quot;
+&quot;asiático $available_language=0&quot;
+&quot;asamiya $available_language=0&quot;
+&quot;awadhi $available_language=0&quot;
+&quot;azerbaiyano $available_language=0&quot;
+&quot;azerí $available_language=0&quot;
+&quot;azerí turco $available_language=0&quot;
+&quot;azerí turco $available_language=0&quot;
+&quot;idioma bengalí $available_language=0&quot;
+&quot;bielorruso $available_language=0&quot;
+&quot;holandés belga $available_language=$Dialog/Language/LangDutch&quot;
+&quot;bengalí $available_language=0&quot;
+&quot;beréber $available_language=0&quot;
+&quot;bhoshpuri $available_language=0&quot;
+&quot;cebuano $available_language=0&quot;
+&quot;idioma cebuano $available_language=0&quot;
+&quot;birmano $available_language=0&quot;
+&quot;canarese $available_language=0&quot;
+&quot;cantonés $available_language=$Dialog/Language/LangCantoneseHK&quot;
+&quot;castellano $available_language=0&quot;
+&quot;tailandés central $available_language=0&quot;
+&quot;chatgaya $available_language=0&quot;
+&quot;chhattisgarhi $available_language=0&quot;
+&quot;chino $available_language=$Dialog/Language/LangChinese&quot;
+&quot;chittagong bangla $available_language=0&quot;
+&quot;chittagónico $available_language=0&quot;
+&quot;croata $available_language=0&quot;
+&quot;checo $available_language=$Dialog/Language/LangCzech&quot;
+&quot;dakhini $available_language=0&quot;
+&quot;dakkani $available_language=0&quot;
+&quot;danés $available_language=$Dialog/Language/LangDanish&quot;
+&quot;deccani $available_language=0&quot;
+&quot;holandés $available_language=$Dialog/Language/LangDutch&quot;
+&quot;egipcio árabe $available_language=0&quot;
+&quot;inglés $available_language=$Dialog/Language/LangEnglish&quot;
+&quot;europeo $available_language=0&quot;
+&quot;farsi $available_language=0&quot;
+&quot;filipino $available_language=0&quot;
+&quot;finlandés $available_language=$Dialog/Language/LangFinnish&quot;
+&quot;holandés flamenco $available_language=$Dialog/Language/LangDutch&quot;
+&quot;lenguaje de señas francés $available_language=0&quot;
+&quot;francés $available_language=$Dialog/Language/LangFrench&quot;
+&quot;FSL $available_language=0&quot;
+&quot;gan chino $available_language=0&quot;
+&quot;alemán $available_language=$Dialog/Language/LangGerman&quot;
+&quot;gorkhali $available_language=0&quot;
+&quot;griego $available_language=$Dialog/Language/LangGreek&quot;
+&quot;gujarati $available_language=0&quot;
+&quot;gurkha $available_language=0&quot;
+&quot;gurkhali $available_language=0&quot;
+&quot;hakka chino $available_language=0&quot;
+&quot;haryanvi $available_language=0&quot;
+&quot;hausa $available_language=0&quot;
+&quot;hsiang chino $available_language=0&quot;
+&quot;hindi $available_language=0&quot;
+&quot;hollandish $available_language=0&quot;
+&quot;hollandic $available_language=0&quot;
+&quot;hunanese $available_language=0&quot;
+&quot;húngaro $available_language=0&quot;
+&quot;igbo $available_language=0&quot;
+&quot;indonesio $available_language=0&quot;
+&quot;italiano $available_language=$Dialog/Language/LangItalian&quot;
+&quot;japonés $available_language=$Dialog/Language/LangJapanese&quot;
+&quot;lenguaje de señas japonés $available_language=0&quot;
+&quot;javanés $available_language=0&quot;
+&quot;jin chino $available_language=0&quot;
+&quot;JSL $available_language=0&quot;
+&quot;kanarese $available_language=0&quot;
+&quot;kannada $available_language=0&quot;
+&quot;kejia chino $available_language=0&quot;
+&quot;khaskura $available_language=0&quot;
+&quot;coreano $available_language=$Dialog/Language/LangKorean&quot;
+&quot;madurese $available_language=0&quot;
+&quot;magadhi $available_language=0&quot;
+&quot;magahi $available_language=0&quot;
+&quot;maithili $available_language=0&quot;
+&quot;malayo $available_language=0&quot;
+&quot;malayalam $available_language=0&quot;
+&quot;mandarín $available_language=$Dialog/Language/LangChinese&quot;
+&quot;marathi $available_language=0&quot;
+&quot;marwari $available_language=0&quot;
+&quot;[min miin] chino $available_language=0&quot;
+&quot;hindi estándar moderno $available_language=0&quot;
+&quot;mandarín estándar moderno $available_language=0&quot;
+&quot;urdu estándar moderno $available_language=0&quot;
+&quot;marroquí $available_language=0&quot;
+&quot;nepalí $available_language=0&quot;
+&quot;min chino del norte $available_language=0&quot;
+&quot;norsk $available_language=$Dialog/Language/LangNorwegian&quot;
+&quot;noruego $available_language=$Dialog/Language/LangNorwegian&quot;
+&quot;odia $available_language=0&quot;
+&quot;oriya $available_language=0&quot;
+&quot;persa $available_language=0&quot;
+&quot;polaco $available_language=$Dialog/Language/LangPolish&quot;
+&quot;portugués $available_language=$Dialog/Language/LangPortuguese&quot;
+&quot;punjabi $available_language=0&quot;
+&quot;rumano $available_language=0&quot;
+&quot;ruso $available_language=$Dialog/Language/LangRussian&quot;
+&quot;saraiki $available_language=0&quot;
+&quot;serbio $available_language=0&quot;
+&quot;siamés $available_language=0&quot;
+&quot;lenguaje de señas $available_language=0&quot;
+&quot;sindhi $available_language=0&quot;
+&quot;sinhalese $available_language=0&quot;
+&quot;siraiki $available_language=0&quot;
+&quot;holandés meridional $available_language=$Dialog/Language/LangDutch&quot;
+&quot;español $available_language=$Dialog/Language/LangSpanish&quot;
+&quot;chino estándar $available_language=0&quot;
+&quot;sundanés $available_language=0&quot;
+&quot;sueco $available_language=$Dialog/Language/LangSwedish&quot;
+&quot;tamil $available_language=0&quot;
+&quot;telugu $available_language=0&quot;
+&quot;tailandés $available_language=0&quot;
+&quot;turco $available_language=$Dialog/Language/LangTurkish&quot;
+&quot;ucraniano $available_language=0&quot;
+&quot;urdú $available_language=0&quot;
+&quot;uzbeco $available_language=0&quot;
+&quot;visayan $available_language=0&quot;
+&quot;vietnamita $available_language=0&quot;
+&quot;wu chino $available_language=0&quot;
+&quot;xiang chino $available_language=0&quot;
+&quot;[yue yueh] chino $available_language=$Dialog/Language/LangCantoneseHK&quot;
+&quot;yoruba $available_language=0&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(languages_entity)
+<span class="p">[</span>
+&quot;ASL&quot;
+&quot;africano&quot;
+&quot;árabe argelino&quot;
+&quot;lenguaje de señas americano&quot;
+&quot;amárico&quot;
+&quot;árabe&quot;
+&quot;asamiya&quot;
+&quot;asiático&quot;
+&quot;asamiya&quot;
+&quot;awadhi&quot;
+&quot;azerbaiyano&quot;
+&quot;azerí&quot;
+&quot;azerí turco&quot;
+&quot;azerí turco&quot;
+&quot;idioma bengalí&quot;
+&quot;bielorruso&quot;
+&quot;holandés belga&quot;
+&quot;bengalí&quot;
+&quot;beréber&quot;
+&quot;bhoshpuri&quot;
+&quot;cebuano&quot;
+&quot;idioma cebuano&quot;
+&quot;birmano&quot;
+&quot;canarese&quot;
+&quot;cantonés&quot;
+&quot;castellano&quot;
+&quot;tailandés central&quot;
+&quot;chatgaya&quot;
+&quot;chhattisgarhi&quot;
+&quot;chino&quot;
+&quot;chittagong bangla&quot;
+&quot;chittagónico&quot;
+&quot;croata&quot;
+&quot;checo&quot;
+&quot;dakhini&quot;
+&quot;dakkani&quot;
+&quot;danés&quot;
+&quot;deccani&quot;
+&quot;holandés&quot;
+&quot;egipcio árabe&quot;
+&quot;inglés&quot;
+&quot;europeo&quot;
+&quot;farsi&quot;
+&quot;filipino&quot;
+&quot;finlandés&quot;
+&quot;holandés flamenco&quot;
+&quot;lenguaje de señas francés&quot;
+&quot;francés&quot;
+&quot;FSL&quot;
+&quot;gan chino&quot;
+&quot;alemán&quot;
+&quot;gorkhali&quot;
+&quot;griego&quot;
+&quot;gujarati&quot;
+&quot;gurkha&quot;
+&quot;gurkhali&quot;
+&quot;hakka chino&quot;
+&quot;haryanvi&quot;
+&quot;hausa&quot;
+&quot;hsiang chino&quot;
+&quot;hindi&quot;
+&quot;hollandish&quot;
+&quot;hollandic&quot;
+&quot;hunanese&quot;
+&quot;húngaro&quot;
+&quot;igbo&quot;
+&quot;indonesio&quot;
+&quot;italiano&quot;
+&quot;japonés&quot;
+&quot;lenguaje de señas japonés&quot;
+&quot;javanés&quot;
+&quot;jin chino&quot;
+&quot;JSL&quot;
+&quot;kanarese&quot;
+&quot;kannada&quot;
+&quot;kejia chino&quot;
+&quot;khaskura&quot;
+&quot;coreano&quot;
+&quot;madurese&quot;
+&quot;magadhi&quot;
+&quot;magahi&quot;
+&quot;maithili&quot;
+&quot;malayo&quot;
+&quot;malayalam&quot;
+&quot;mandarín&quot;
+&quot;marathi&quot;
+&quot;marwari&quot;
+&quot;[min miin] chino&quot;
+&quot;hindi estándar moderno&quot;
+&quot;mandarín estándar moderno&quot;
+&quot;urdu estándar moderno&quot;
+&quot;marroquí&quot;
+&quot;nepalí&quot;
+&quot;min chino del norte&quot;
+&quot;norsk&quot;
+&quot;noruego&quot;
+&quot;odia&quot;
+&quot;oriya&quot;
+&quot;persa&quot;
+&quot;polaco&quot;
+&quot;portugués&quot;
+&quot;punjabi&quot;
+&quot;rumano&quot;
+&quot;ruso&quot;
+&quot;saraiki&quot;
+&quot;seraiki&quot;
+&quot;serbio&quot;
+&quot;siamés&quot;
+&quot;lenguaje de señas&quot;
+&quot;sindhi&quot;
+&quot;sinhalese&quot;
+&quot;siraiki&quot;
+&quot;holandés meridional&quot;
+&quot;español&quot;
+&quot;chino estándar&quot;
+&quot;sundanés&quot;
+&quot;sueco&quot;
+&quot;tamil&quot;
+&quot;telugu&quot;
+&quot;tailandés&quot;
+&quot;turco&quot;
+&quot;ucraniano&quot;
+&quot;urdú&quot;
+&quot;uzbeco&quot;
+&quot;visayan&quot;
+&quot;vietnamita&quot;
+&quot;wu chino&quot;
+&quot;xiang chino&quot;
+&quot;[yue yueh] chino&quot;
+&quot;yoruba&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(dialog_languages_entity)
+<span class="p">[</span>
+&quot;árabe $lang=Arabic&quot;
+&quot;checo $lang=Czech&quot;
+&quot;danés $lang=Danish&quot;
+&quot;griego $lang=Greek&quot;
+&quot;coreano $lang=Korean&quot;
+&quot;alemán $lang=German&quot;
+&quot;inglés $lang=English&quot;
+&quot;español $lang=Spanish&quot;
+&quot;finlandés $lang=Finnish&quot;
+&quot;francés $lang=French&quot;
+&quot;italiano $lang=Italian&quot;
+&quot;holandés $lang=Dutch&quot;
+&quot;chino $lang=Chinese&quot;
+&quot;japonés $lang=Japanese&quot;
+&quot;noruego $lang=Norwegian&quot;
+&quot;polaco $lang=Polish&quot;
+&quot;brasileño $lang=Brazilian&quot;
+&quot;portugués $lang=Portuguese&quot;
+&quot;ruso $lang=Russian&quot;
+&quot;sueco $lang=Swedish&quot;
+&quot;turco $lang=Turkish&quot;
+&quot;mandarina taiwanesa $lang=&quot;Taiwanese Mandarin&quot;&quot;
+<span class="p">]</span>
+
+def:translate_lang($language)
+^first
+<span class="p">[</span>
+&quot;$language==Arabic árabe&quot;
+&quot;$language==Czech checo&quot;
+&quot;$language==Danish danés&quot;
+&quot;$language==Greek griego&quot;
+&quot;$language==Korean coreano&quot;
+&quot;$language==German alemán&quot;
+&quot;$language==Spanish español&quot;
+&quot;$language==Finnish finlandés&quot;
+&quot;$language==French francés&quot;
+&quot;$language==Italian italiano&quot;
+&quot;$language==Dutch holandés&quot;
+&quot;$language==Chinese chino&quot;
+&quot;$language==Japanese japonés&quot;
+&quot;$language==Norwegian noruego&quot;
+&quot;$language==Polish polaco&quot;
+&quot;$language==Russian ruso&quot;
+&quot;$language==Swedish sueco&quot;
+&quot;$language==Turkish turco&quot;
+&quot;$language==English inglés&quot;
+&quot;$language==&quot;Taiwanese Mandarin&quot;　mandarina taiwanesa&quot;
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index_dev_guide.html">NAOqi - Developer guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/creating_applications/index.html">Creating an application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ref/life/index.html">Programming for a living robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/index_tuto.html">Other tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software/choregraphe/index.html">Choregraphe Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/programming_index.html">SDKs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">NAOqi APIs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../core/index.html">NAOqi Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../emotion/index.html">NAOqi Emotion</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index_interaction.html">NAOqi Interaction engines</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../autonomouslife.html">ALAutonomousLife</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/alautonomousblinking.html">ALAutonomousBlinking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/albackgroundmovement.html">ALBackgroundMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/albasicawareness.html">ALBasicAwareness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/allisteningmovement.html">ALListeningMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../autonomousabilities/alspeakingmovement.html">ALSpeakingMovement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aldialog.html">ALDialog</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="lexicon.html">Dialog Lexicon</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="lexicon_english.html">English Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_japanese.html">Japanese Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_french.html">French Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_chinese.html">Chinese Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_german.html">German Lexicon</a></li>
+<li class="toctree-l5"><a class="reference internal" href="lexicon_italian.html">Italian Lexicon</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="">Spanish Lexicon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../motion/index.html">NAOqi Motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../audio/index.html">NAOqi Audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../vision/index.html">NAOqi Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../peopleperception/index.html">NAOqi People Perception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sensors/index.html">NAOqi Sensors &amp; LEDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lola/lola.html">LoLA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stdtypes.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/libqi/index.html">qi Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ref/index.html">Former NAOqi Framework</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_nao.html"><strong>NAO</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../../contents.html">Site map</a>
+      <a title="Index" href="../../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

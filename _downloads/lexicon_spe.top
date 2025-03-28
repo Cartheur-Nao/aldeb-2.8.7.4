@@ -1,0 +1,720 @@
+topic: ~lexicon()
+language: spe
+
+
+dynamic:robotname
+dynamic:friendlyname
+dynamic:all_descriptions
+dynamic:all_languages
+dynamic:myrobotname
+
+dynamic:app-name
+dynamic:app-dance
+dynamic:app-game
+dynamic:app-story
+
+dynamic:klg_thing
+dynamic:klg_definition
+dynamic:klg_date
+
+#==================================================================#
+##### Robot concepts #####
+concept:(ald_robots) [~robotname ~myrobotname Nao Pepper Peppersan Romeo]
+#==================================================================#
+
+#==================================================================#
+##### Verbs #####
+#------------------------------------------------------------------#
+concept:(want_to) [quiero deseo gustaría encantaría necesito]
+#==================================================================#
+
+#==================================================================#
+##### 1rst person verbs #####
+#------------------------------------------------------------------#
+concept:(i_have) [tengo]
+concept:(i_will) ["voy a"]
+concept:(i_have_not) ["no tengo"]
+concept:(i_have_to) ["tengo {que}"]
+concept:(i_want) [quiero deseo "me [gustará encantará]" "me [gustaría encantaría]"]
+concept:(i_dont_want) ["no ~i_want"]
+concept:(i_want_to) ["[deseo quiero] {poder}" "me [gustará encantará]" "me [gustaría encantaría]" "en verdad quiero"]
+
+#------------------------------------------------------------------#
+##### 2nd person verbs #####
+#------------------------------------------------------------------#
+concept:(you_have) [tienes]
+concept:(you_have_not) ["no ~you_have"]
+concept:(do_you_need) [quieres deseas necesitas "quisieras te [gustaría encantaría]"]
+
+#------------------------------------------------------------------#
+##### 3rd person verbs #####
+#------------------------------------------------------------------#
+concept:(it) [esto eso aquello "[esta esa] actividad" "[esta esa] {cosa}"] #add any synonym of "stuff" in the list
+concept:(it_is) ["[esto eso aquello] [es era]" "[creo bueno "en mi opinión"] es" "lo es sin ninguna duda"]
+concept:(it_is_not) ["[esto eso aquello] no [es era]"]
+#==================================================================#
+
+#==================================================================#
+##### Adjectives and adverbs #####
+#------------------------------------------------------------------#
+concept:(adverbs) [realmente absolutamente completamente verdaderamente genuinamente "un poco" totalmente estrictamente perfectamente enormemente mucho  muy bastante]
+#==================================================================#
+
+#==================================================================#
+##### Questions to the robot #####
+#------------------------------------------------------------------#
+concept:(do_you_have) [tienes]
+concept:(do_you_like) [
+    "te [gusta encanta]"
+    prefieres
+    "qué piensas sobre"
+    "cómo te llevas con"
+    "cómo van las cosas con"
+]
+concept:(do_you_know) ["sabes {"[quién qué] es"}" "has oído [de sobre]"]
+concept:(can_you) [
+    "[puedes podrías harías] {por favor}"
+    "{por favor} [puedes podrías harías]"
+    "crees que podrías"
+    "estás [listo disponible] para"
+    "sabes cómo"
+]
+concept:(are_you) [eres estás]
+concept:(what_is) ["{"~can_you decirme" sabes dime} qué [es era son eran]"]
+concept:(can_i) [
+    "[puedo podría podemos podríamos]"
+    "me gustaría"
+    "estás de acuerdo si"
+    "es posible [que "que yo"]"
+]
+#------------------------------------------------------------------#
+
+#==================================================================#
+##### Human inputs #####
+#------------------------------------------------------------------#
+concept:(i_dont_know) [
+    "no sé {"nada sobre eso"}"
+    "no sé nada"
+    "no tengo ni la menor idea"
+    "no lo sé"
+    "qué es eso"
+    "{nunca} oí nada {"sobre eso"}"
+    "no tengo idea"
+    "{tú} [decide dime]"
+]
+concept:(i_didnt_understand) [
+    "{lo siento} no [entiendo entendí] {"nada ["de nada" "ni una cosa" "de lo que dijiste"]" "lo que dijiste"}"
+    "{lo siento} no te [entiendo entendí]"
+    "["no sé" "no lo [veo comprendo entiendo]"] ["a qué te refieres" "qué quieres decir" "de qué estás hablando"]"
+    "no [veo comprendo entiendo] ["a lo qué te refieres" "lo qué quieres decir" "de qué estás hablando"]"
+    "qué es [esto eso aquello]"
+    "no [entiendo comprendo] {eso esto aquello}"
+    "qué ["quieres decir" quieres dices]"
+    "qué estás [diciendo "["tratando de" intentando] decir" hablando]"
+    "[eso esto] no tiene sentido"
+]
+
+concept:(i_dont_care) [
+    "no me [importa interesa]" 
+    "no me importa un carajo"
+    "como sea"
+    "no tengo interés"
+    "no podría importarme menos"
+    "{"de verdad"} me importa [un una] [carajo mierda]"
+    "{esto eso aquello} no me interesa {más "para nada" "en lo absoluto"}"
+    "a quién le importa"
+]
+
+concept:(im_not_sure) [
+    "no [estoy soy] seguro"
+    "tengo {mis} dudas"
+    "ni idea"
+    "lo pensaré" "voy a pensarlo"
+]
+
+concept:(its_up_to_you) [
+    "no me importa"  
+    "elige tú"
+    "elige al azar"
+    "elige [para por] mí"
+    "como [quieras prefieras]"
+    "tú [eliges decides]"
+]
+
+concept:(do_it_again) [
+    "haz [lo esto eso] ["de nuevo" "una vez más"]"
+    "reproduce [lo esto eso] ["de nuevo" "una vez más"]"
+    "vuelve a hacer [lo esto eso]"
+    "reanuda [lo esto eso]"
+]
+
+concept:(repeat_it) [
+    "repite la última pregunta"
+    "cuál fue la pregunta"
+    "repite la frase"
+    "repite lo que dijiste"
+    "repítelo"
+    "puedes repetir"
+    "pregunta de nuevo"
+    "puedes hacerme la pregunta una vez más"
+    "dímelo de nuevo"
+    "qué dijiste"
+    "qué estabas diciendo"
+    "qué me estabas preguntado"
+    "dilo de nuevo"
+    "pregunta eso de nuevo"
+    "hazlo de nuevo"
+    "haz esta animación de nuevo"
+    "haz este movimiento de nuevo"
+    "haz eso de nuevo"
+    "haz este sonido de nuevo"
+    "haz este ruido de nuevo"
+    "puedes hacer esto de nuevo"
+]
+
+concept:(im_good) [
+    "estoy [bien estupendo "de maravilla" genial "súper {bien}" espléndido excelente "lleno de energía" "de muy buen humor"]"
+    "me siento en forma"
+    "súper {bien}"
+    perfecto
+    "todo está bien"
+    "{muy} bien"
+    "todo [bien súper perfecto]"
+    "estupendo"
+]
+
+concept:(i_dont_feel_good)[
+    "no muy bien"
+    "no me siento ["{muy especialmente super} bien" "en mi mejor momento" "a gusto" "en la mejor forma"]"
+    "he estado mejor"
+    "la cosa va ["{muy bastante} mal" pésima "no demasiado bien"]"
+    "me he hecho daño"
+    "estoy dolido"
+    "no muy bien"
+    "nada bien"
+    malamente
+    "no es mi mejor día"
+    "no estoy en la mejor forma"
+    "tengo un [esguince "tobillo torcido"]"
+]
+
+concept:(im_ok) [
+    "regular"
+    "no muy mal"
+    "nada mal"
+    "bastante bien"
+    aburrido
+    "más o menos"
+    "ni fu ni fa"
+    "ando así así"
+    "más o menos"
+    "no tan bien"
+]
+
+concept:(im_sick) [
+    "me siento {"un poco" "un poquito" muy} [indispuesto enfermo mareado congestionado]"
+    "tengo un ["{"{muy} fuerte"} ["dolor de [cabeza garganta estómago cuello]" resfriado catarro sarampión]"]"
+    "tengo una ["infección {"en la garganta" "en el oído" viral}" migraña  gripe varicela]"
+    "tengo tos"
+     "estoy tosiendo"
+     "me duele la cabeza"
+]
+
+concept:(im_tired) [
+    "necesito {"irme a" "ir a"} dormir"
+    "["me estoy sintiendo" "me siento"] {repentinamente "de repente" "un [poco poquito]" muy súper demasiado} [cansado quemado agotado desgastado muerto noqueado acabado "fuera de [circulación juego]" lento somnoliento]"
+]
+
+concept:(im_drunk) [
+    "Tomé demasiado alcohol"
+    "Bebo demasiado"
+    "Estoy completamente borracho"
+    "Estoy realmente borracho"
+    "Voy a tener una resaca terrible"
+    "Estoy con resaca"
+]
+
+concept:(help) [
+    "["me ayudarías" ayudame] {"por favor"}"
+    "~can_you ayudarme {"por favor"}"
+    "cómo ~can_you ayudarme"
+    "me puedes dar {"algún tipo de"} [información datos ayuda]"
+    "necesito [información datos detalles ayuda asistencia]"
+    "échame una mano"
+    "estoy buscando {cierta} información"
+    "estoy buscando más datos"
+    "estoy buscando {algo de} [ayuda asistencia]"
+]
+
+concept:(robot_impossible_actions)[
+    beber
+    comer
+    nadar
+    volar
+    "ir al baño"
+    defecar
+    ["hacer pipí" mear orinar]
+    respirar
+    llorar
+    "hacer aguas [menores mayores]"
+]
+
+concept:(robot_impossible_actions_conj)[
+    bebes
+    comes
+    nadas
+    vuelas
+    "["vas al" "usas el"] baño"
+    defecas
+    "haces popó"
+    ["haces pipí" meas orinas]
+    respiras
+    lloras
+    "haces aguas [menores mayores]"
+]
+
+concept:(who_are_you)["quién eres" "sabes quién eres" "quiero saber quién eres"]
+
+#------------------------------------------------------------------#
+##### DAPS #####
+#------------------------------------------------------------------#
+concept:(highfive) ["[choca chocá dame] {los esos} cinco" chócala chocála chócalas chocálas choca]
+concept:(handshake) ["[dame dale dar] [la tu] mano" "apretón de manos" "dame ["un apretón" "la mano"]" "estréchame la mano" "sacúdeme la mano" sacudemela]
+concept:(fistbump) ["[golpea choca chocá] el puño {amigo compadre viejo güey}" "choca ["ese puño" "[los esos] nudillos"]"]
+concept:(lowfive) ["[chócala choca chócalas] {por} abajo" "choque bajo" "chócala por debajo"]
+concept:(hug) ["[dame dale quiero "me [das puedes "puedes dar"]" "quiero que me des" "te [quiero puedo] {dar}" "quiero darte"] {un} [abrazo abrázame abrázalo abrázala abrazar abracito achuchón]" achúchame abrázame "por que no me das un abrazo" "ven a mis brazos"]
+
+#------------------------------------------------------------------#
+##### WCYD #####
+#------------------------------------------------------------------#
+concept:(apps_sing)[app aplicación actividad]
+concept:(apps_plur)[apps aplicaciones actividades]
+concept:(what_else)[
+    "eso es todo?"
+    "qué más?"
+    "[alguna cualquier] cosa otra?"
+    "{no} tienes {cualquiera más} {~apps_plur}"
+    "{puedes podrías} mostrarme"
+    "dame un ejemplo"
+]
+
+#------------------------------------------------------------------#
+concept:(yes) [
+    e:Dialog/Yes
+    "sí {"por favor" "yo también" "claro" "por supuesto" seguro}"
+    "sí yo [estoy soy]" #[soy hago hice]"
+    "["muy bien" "de acuerdo"] {seguro "por qué no"}"
+    bien
+    "de acuerdo"
+    "tal vez"
+    "por supuesto"
+    "claro"
+    "seguro"
+    "{de} verdad"
+    "vamos"
+    "hazlo"
+    "ve y hazlo"
+    "~it_is [cierto bien correcto]"
+    "~it_is verdad"
+    "tienes razón"
+    perfecto
+    "por qué no"
+    absolutamente
+    naturalmente
+    totalmente
+    definitivamente
+    adelante
+    "{sí} me [encantaría gustaría] hacerlo"
+    "[es será] un placer"
+    "si quieres"
+    "de hecho"
+    "no hay [problema]"
+    "no es ningún problema"
+    "sin ninguna duda"
+    "[buena excelente] idea"
+    exactamente
+    "lo tienes"
+    súper
+     excelente
+    "{estoy} de acuerdo"
+    "{eso} suena [bien genial divertido]"
+    "siéntete libre {"de hacerlo"}"
+    "una vez"
+    "hazlo"
+    "si quieres"
+    "eso creo"
+    "hagámoslo"
+    "[gran buena] idea"
+    "genial"
+]
+#------------------------------------------------------------------#
+concept:(no) [
+    e:Dialog/No
+    "no {gracias suficiente bien "de acuerdo"}"
+    "de ninguna {puta} manera"
+    "{no} no [realmente "para nada" "en absoluto" "ahora mismo" exactamente " mucho"]"
+    "no me interesa"
+    "{no} ["no quiero" "yo no" "no"]"
+    "no estoy seguro"
+    "no lo creo"
+    "lo pensaré"
+    "para nada"
+    "[definitivamente absolutamente probablemente totalmente] no"
+    "en tus sueños"
+    "[estabas estas] soñando"
+    "sigue soñando"
+    "no por [ahora "el momento"]"
+    "no mucho"
+    "no [estoy soy] de acuerdo"
+    "no, eso servirá {gracias}"
+    "no, estaré bien {gracias}"
+    "no, está bien"
+    "eso no es verdad"
+    "eso es falso"
+    "absolutamente no"
+    "no realmente"
+    "no exactamente"
+    "todavia no"
+    "no es asunto tuyo"
+    "eso no te incumbe"
+    "por qué te importa"
+    "por qué te estás metiendo"
+    "a ti qué te importa"
+    "ocúpate de tus {propios} asuntos"
+    "qué tiene que ver contigo"
+    "nunca {"en mi vida"}"
+    "no estoy interesado"
+    "eso se me antoja"
+    "no gracias"
+    "no especialmente"
+    "otra vez"
+    "a lo mejor ["otra vez" "más tarde"]"
+    "[hoy ya ahora] no"
+    "ne me gusta [eso esto]"
+]
+
+concept:(days) [lunes martes miércoles jueves viernes sábado domingo]
+
+#==================================================================#
+##### NUMBER #####
+#------------------------------------------------------------------#
+concept:(number_0_100)["0 $num=0" "cero $num=0" "1 $num=1" "uno $num=1" "2 $num=2" "dos $num=2" "3 $num=3" "tres $num=3" "4 $num=4" "cuatro $num=4" "5 $num=5" "cinco $num=5" "6 $num=6" "seis $num=6" "7 $num=7" "siete $num=7" "8 $num=8" "ocho $num=8" "9 $num=9" "nueve $num=9" "10 $num=10" "diez $num=10" "11 $num=11" "once $num=11" "12 $num=12" "doce $num=12" "13 $num=13" "trece $num=13" "14 $num=14" "catorce $num=14" "15 $num=15" "quince $num=15" "16 $num=16" "dieciséis $num=16" "17 $num=17" "diecisiete $num=17" "18 $num=18" "dieciocho $num=18" "19 $num=19" "diecinueve $num=19" "20 $num=20" "veinte $num=20" "21 $num=21" "veintiuno $num=21" "22 $num=22" "veintidós $num=22" "23 $num=23" "veintitrés $num=23" "24 $num=24" "veinticuatro $num=24" "25 $num=25" "veinticinco $num=25" "26 $num=26" "veintiséis $num=26" "27 $num=27" "veintisiete $num=27" "28 $num=28" "veintiocho $num=28" "29 $num=29" "veintinueve $num=29" "30 $num=30" "treinta $num=30" "31 $num=31" "treinta y uno $num=31" "32 $num=32" "treinta y dos $num=32" "33 $num=33" "treinta y tres $num=33" "34 $num=34" "treinta y cuatro $num=34" "35 $num=35" "treinta y cinco $num=35" "36 $num=36" "treinta y seis $num=36" "37 $num=37" "treinta y siete $num=37" "38 $num=38" "treinta y ocho $num=38" "39 $num=39" "treinta y nueve $num=39" "40 $num=40" "cuarenta $num=40" "41 $num=41" "cuarenta y uno $num=41" "42 $num=42" "cuarenta y dos $num=42" "43 $num=43" "cuarenta y tres $num=43" "44 $num=44" "cuarenta y cuatro $num=44" "45 $num=45" "cuarenta y cinco $num=45" "46 $num=46" "cuarenta y seis $num=46" "47 $num=47" "cuarenta y siete $num=47" "48 $num=48" "cuarenta y ocho $num=48" "49 $num=49" "cuarenta y nueve $num=49" "50 $num=50" "cincuenta $num=50" "51 $num=51" "cincuenta y uno $num=51" "52 $num=52" "cincuenta y dos $num=52" "53 $num=53" "cincuenta y tres $num=53" "54 $num=54" "cincuenta y cuatro $num=54" "55 $num=55" "cincuenta y cinco $num=55" "56 $num=56" "cincuenta y seis $num=56" "57 $num=57" "cincuenta y siete $num=57" "58 $num=58" "cincuenta y ocho $num=58" "59 $num=59" "cincuenta y nueve $num=59" "60 $num=60" "sesenta $num=60" "61 $num=61" "sesenta y uno $num=61" "62 $num=62" "sesenta y dos $num=62" "63 $num=63" "sesenta y tres $num=63" "64 $num=64" "sesenta y cuatro $num=64" "65 $num=65" "sesenta y cinco $num=65" "66 $num=66" "sesenta y seis $num=66" "67 $num=67" "sesenta y siete $num=67" "68 $num=68" "sesenta y ocho $num=68" "69 $num=69" "sesenta y nueve $num=69" "70 $num=70" "setenta $num=70" "71 $num=71" "setenta y uno $num=71" "72 $num=72" "setenta y dos $num=72" "73 $num=73" "setenta y tres $num=73" "74 $num=74" "setenta y cuatro $num=74" "75 $num=75" "setenta y cinco $num=75" "76 $num=76" "setenta y seis $num=76" "77 $num=77" "setenta y siete $num=77" "78 $num=78" "setenta y ocho $num=78" "79 $num=79" "setenta y nueve $num=79" "80 $num=80" "ochenta $num=80" "81 $num=81" "ochenta y uno $num=81" "82 $num=82" "ochenta y dos $num=82" "83 $num=83" "ochenta y tres $num=83" "84 $num=84" "ochenta y cuatro $num=84" "85 $num=85" "ochenta y cinco $num=85" "86 $num=86" "ochenta y seis $num=86" "87 $num=87" "ochenta y siete $num=87" "88 $num=88" "ochenta y ocho $num=88" "89 $num=89" "ochenta y nueve $num=89" "90 $num=90" "noventa $num=90" "91 $num=91" "noventa y uno $num=91" "92 $num=92" "noventa y dos $num=92" "93 $num=93" "noventa y tres $num=93" "94 $num=94" "noventa y cuatro $num=94" "95 $num=95" "noventa y cinco $num=95" "96 $num=96" "noventa y seis $num=96" "97 $num=97" "noventa y siete $num=97" "98 $num=98" "noventa y ocho $num=98" "99 $num=99" "noventa y nueve $num=99" "100 $num=100" "cien $num=100" "ciento $num=100"]
+
+#languages#
+concept:(main_languages_entity)
+[
+"ASL $available_language=0"
+"africano $available_language=0"
+"árabe argelino $available_language=0"
+"lenguaje de señas americano $available_language=0"
+"amárico $available_language=0"
+"árabe $available_language=$Dialog/Language/LangArabic"
+"asamiya $available_language=0"
+"asiático $available_language=0"
+"asamiya $available_language=0"
+"awadhi $available_language=0"
+"azerbaiyano $available_language=0"
+"azerí $available_language=0"
+"azerí turco $available_language=0"
+"azerí turco $available_language=0"
+"idioma bengalí $available_language=0"
+"bielorruso $available_language=0"
+"holandés belga $available_language=$Dialog/Language/LangDutch"
+"bengalí $available_language=0"
+"beréber $available_language=0"
+"bhoshpuri $available_language=0"
+"cebuano $available_language=0"
+"idioma cebuano $available_language=0"
+"birmano $available_language=0"
+"canarese $available_language=0"
+"cantonés $available_language=$Dialog/Language/LangCantoneseHK"
+"castellano $available_language=0"
+"tailandés central $available_language=0"
+"chatgaya $available_language=0"
+"chhattisgarhi $available_language=0"
+"chino $available_language=$Dialog/Language/LangChinese"
+"chittagong bangla $available_language=0"
+"chittagónico $available_language=0"
+"croata $available_language=0"
+"checo $available_language=$Dialog/Language/LangCzech"
+"dakhini $available_language=0"
+"dakkani $available_language=0"
+"danés $available_language=$Dialog/Language/LangDanish"
+"deccani $available_language=0"
+"holandés $available_language=$Dialog/Language/LangDutch"
+"egipcio árabe $available_language=0"
+"inglés $available_language=$Dialog/Language/LangEnglish"
+"europeo $available_language=0"
+"farsi $available_language=0"
+"filipino $available_language=0"
+"finlandés $available_language=$Dialog/Language/LangFinnish"
+"holandés flamenco $available_language=$Dialog/Language/LangDutch"
+"lenguaje de señas francés $available_language=0"
+"francés $available_language=$Dialog/Language/LangFrench"
+"FSL $available_language=0"
+"gan chino $available_language=0"
+"alemán $available_language=$Dialog/Language/LangGerman"
+"gorkhali $available_language=0"
+"griego $available_language=$Dialog/Language/LangGreek"
+"gujarati $available_language=0"
+"gurkha $available_language=0"
+"gurkhali $available_language=0"
+"hakka chino $available_language=0"
+"haryanvi $available_language=0"
+"hausa $available_language=0"
+"hsiang chino $available_language=0"
+"hindi $available_language=0"
+"hollandish $available_language=0"
+"hollandic $available_language=0"
+"hunanese $available_language=0"
+"húngaro $available_language=0"
+"igbo $available_language=0"
+"indonesio $available_language=0"
+"italiano $available_language=$Dialog/Language/LangItalian"
+"japonés $available_language=$Dialog/Language/LangJapanese"
+"lenguaje de señas japonés $available_language=0"
+"javanés $available_language=0"
+"jin chino $available_language=0"
+"JSL $available_language=0"
+"kanarese $available_language=0"
+"kannada $available_language=0"
+"kejia chino $available_language=0"
+"khaskura $available_language=0"
+"coreano $available_language=$Dialog/Language/LangKorean"
+"madurese $available_language=0"
+"magadhi $available_language=0"
+"magahi $available_language=0"
+"maithili $available_language=0"
+"malayo $available_language=0"
+"malayalam $available_language=0"
+"mandarín $available_language=$Dialog/Language/LangChinese"
+"marathi $available_language=0"
+"marwari $available_language=0"
+"[min miin] chino $available_language=0"
+"hindi estándar moderno $available_language=0"
+"mandarín estándar moderno $available_language=0"
+"urdu estándar moderno $available_language=0"
+"marroquí $available_language=0"
+"nepalí $available_language=0"
+"min chino del norte $available_language=0"
+"norsk $available_language=$Dialog/Language/LangNorwegian"
+"noruego $available_language=$Dialog/Language/LangNorwegian"
+"odia $available_language=0"
+"oriya $available_language=0"
+"persa $available_language=0"
+"polaco $available_language=$Dialog/Language/LangPolish"
+"portugués $available_language=$Dialog/Language/LangPortuguese"
+"punjabi $available_language=0"
+"rumano $available_language=0"
+"ruso $available_language=$Dialog/Language/LangRussian"
+"saraiki $available_language=0"
+"serbio $available_language=0"
+"siamés $available_language=0"
+"lenguaje de señas $available_language=0"
+"sindhi $available_language=0"
+"sinhalese $available_language=0"
+"siraiki $available_language=0"
+"holandés meridional $available_language=$Dialog/Language/LangDutch"
+"español $available_language=$Dialog/Language/LangSpanish"
+"chino estándar $available_language=0"
+"sundanés $available_language=0"
+"sueco $available_language=$Dialog/Language/LangSwedish"
+"tamil $available_language=0"
+"telugu $available_language=0"
+"tailandés $available_language=0"
+"turco $available_language=$Dialog/Language/LangTurkish"
+"ucraniano $available_language=0"
+"urdú $available_language=0"
+"uzbeco $available_language=0"
+"visayan $available_language=0"
+"vietnamita $available_language=0"
+"wu chino $available_language=0"
+"xiang chino $available_language=0"
+"[yue yueh] chino $available_language=$Dialog/Language/LangCantoneseHK"
+"yoruba $available_language=0"
+]
+
+concept:(languages_entity)
+[
+"ASL"
+"africano"
+"árabe argelino"
+"lenguaje de señas americano"
+"amárico"
+"árabe"
+"asamiya"
+"asiático"
+"asamiya"
+"awadhi"
+"azerbaiyano"
+"azerí"
+"azerí turco"
+"azerí turco"
+"idioma bengalí"
+"bielorruso"
+"holandés belga"
+"bengalí"
+"beréber"
+"bhoshpuri"
+"cebuano"
+"idioma cebuano"
+"birmano"
+"canarese"
+"cantonés"
+"castellano"
+"tailandés central"
+"chatgaya"
+"chhattisgarhi"
+"chino"
+"chittagong bangla"
+"chittagónico"
+"croata"
+"checo"
+"dakhini"
+"dakkani"
+"danés"
+"deccani"
+"holandés"
+"egipcio árabe"
+"inglés"
+"europeo"
+"farsi"
+"filipino"
+"finlandés"
+"holandés flamenco"
+"lenguaje de señas francés"
+"francés"
+"FSL"
+"gan chino"
+"alemán"
+"gorkhali"
+"griego"
+"gujarati"
+"gurkha"
+"gurkhali"
+"hakka chino"
+"haryanvi"
+"hausa"
+"hsiang chino"
+"hindi"
+"hollandish"
+"hollandic"
+"hunanese"
+"húngaro"
+"igbo"
+"indonesio"
+"italiano"
+"japonés"
+"lenguaje de señas japonés"
+"javanés"
+"jin chino"
+"JSL"
+"kanarese"
+"kannada"
+"kejia chino"
+"khaskura"
+"coreano"
+"madurese"
+"magadhi"
+"magahi"
+"maithili"
+"malayo"
+"malayalam"
+"mandarín"
+"marathi"
+"marwari"
+"[min miin] chino"
+"hindi estándar moderno"
+"mandarín estándar moderno"
+"urdu estándar moderno"
+"marroquí"
+"nepalí"
+"min chino del norte"
+"norsk"
+"noruego"
+"odia"
+"oriya"
+"persa"
+"polaco"
+"portugués"
+"punjabi"
+"rumano"
+"ruso"
+"saraiki"
+"seraiki"
+"serbio"
+"siamés"
+"lenguaje de señas"
+"sindhi"
+"sinhalese"
+"siraiki"
+"holandés meridional"
+"español"
+"chino estándar"
+"sundanés"
+"sueco"
+"tamil"
+"telugu"
+"tailandés"
+"turco"
+"ucraniano"
+"urdú"
+"uzbeco"
+"visayan"
+"vietnamita"
+"wu chino"
+"xiang chino"
+"[yue yueh] chino"
+"yoruba"
+]
+
+concept:(dialog_languages_entity)
+[
+"árabe $lang=Arabic"
+"checo $lang=Czech"
+"danés $lang=Danish"
+"griego $lang=Greek"
+"coreano $lang=Korean"
+"alemán $lang=German"
+"inglés $lang=English"
+"español $lang=Spanish"
+"finlandés $lang=Finnish"
+"francés $lang=French"
+"italiano $lang=Italian"
+"holandés $lang=Dutch"
+"chino $lang=Chinese"
+"japonés $lang=Japanese"
+"noruego $lang=Norwegian"
+"polaco $lang=Polish"
+"brasileño $lang=Brazilian"
+"portugués $lang=Portuguese"
+"ruso $lang=Russian"
+"sueco $lang=Swedish"
+"turco $lang=Turkish"
+"mandarina taiwanesa $lang="Taiwanese Mandarin""
+]
+
+def:translate_lang($language)
+^first
+[
+"$language==Arabic árabe"
+"$language==Czech checo"
+"$language==Danish danés"
+"$language==Greek griego"
+"$language==Korean coreano"
+"$language==German alemán"
+"$language==Spanish español"
+"$language==Finnish finlandés"
+"$language==French francés"
+"$language==Italian italiano"
+"$language==Dutch holandés"
+"$language==Chinese chino"
+"$language==Japanese japonés"
+"$language==Norwegian noruego"
+"$language==Polish polaco"
+"$language==Russian ruso"
+"$language==Swedish sueco"
+"$language==Turkish turco"
+"$language==English inglés"
+"$language=="Taiwanese Mandarin"　mandarina taiwanesa"
+]

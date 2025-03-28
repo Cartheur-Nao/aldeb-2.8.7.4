@@ -1,0 +1,1007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>French Lexicon - verbs &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../../index.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="naoqi-interaction-dialog-lexicon_french_verbs">
+                
+  <div class="section" id="french-lexicon-verbs">
+<span id="lexicon-french-verbs"></span><h1>French Lexicon - verbs<a class="headerlink" href="#french-lexicon-verbs" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../index_interaction.html#naoqi-interaction"><span>NAOqi Interaction engines</span></a> - <a class="reference internal" href="lexicon.html#lexicon"><span>Dialog Lexicon</span></a></p>
+<p>Full content: <a class="reference internal" href="lexicon_english.html#lexicon-english"><span>English Lexicon</span></a> - <a class="reference internal" href="lexicon_japanese.html#lexicon-japanese"><span>Japanese Lexicon</span></a> - French Lexicon
+- <a class="reference internal" href="lexicon_chinese.html#lexicon-chinese"><span>Chinese Lexicon</span></a> - <a class="reference internal" href="lexicon_german.html#lexicon-german"><span>German Lexicon</span></a> - <a class="reference internal" href="lexicon_italian.html#lexicon-italian"><span>Italian Lexicon</span></a> - <a class="reference internal" href="lexicon_spanish.html#lexicon-spanish"><span>Spanish Lexicon</span></a></p>
+<hr class="docutils" />
+<p><a class="reference internal" href="lexicon_french.html#lexicon-french"><span>Main</span></a> &#8211; <a class="reference internal" href="lexicon_french_entities.html#lexicon-french-entities"><span>entities</span></a> - <a class="reference internal" href="lexicon_french_synonyms.html#lexicon-french-synonyms"><span>synonyms</span></a> -
+<a class="reference internal" href="lexicon_french_output.html#lexicon-french-output"><span>output</span></a> - verbs -
+<a class="reference internal" href="lexicon_french_snippets.html#lexicon-french-snippets"><span>snippets</span></a> - <a class="reference internal" href="lexicon_french_yesno.html#lexicon-french-yesno"><span>yesno</span></a></p>
+<hr class="docutils" />
+<p><a class="reference download internal" href="../../../_downloads/lexicon_verbs_frf.top"><code class="xref download docutils literal"><span class="pre">lexicon_verbs_frf.top</span></code></a></p>
+<div class="highlight-QiChat"><div class="highlight"><pre><span class="ow">topic</span>: ~lexicon_verbs()
+<span class="ow">language</span>: frf
+
+
+
+
+
+#==================================================================#
+
+<span class="ow">concept</span>:(vb_pos_i_aimer) [j&#39;aime]
+<span class="ow">concept</span>:(vb_neg_i_aimer) [&quot;[j&#39;aime &quot;je n&#39;aime&quot;] pas&quot;]
+<span class="ow">concept</span>:(vb_i_aimer) [~vb_pos_i_aimer ~vb_neg_i_aimer]
+<span class="ow">concept</span>:(vb_pos_you_aimer) [&quot;tu aimes&quot; t&#39;aimes]
+<span class="ow">concept</span>:(vb_neg_you_aimer) [&quot;[t&#39;aimes &quot;tu n&#39;aimes&quot;] pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_aimer) [aimes-tu]
+#&quot;n&#39;aimes-tu pas&quot;
+<span class="ow">concept</span>:(vb_you_aimer) [~vb_pos_you_aimer ~vb_neg_you_aimer]
+<span class="ow">concept</span>:(vb_ask_aimer) [&quot;est-ce que ~vb_pos_you_aimer&quot; ~vb_pos_you_aimer ~vb_int_you_aimer]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_kiffer) [&quot;je kiffe&quot;]
+<span class="ow">concept</span>:(vb_neg_i_kiffer) [&quot;je {ne} kiffe pas&quot;]
+<span class="ow">concept</span>:(vb_i_kiffer) [~vb_pos_i_kiffer ~vb_neg_i_kiffer]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_adorer) [j&#39;adore]
+<span class="ow">concept</span>:(vb_i_adorer) [~vb_pos_i_adorer]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_détester) [&quot;je déteste&quot;]
+<span class="ow">concept</span>:(vb_neg_i_détester) [&quot;je {ne} déteste pas&quot;]
+<span class="ow">concept</span>:(vb_i_détester) [~vb_pos_i_détester ~vb_neg_i_détester]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_haïr) [&quot;je hais&quot;]
+<span class="ow">concept</span>:(vb_neg_i_haïr) [&quot;je {ne} hais pas&quot;]
+<span class="ow">concept</span>:(vb_i_haïr) [~vb_pos_i_haïr ~vb_neg_i_haïr]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_prendre) [&quot;je prends&quot;]
+<span class="ow">concept</span>:(vb_neg_i_prendre) [&quot;je {ne} prends pas&quot;]
+<span class="ow">concept</span>:(vb_i_prendre) [~vb_pos_i_prendre ~vb_neg_i_prendre]
+<span class="ow">concept</span>:(vb_pos_you_prendre) [&quot;tu prends&quot;]
+<span class="ow">concept</span>:(vb_neg_you_prendre) [&quot;tu {ne} prends pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_prendre) [prends-tu &quot;ne prends-tu pas&quot;]
+<span class="ow">concept</span>:(vb_ask_prendre) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_prendre&quot; ~vb_int_you_prendre ~vb_neg_you_prendre]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_savoir) [&quot;je sais&quot;]
+<span class="ow">concept</span>:(vb_neg_i_savoir) [&quot;je {ne} sais pas&quot;]
+<span class="ow">concept</span>:(vb_i_savoir) [~vb_pos_i_savoir ~vb_neg_i_savoir]
+<span class="ow">concept</span>:(vb_pos_you_savoir) [&quot;tu [sais saurais]&quot;]
+<span class="ow">concept</span>:(vb_neg_you_savoir) [&quot;tu {ne} [sais saurais] pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_savoir) [sais-tu saurais-tu]
+#&quot;ne [sais-tu saurais-tu] pas&quot;
+<span class="ow">concept</span>:(vb_ask_savoir) [&quot;est-ce que ~vb_pos_you_savoir&quot; ~vb_pos_you_savoir ~vb_int_you_savoir ~vb_neg_you_savoir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_connaître) [&quot;je connais&quot;]
+<span class="ow">concept</span>:(vb_neg_i_connaître) [&quot;je {ne} connais pas&quot;]
+<span class="ow">concept</span>:(vb_i_connaître) [~vb_pos_i_connaître ~vb_neg_i_connaître]
+<span class="ow">concept</span>:(vb_pos_you_connaître) [&quot;tu connais&quot;]
+<span class="ow">concept</span>:(vb_neg_you_connaître) [&quot;tu {ne} connais pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_connaître) [connais-tu]
+#&quot;ne connais-tu pas&quot;
+<span class="ow">concept</span>:(vb_you_connaître) [~vb_pos_you_connaître ~vb_neg_you_connaître]
+<span class="ow">concept</span>:(vb_ask_connaître) [&quot;est-ce que ~vb_pos_you_connaître&quot; ~vb_pos_you_connaître ~vb_int_you_connaître ~vb_neg_you_connaître]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_croire) [&quot;je crois&quot;]
+<span class="ow">concept</span>:(vb_neg_i_croire) [&quot;je {ne} crois pas&quot;]
+<span class="ow">concept</span>:(vb_i_croire) [~vb_pos_i_croire ~vb_neg_i_croire]
+<span class="ow">concept</span>:(vb_pos_you_croire) [&quot;tu crois&quot;]
+<span class="ow">concept</span>:(vb_neg_you_croire) [&quot;tu {ne} crois pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_croire) [crois-tu &quot;ne crois-tu pas&quot;]
+<span class="ow">concept</span>:(vb_you_croire) [~vb_pos_you_croire ~vb_neg_you_croire]
+<span class="ow">concept</span>:(vb_ask_croire) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_croire&quot; ~vb_int_you_croire ~vb_neg_you_croire]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_vouloir) [&quot;je [veux voudrais]&quot;]
+<span class="ow">concept</span>:(vb_neg_i_vouloir) [&quot;je {ne} [veux voudrais] [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_i_vouloir) [~vb_pos_i_vouloir ~vb_neg_i_vouloir]
+<span class="ow">concept</span>:(vb_pos_you_vouloir) [&quot;tu veux&quot;]
+<span class="ow">concept</span>:(vb_neg_you_vouloir) [&quot;tu {ne} veux pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_vouloir) [veux-tu]
+#&quot;ne veux-tu pas&quot;
+<span class="ow">concept</span>:(vb_you_vouloir) [~vb_pos_you_vouloir ~vb_neg_you_vouloir]
+<span class="ow">concept</span>:(vb_ask_vouloir) [&quot;est-ce que ~vb_pos_you_vouloir&quot; ~vb_pos_you_vouloir ~vb_int_you_vouloir ~vb_neg_you_vouloir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_pouvoir) [&quot;je peux&quot;]
+<span class="ow">concept</span>:(vb_neg_i_pouvoir) [&quot;je {ne} peux [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_int_i_pouvoir) [puis-je &quot;je peux&quot;]
+<span class="ow">concept</span>:(vb_i_pouvoir) [~vb_pos_i_pouvoir ~vb_neg_i_pouvoir]
+<span class="ow">concept</span>:(vb_pos_you_pouvoir) [&quot;tu [peux pourrais]&quot;]
+<span class="ow">concept</span>:(vb_neg_you_pouvoir) [&quot;tu {ne} [peux pourrais] pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_pouvoir) [peux-tu pourrais-tu]
+#&quot;ne [peux-tu pourrais-tu] pas&quot;
+<span class="ow">concept</span>:(vb_you_pouvoir) [~vb_pos_you_pouvoir ~vb_neg_you_pouvoir]
+<span class="ow">concept</span>:(vb_ask_pouvoir) [&quot;est-ce que ~vb_pos_you_pouvoir&quot; ~vb_pos_you_pouvoir ~vb_int_you_pouvoir ~vb_neg_you_pouvoir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_you_supporter) [&quot;tu supportes&quot;]
+<span class="ow">concept</span>:(vb_neg_you_supporter) [&quot;tu {ne} supportes pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_supporter) [supportes-tu &quot;ne supportes-tu pas&quot;]
+<span class="ow">concept</span>:(vb_you_supporter) [~vb_pos_you_supporter ~vb_neg_you_supporter]
+<span class="ow">concept</span>:(vb_ask_supporter) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_supporter&quot; ~vb_int_you_supporter ~vb_neg_you_supporter]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_soutenir) [&quot;je soutiens&quot;]
+<span class="ow">concept</span>:(vb_neg_i_soutenir) [&quot;je {ne} soutiens [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_i_soutenir) [~vb_pos_i_soutenir ~vb_neg_i_soutenir]
+<span class="ow">concept</span>:(vb_pos_you_soutenir) [&quot;tu soutiens&quot;]
+<span class="ow">concept</span>:(vb_neg_you_soutenir) [&quot;tu {ne} soutiens pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_soutenir) [soutiens-tu &quot;ne soutiens-tu pas&quot;]
+<span class="ow">concept</span>:(vb_you_soutenir) [~vb_pos_you_soutenir ~vb_int_you_soutenir]
+<span class="ow">concept</span>:(vb_ask_soutenir) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_soutenir&quot; ~vb_int_you_soutenir ~vb_neg_you_soutenir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_agree_with) [&quot;je suis {plutot assez} d&#39;accord avec&quot;]
+<span class="ow">concept</span>:(vb_neg_i_agree_with) [&quot;je suis {pas} d&#39;accord avec&quot;]
+<span class="ow">concept</span>:(vb_i_agree_with) [~vb_pos_i_agree_with ~vb_neg_i_agree_with]
+<span class="ow">concept</span>:(vb_pos_you_agree_with) [&quot;tu es d&#39;accord avec&quot;]
+<span class="ow">concept</span>:(vb_neg_you_agree_with) [&quot;[t&#39;es &quot;tu es&quot; &quot;tu n&#39;es&quot;] [pas plus] d&#39;accord avec&quot;]
+<span class="ow">concept</span>:(vb_int_you_agree_with) [&quot;es-tu d&#39;accord avec&quot; &quot;n&#39;es-tu pas d&#39;accord avec&quot;]
+<span class="ow">concept</span>:(vb_you_agree_with) [~vb_pos_you_agree_with ~vb_int_you_agree_with]
+<span class="ow">concept</span>:(vb_ask_agree_with) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_agree_with&quot; ~vb_int_you_agree_with ~vb_neg_you_agree_with]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_préférer) [&quot;je préfère&quot;]
+<span class="ow">concept</span>:(vb_neg_i_préférer) [&quot;je {ne} préfère [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_i_préférer) [~vb_pos_i_préférer ~vb_neg_i_préférer]
+<span class="ow">concept</span>:(vb_pos_you_préférer) [&quot;tu préfères&quot;]
+<span class="ow">concept</span>:(vb_neg_you_préférer) [&quot;tu {ne} préfères pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_préférer) [préfères-tu &quot;ne préfères-tu pas&quot;]
+<span class="ow">concept</span>:(vb_you_préférer) [~vb_pos_you_préférer ~vb_neg_you_préférer]
+<span class="ow">concept</span>:(vb_ask_préférer) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_préférer&quot; ~vb_int_you_préférer ~vb_neg_you_préférer]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_partir) [&quot;je pars&quot;]
+<span class="ow">concept</span>:(vb_neg_i_partir) [&quot;je {ne} pars [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_i_partir) [~vb_pos_i_partir ~vb_neg_i_partir]
+<span class="ow">concept</span>:(vb_pos_you_partir) [&quot;tu pars&quot;]
+<span class="ow">concept</span>:(vb_neg_you_partir) [&quot;tu {ne} pars [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_int_you_partir) [pars-tu &quot;ne pars-tu pas&quot;]
+<span class="ow">concept</span>:(vb_you_partir) [~vb_pos_you_partir ~vb_neg_you_partir]
+<span class="ow">concept</span>:(vb_ask_partir) [&quot;{&quot;est-ce que&quot;} ~vb_pos_you_partir&quot; ~vb_int_you_partir ~vb_neg_you_partir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_ask_aller) [&quot;vas-tu&quot; &quot;tu vas&quot; &quot;est-ce que tu vas&quot;]
+#==================================================================#
+
+
+#==================================================================#
+##### Auxiliaries #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_avoir) [j&#39;ai &quot;j&#39;en ai&quot;]
+<span class="ow">concept</span>:(vb_neg_i_avoir) [&quot;[j&#39;ai &quot;j&#39;en n&#39;ai&quot; &quot;je [n&#39;ai &quot;n&#39;en ai&quot;]&quot;] [pas plus]&quot;]
+<span class="ow">concept</span>:(vb_i_avoir) [~vb_pos_i_avoir ~vb_neg_i_avoir]
+<span class="ow">concept</span>:(vb_pos_you_avoir) [t&#39;as &quot;tu as&quot;]
+<span class="ow">concept</span>:(vb_neg_you_avoir) [&quot;[t&#39;as &quot;tu n&#39;as&quot;] pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_avoir) [as-tu]
+<span class="ow">concept</span>:(vb_pos_cond_you_avoir) [&quot;tu aurais&quot; &quot;t&#39;aurais&quot;]
+<span class="ow">concept</span>:(vb_neg_cond_you_avoir) [&quot;[&quot;tu aurais&quot; &quot;t&#39;aurais&quot; &quot;tu n&#39;aurais&quot;] pas&quot;]
+<span class="ow">concept</span>:(vb_int_cond_you_avoir) [aurais-tu]
+#&quot;n&#39;as-tu pas&quot;
+<span class="ow">concept</span>:(vb_you_avoir) [~vb_pos_you_avoir ~vb_neg_you_avoir]
+<span class="ow">concept</span>:(vb_ask_avoir) [&quot;est-ce que ~vb_pos_you_avoir&quot; ~vb_pos_you_avoir ~vb_int_you_avoir]
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_pos_i_être) [&quot;je suis&quot;]
+<span class="ow">concept</span>:(vb_neg_i_être) [&quot;je {ne} suis pas&quot;]
+<span class="ow">concept</span>:(vb_i_être) [~vb_pos_i_être ~vb_neg_i_être]
+<span class="ow">concept</span>:(vb_pos_you_être) [t&#39;es &quot;tu es&quot;]
+<span class="ow">concept</span>:(vb_neg_you_être) [&quot;[t&#39;es &quot;tu n&#39;es&quot;] pas&quot;]
+<span class="ow">concept</span>:(vb_int_you_être) [es-tu]
+#&quot;n&#39;es-tu pas&quot;
+<span class="ow">concept</span>:(vb_you_être) [~vb_pos_you_être ~vb_neg_you_être]
+<span class="ow">concept</span>:(vb_ask_être) [&quot;est-ce que ~vb_pos_you_être&quot; ~vb_pos_you_être ~vb_int_you_être ~vb_neg_you_être]
+#==================================================================#
+
+#==================================================================#
+##### Other verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(vb_imp_parle) [&quot;{ne} {me m&#39;en} parle pas&quot;]
+<span class="ow">concept</span>:(vb_imp_cause) [&quot;{ne} {me m&#39;en} cause pas&quot;]
+<span class="ow">concept</span>:(vb_imp_dire) [&quot;{ne} {me m&#39;en} dis rien&quot;]
+<span class="ow">concept</span>:(vb_imp_discute) [&quot;{ne} discute pas&quot;]
+<span class="ow">concept</span>:(vb_imp_bavarde) [&quot;{ne} bavarde pas&quot;]
+<span class="ow">concept</span>:(verbs_inf_talk) [parler causer dire discuter bavarder]
+<span class="ow">concept</span>:(verbs_imp_talk) [~vb_imp_parle ~vb_imp_cause ~vb_imp_dire ~vb_imp_discute ~vb_imp_bavarde]
+
+
+#==================================================================#
+##### 1rst person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(i_am) [~vb_pos_i_être]
+<span class="ow">concept</span>:(i_have) [~vb_i_avoir]
+<span class="ow">concept</span>:(i_have_)[j&#39;ai]
+<span class="ow">concept</span>:(i_am_not) [~vb_neg_i_être]
+<span class="ow">concept</span>:(i_dont_have) [~vb_neg_i_avoir]
+<span class="ow">concept</span>:(i_have_to) [&quot;je [dois devrais]&quot;]
+<span class="ow">concept</span>:(i_want) [&quot;je [veux voudrais] {vraiment} {bien}&quot; &quot;j&#39;aimerais {vraiment} {bien}&quot; &quot;je [souhaite souhaiterais] {vraiment}&quot; &quot;j&#39;aurais {vraiment} {bien} voulu&quot;]
+#&quot;je cherche à&quot;
+<span class="ow">concept</span>:(i_dont_want) [~vb_neg_i_vouloir]
+<span class="ow">concept</span>:(i_want_to) [~vb_pos_i_vouloir &quot;~vb_pos_i_avoir envie de&quot; &quot;[&quot;je veux&quot; &quot;je voudrais&quot; &quot;j&#39;aurai voulu&quot; j&#39;aimerais &quot;je souhaiterais&quot; &quot;je souhaite&quot;] {faire effectuer}&quot; &quot;[c&#39;est &quot;ça serait&quot; &quot;ça aurait été&quot;] pour {faire effectuer}&quot; &quot;j&#39;ai envie {&quot;de faire&quot; &quot;d&#39;effectuer&quot;}&quot;]
+<span class="ow">concept</span>:(i_want_you_to)[&quot;je veux {vraiment absolument !pas} que tu&quot; &quot;je voudrais {vraiment absolument !pas} que tu&quot; &quot;j&#39;ai {vraiment absolument !pas} envie que tu&quot; &quot;je souhaite {vraiment absolument !pas} que tu&quot; &quot;je souhaiterais {vraiment absolument !pas} que tu&quot;]
+<span class="ow">concept</span>:(i_dont_want_to) [~vb_neg_i_vouloir &quot;~vb_neg_i_avoir envie de&quot;]
+<span class="ow">concept</span>:(i_think_you_are) [&quot;je te trouve&quot; &quot;{&quot;je [pense trouve] que&quot;} ~vb_pos_you_être&quot;]
+<span class="ow">concept</span>:(we_are) [&quot;nous sommes&quot; &quot;on est&quot;]
+<span class="ow">concept</span>:(we_are_not) [&quot;[&quot;nous {ne} sommes&quot; &quot;on est&quot;] {pas}&quot;]
+#------------------------------------------------------------------#
+##### 2nd person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(you_are) [~vb_pos_you_être]
+<span class="ow">concept</span>:(you_are_not) [~vb_neg_you_être]
+<span class="ow">concept</span>:(you_were) [&quot;[&quot;tu as&quot; t&#39;as] été&quot;]
+<span class="ow">concept</span>:(you_have) [&quot;tu as&quot; t&#39;as]
+
+#------------------------------------------------------------------#
+##### 3rd person verbs #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(it_is) [
+    c&#39;est c&#39;était
+    &quot;[&quot;je pense&quot; &quot;il semble que&quot;] que [c&#39;est c&#39;était]&quot;
+    &quot;à mon avis [c&#39;est c&#39;était]&quot;
+    &quot;et bien [c&#39;est c&#39;était]&quot;
+<span class="p">]</span>
+
+
+
+
+
+#==================================================================#
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(askconnaitre) [~vb_ask_connaître]
+<span class="ow">concept</span>:(asksavoir) [~vb_ask_savoir]
+<span class="ow">concept</span>:(askparler) [&quot;parles-tu&quot; &quot;{&quot;est-ce que&quot;} tu parles&quot;]
+<span class="ow">concept</span>:(askpreferer) [~vb_ask_préférer]
+<span class="ow">concept</span>:(askavoir) [~vb_ask_avoir]
+<span class="ow">concept</span>:(askposseder) [&quot;possèdes-tu&quot; &quot;{&quot;est-ce que&quot;} tu possèdes&quot;]
+<span class="ow">concept</span>:(askvouloir) [~vb_ask_vouloir]
+<span class="ow">concept</span>:(askva) [vas-tu &quot;{&quot;est-ce que&quot;} tu vas&quot;]
+<span class="ow">concept</span>:(askaimer) [~vb_ask_aimer]
+<span class="ow">concept</span>:(askadorer) [&quot;adores-tu&quot; &quot;{&quot;est-ce que&quot;} tu adores&quot;]
+<span class="ow">concept</span>:(asksouvenir) [&quot;te souviens-tu de&quot; &quot;{&quot;est-ce que&quot;} tu te souviens de&quot;]
+<span class="ow">concept</span>:(asketre) [~vb_ask_être]
+<span class="ow">concept</span>:(askporter) [&quot;portes-tu&quot; &quot;{&quot;est-ce que&quot;} tu portes&quot;]
+<span class="ow">concept</span>:(askenvoyer) [&quot;envoies-tu&quot; &quot;{&quot;est-ce que&quot;} tu envoies&quot;]
+<span class="ow">concept</span>:(askaller) [~vb_ask_aller]
+<span class="ow">concept</span>:(askutiliser) [&quot;utilises-tu&quot; &quot;{&quot;est-ce que&quot;} tu utilises&quot;]
+<span class="ow">concept</span>:(askcroire) [~vb_ask_croire]
+<span class="ow">concept</span>:(askquesavoir) [&quot;que sais-tu&quot; &quot;qu&#39;est-ce que tu sais&quot;]
+<span class="ow">concept</span>:(askquepouvoir) [&quot;que peux-tu&quot; &quot;qu&#39;est-ce que tu peux&quot;]
+<span class="ow">concept</span>:(askqueaimer) [&quot;qu&#39;aimes-tu&quot; &quot;qu&#39;aime-tu&quot; &quot;qu&#39;est-ce que tu aimes {bien}&quot; &quot;tu aimes quoi&quot;]
+<span class="ow">concept</span>:(askquepenser) [&quot;que penses-tu&quot; &quot;qu&#39;est-ce que tu {en} penses&quot;]
+<span class="ow">concept</span>:(askqueconnaitre) [&quot;que connais-tu&quot; &quot;qu&#39;est-ce que tu connais&quot;]
+<span class="ow">concept</span>:(askquefaire) [&quot;que fais-tu&quot; &quot;qu&#39;est-ce que tu fais&quot;]
+<span class="ow">concept</span>:(verbs_inf_parler) [~verbs_inf_talk]
+<span class="ow">concept</span>:(verbs_imp_parler) [~verbs_imp_talk]
+<span class="ow">concept</span>:(jeveux) [~i_want]
+<span class="ow">concept</span>:(jepeux) [~vb_pos_i_pouvoir]
+<span class="ow">concept</span>:(want_to_do) [~i_want]
+#/!\OLD CONCEPTS/!\ (can be used but not to use)#
+
+
+
+#==================================================================#
+##### MOST FREQUENT VERBS #####
+#------------------------------------------------------------------#
+<span class="ow">concept</span>:(verbs_fr)
+<span class="p">[</span>
+&quot;abandonner&quot; &quot;abattre&quot; &quot;aborder&quot; &quot;accepter&quot; &quot;accomplir&quot; &quot;accorder&quot; &quot;accrocher&quot; &quot;accueillir&quot; &quot;accuser&quot; &quot;acheter&quot; &quot;achever&quot; &quot;admettre&quot; &quot;adresser&quot; &quot;affirmer&quot; &quot;agir&quot; &quot;agiter&quot; &quot;aider&quot; &quot;aimer&quot; &quot;ajouter&quot; &quot;aller&quot; &quot;allumer&quot; &quot;amener&quot; &quot;amuser&quot; &quot;animer&quot; &quot;annoncer&quot; &quot;apercevoir&quot; &quot;apparaître&quot; &quot;appartenir&quot; &quot;appeler&quot; &quot;apporter&quot; &quot;apprendre&quot; &quot;approcher&quot; &quot;approuver&quot; &quot;appuyer&quot; &quot;armer&quot; &quot;arracher&quot; &quot;arriver&quot; &quot;arrêter&quot; &quot;asseoir&quot; &quot;assister&quot; &quot;assurer&quot; &quot;attacher&quot; &quot;attaquer&quot; &quot;atteindre&quot; &quot;attendre&quot; &quot;attirer&quot; &quot;avancer&quot; &quot;avoir&quot; &quot;avouer&quot; &quot;baisser&quot; &quot;battre&quot; &quot;boire&quot; &quot;briller&quot; &quot;briser&quot; &quot;brûler&quot; &quot;cacher&quot; &quot;calmer&quot; &quot;caresser&quot; &quot;casser&quot; &quot;causer&quot; &quot;cesser&quot; &quot;changer&quot; &quot;chanter&quot; &quot;charger&quot; &quot;chasser&quot; &quot;chercher&quot; &quot;choisir&quot; &quot;commander&quot; &quot;commencer&quot; &quot;composer&quot; &quot;comprendre&quot; &quot;compter&quot; &quot;conclure&quot; &quot;condamner&quot; &quot;conduire&quot; &quot;confier&quot; &quot;confondre&quot; &quot;connaître&quot; &quot;consentir&quot; &quot;considérer&quot; &quot;construire&quot; &quot;consulter&quot; &quot;contenir&quot; &quot;contenter&quot; &quot;continuer&quot; &quot;convenir&quot; &quot;coucher&quot; &quot;couler&quot; &quot;couper&quot; &quot;courir&quot; &quot;couvrir&quot; &quot;coûter&quot; &quot;craindre&quot; &quot;creuser&quot; &quot;crier&quot; &quot;croire&quot; &quot;croiser&quot; &quot;créer&quot; &quot;céder&quot; &quot;danser&quot; &quot;demander&quot; &quot;demeurer&quot; &quot;descendre&quot; &quot;dessiner&quot; &quot;devenir&quot; &quot;deviner&quot; &quot;devoir&quot; &quot;dire&quot; &quot;diriger&quot; &quot;discuter&quot; &quot;disposer&quot; &quot;distinguer&quot; &quot;dominer&quot; &quot;donner&quot; &quot;dormir&quot; &quot;douter&quot; &quot;dresser&quot; &quot;durer&quot; &quot;déchirer&quot; &quot;décider&quot; &quot;déclarer&quot; &quot;découvrir&quot; &quot;décrire&quot; &quot;défendre&quot; &quot;dégager&quot; &quot;dépasser&quot; &quot;déposer&quot; &quot;désigner&quot; &quot;désirer&quot; &quot;détacher&quot; &quot;détourner&quot; &quot;détruire&quot; &quot;écarter&quot; &quot;échapper&quot; &quot;éclairer&quot; &quot;éclater&quot; &quot;écouter&quot; &quot;écraser&quot; &quot;écrire&quot; &quot;effacer&quot; &quot;élever&quot; &quot;éloigner&quot; &quot;embrasser&quot; &quot;emmener&quot; &quot;emparer&quot; &quot;employer&quot; &quot;emporter&quot; &quot;empêcher&quot; &quot;endormir&quot; &quot;enfermer&quot; &quot;enfoncer&quot; &quot;engager&quot; &quot;enlever&quot; &quot;entendre&quot; &quot;entourer&quot; &quot;entraîner&quot; &quot;entrer&quot; &quot;entretenir&quot; &quot;envelopper&quot; &quot;envoyer&quot; &quot;éprouver&quot; &quot;espérer&quot; &quot;essayer&quot; &quot;essuyer&quot; &quot;établir&quot; &quot;étaler&quot; &quot;éteindre&quot; &quot;étendre&quot; &quot;étonner&quot; &quot;étouffer&quot; &quot;être&quot; &quot;étudier&quot; &quot;éviter&quot; &quot;examiner&quot; &quot;exiger&quot; &quot;exister&quot; &quot;expliquer&quot; &quot;exposer&quot; &quot;exprimer&quot; &quot;exécuter&quot; &quot;faire&quot; &quot;falloir&quot; &quot;fatiguer&quot; &quot;fermer&quot; &quot;figurer&quot; &quot;finir&quot; &quot;fixer&quot; &quot;fonder&quot; &quot;forcer&quot; &quot;former&quot; &quot;franchir&quot; &quot;frapper&quot; &quot;fuir&quot; &quot;fumer&quot; &quot;gagner&quot; &quot;garder&quot; &quot;glisser&quot; &quot;grandir&quot; &quot;guider&quot; &quot;habiller&quot; &quot;habiter&quot; &quot;haïr&quot; &quot;heurter&quot; &quot;hésiter&quot; &quot;ignorer&quot; &quot;imaginer&quot; &quot;importer&quot; &quot;imposer&quot; &quot;indiquer&quot; &quot;inquiéter&quot; &quot;inspirer&quot; &quot;installer&quot; &quot;interroger&quot; &quot;intéresser&quot; &quot;inventer&quot; &quot;inviter&quot; &quot;jeter&quot; &quot;joindre&quot; &quot;jouer&quot; &quot;juger&quot; &quot;lever&quot; &quot;lier&quot; &quot;lire&quot; &quot;lisser&quot; &quot;livrer&quot; &quot;lutter&quot; &quot;maintenir&quot; &quot;manger&quot; &quot;manquer&quot; &quot;marcher&quot; &quot;marier&quot; &quot;marquer&quot; &quot;menacer&quot; &quot;mener&quot; &quot;mentir&quot; &quot;mettre&quot; &quot;monter&quot; &quot;montrer&quot; &quot;mourir&quot; &quot;mériter&quot; &quot;mêler&quot; &quot;naître&quot; &quot;nommer&quot; &quot;nourrir&quot; &quot;noyer&quot; &quot;obliger&quot; &quot;observer&quot; &quot;obtenir&quot; &quot;obéir&quot; &quot;occuper&quot; &quot;offrir&quot; &quot;oser&quot; &quot;oublier&quot; &quot;ouvrir&quot; &quot;paraître&quot; &quot;parcourir&quot; &quot;parer&quot; &quot;parler&quot; &quot;partager&quot; &quot;partir&quot; &quot;parvenir&quot; &quot;passer&quot; &quot;payer&quot; &quot;pencher&quot; &quot;pendre&quot; &quot;penser&quot; &quot;perdre&quot; &quot;permettre&quot; &quot;peser&quot; &quot;piquer&quot; &quot;placer&quot; &quot;plaindre&quot; &quot;plaire&quot; &quot;pleurer&quot; &quot;plier&quot; &quot;plonger&quot; &quot;porter&quot; &quot;poser&quot; &quot;posséder&quot; &quot;poursuivre&quot; &quot;pousser&quot; &quot;pouvoir&quot; &quot;prendre&quot; &quot;presser&quot; &quot;prier&quot; &quot;produire&quot; &quot;profiter&quot; &quot;promener&quot; &quot;promettre&quot; &quot;prononcer&quot; &quot;proposer&quot; &quot;protéger&quot; &quot;prouver&quot; &quot;précipiter&quot; &quot;précéder&quot; &quot;préférer&quot; &quot;préparer&quot; &quot;présenter&quot; &quot;prétendre&quot; &quot;prévenir&quot; &quot;prévoir&quot; &quot;prêter&quot; &quot;pénétrer&quot; &quot;quitter&quot; &quot;raconter&quot; &quot;ramasser&quot; &quot;ramener&quot; &quot;rappeler&quot; &quot;rapporter&quot; &quot;rassurer&quot; &quot;recevoir&quot; &quot;recueillir&quot; &quot;reculer&quot; &quot;redevenir&quot; &quot;refuser&quot; &quot;regarder&quot; &quot;regretter&quot; &quot;rejeter&quot; &quot;rejoindre&quot; &quot;relever&quot; &quot;remarquer&quot; &quot;remercier&quot; &quot;remettre&quot; &quot;remonter&quot; &quot;remplacer&quot; &quot;remplir&quot; &quot;rencontrer&quot; &quot;rendre&quot; &quot;renoncer&quot; &quot;rentrer&quot; &quot;renverser&quot; &quot;reposer&quot; &quot;repousser&quot; &quot;reprendre&quot; &quot;respecter&quot; &quot;respirer&quot; &quot;ressembler&quot; &quot;rester&quot; &quot;retenir&quot; &quot;retirer&quot; &quot;retomber&quot; &quot;retourner&quot; &quot;retrouver&quot; &quot;revenir&quot; &quot;revoir&quot; &quot;rire&quot; &quot;risquer&quot; &quot;rompre&quot; &quot;rouler&quot; &quot;réclamer&quot; &quot;réduire&quot; &quot;réfléchir&quot; &quot;répandre&quot; &quot;répondre&quot; &quot;répéter&quot; &quot;réserver&quot; &quot;résister&quot; &quot;résoudre&quot; &quot;réunir&quot; &quot;réussir&quot; &quot;réveiller&quot; &quot;révéler&quot; &quot;rêver&quot; &quot;saisir&quot; &quot;saluer&quot; &quot;satisfaire&quot; &quot;sauter&quot; &quot;sauver&quot; &quot;savoir&quot; &quot;sembler&quot; &quot;semer&quot; &quot;sentir&quot; &quot;serrer&quot; &quot;servir&quot; &quot;signer&quot; &quot;signifier&quot; &quot;songer&quot; &quot;sonner&quot; &quot;sortir&quot; &quot;souffler&quot; &quot;souffrir&quot; &quot;souhaiter&quot; &quot;soulever&quot; &quot;soumettre&quot; &quot;sourire&quot; &quot;soutenir&quot; &quot;souvenir&quot; &quot;subir&quot; &quot;suffire&quot; &quot;suivre&quot; &quot;supporter&quot; &quot;supposer&quot; &quot;surprendre&quot; &quot;surveiller&quot; &quot;séparer&quot; &quot;taire&quot; &quot;tendre&quot; &quot;tenir&quot; &quot;tenter&quot; &quot;terminer&quot; &quot;tirer&quot; &quot;tomber&quot; &quot;toucher&quot; &quot;tourner&quot; &quot;tracer&quot; &quot;traiter&quot; &quot;trancher&quot; &quot;travailler&quot; &quot;traverser&quot; &quot;traîner&quot; &quot;trembler&quot; &quot;tromper&quot; &quot;troubler&quot; &quot;trouver&quot; &quot;tuer&quot; &quot;user&quot; &quot;vaincre&quot; &quot;valoir&quot; &quot;veiller&quot; &quot;vendre&quot; &quot;venir&quot; &quot;verser&quot; &quot;visiter&quot; &quot;vivre&quot; &quot;voir&quot; &quot;voler&quot; &quot;vouloir&quot; &quot;voyager&quot; &quot;vêtir&quot;
+<span class="p">]</span>
+
+
+
+
+
+#===========================================================================#
+#########################NG VERB#################################
+#===========================================================================#
+
+
+#THEME/CATEGORY/TENSE/PERSON AND GRAMMATICAL NUMBER/PERSONAL PRONOUN#
+
+
+<span class="ow">concept</span>:(nogood_verb_pp)
+<span class="p">[</span>
+&quot;tapé&quot;
+&quot;tapée&quot;
+&quot;tapées&quot;
+&quot;tapés&quot;
+&quot;frappé&quot;
+&quot;frappée&quot;
+&quot;frappées&quot;
+&quot;frappés&quot;
+&quot;pincé&quot;
+&quot;pincée&quot;
+&quot;pincées&quot;
+&quot;pincés&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(nogood_verb_pt_1s)
+<span class="p">[</span>
+&quot;j&#39;ai tapé&quot;
+&quot;j&#39;ai frappé&quot;
+&quot;j&#39;ai pincé&quot;
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(nogood_verb_inf)
+<span class="p">[</span>
+&quot;taper&quot;
+&quot;frapper&quot;
+&quot;pincer&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_inf_ppc3s)
+<span class="p">[</span>
+&quot;[le la] taper&quot;
+&quot;[le la] frapper&quot;
+&quot;[le la] pincer&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_inf_ppc2s)
+<span class="p">[</span>
+&quot;te taper&quot;
+&quot;te frapper&quot;
+&quot;te pincer&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_inf_ppc1s)
+<span class="p">[</span>
+&quot;me taper&quot;
+&quot;me frapper&quot;
+&quot;me pincer&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(nogood_verb_imper_2s)
+<span class="p">[</span>
+&quot;tape&quot;
+&quot;frappe&quot;
+&quot;pince&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_imper_2p)
+<span class="p">[</span>
+&quot;tapez&quot;
+&quot;frappez&quot;
+&quot;pincez&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_present_1s)
+<span class="p">[</span>
+&quot;je tape&quot;
+&quot;je frappe&quot;
+&quot;je pince&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_subjPresent_1s_ppc2)
+<span class="p">[</span>
+&quot;que je te tape&quot;
+&quot;que je te frappe&quot;
+&quot;que je te pince&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_imper_2s_ppd1s)
+<span class="p">[</span>
+&quot;tape-moi&quot;
+&quot;frappe-moi&quot;
+&quot;pince-moi&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(nogood_verb_futur_1s)
+<span class="p">[</span>
+&quot;je taperai&quot;
+&quot;je vais taper&quot;
+&quot;je frapperai&quot;
+&quot;je vais frapper&quot;
+&quot;je pincerai&quot;
+&quot;je vais pincer&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(nogood_verb_futur_1s_passif)
+<span class="p">[</span>
+&quot;je serai tapé&quot;
+&quot;je vais me faire taper&quot;
+&quot;je serai frappé&quot;
+&quot;je vais me faire frapper&quot;
+&quot;je serai pincé&quot;
+&quot;je vais me faire pincer&quot;
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(nogood_verb_futur_1s_ppc2)
+<span class="p">[</span>
+&quot;je te taperai&quot; 
+&quot;je vais te taper&quot;
+&quot;je te frapperai&quot; 
+&quot;je vais te frapper&quot;
+&quot;je te pincerai&quot;
+&quot;je vais te pincer&quot;
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(nogood_verb_futur_1p_ppc2)
+<span class="p">[</span>
+&quot;on te tapera&quot;
+&quot;on va te taper&quot;
+&quot;on te frappera&quot; 
+&quot;on va te frapper&quot;
+&quot;on te pincera&quot;
+&quot;on va te pincer&quot;
+<span class="p">]</span>
+
+
+
+<span class="ow">concept</span>:(brutal_order)
+<span class="p">[</span>
+&quot;tape&quot;
+&quot;frappe&quot;
+&quot;pince&quot;
+<span class="p">]</span>
+
+
+
+
+
+<span class="ow">concept</span>:(sad_verb_pp)
+<span class="p">[</span>
+&quot;déçu&quot; &quot;déçue&quot; &quot;déçus&quot; &quot;déçues&quot; &quot;dégouté&quot; &quot;dégoutés&quot; &quot;dégoutée&quot; &quot;dégoutées&quot; &quot;désenchanté&quot; &quot;désenchantés&quot; &quot;désenchantée&quot; &quot;désenchantées&quot; &quot;dépité&quot; &quot;dépités&quot; &quot;dépitée&quot; &quot;dépitées&quot; &quot;trahi&quot; &quot;trahis&quot; &quot;trahie&quot; &quot;trahies&quot; &quot;blessé&quot; &quot;blessés&quot; &quot;blessée&quot; &quot;blessées&quot; &quot;choqué&quot; &quot;choqués&quot; &quot;choquée&quot; &quot;choquées&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(pain_verb_inf)
+<span class="p">[</span>
+&quot;souffrir&quot;
+&quot;avoir mal&quot;
+&quot;peiner&quot;
+&quot;subir&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(pain_verb_pres_1s)
+<span class="p">[</span>
+&quot;je souffre&quot;
+&quot;j&#39;ai mal&quot;
+&quot;je peine&quot;
+&quot;je subis&quot;
+&quot;je pleure&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(pain_verb_pres_1p)
+<span class="p">[</span>
+&quot;on souffre&quot;
+&quot;nous souffrons&quot;
+&quot;on a mal&quot;
+&quot;nous avons mal&quot;
+&quot;on peine&quot;
+&quot;nous peinons&quot;
+&quot;on subit&quot;
+&quot;nous subissons&quot;
+&quot;on pleure&quot;
+&quot;nous pleurons&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(pain_verb_pt_1s)
+<span class="p">[</span>
+&quot;j&#39;ai souffert&quot;
+&quot;j&#39;ai eu mal&quot;
+&quot;j&#39;ai peiné&quot;
+&quot;j&#39;ai subi&quot;
+&quot;j&#39;ai pleuré&quot;
+<span class="p">]</span>
+
+
+#=======================================================================#
+#########################GIVE VERB#################################
+#=======================================================================#
+<span class="ow">concept</span>:(gift_verb_inf)
+<span class="p">[</span>
+&quot;offrir&quot;
+&quot;donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1s)
+<span class="p">[</span>
+&quot;j&#39;offre&quot;
+&quot;je donne&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1s_ppc1)
+<span class="p">[</span>
+&quot;je m&#39;offre&quot;
+&quot;je me donne&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1s_ppc2)
+<span class="p">[</span>
+&quot;je t&#39;offre&quot;
+&quot;je te donne&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1s_ppc3)
+<span class="p">[</span>
+&quot;je [lui leur] offre&quot;
+&quot;je [lui leur] donne&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1p)
+<span class="p">[</span>
+&quot;on offre&quot;
+&quot;nous offrons&quot;
+&quot;on donne&quot;
+&quot;nous donnons&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1p_ppc1)
+<span class="p">[</span>
+&quot;on m&#39;offre&quot;
+&quot;on me donne&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1p_ppc2)
+<span class="p">[</span>
+&quot;on t&#39;offre&quot;
+&quot;nous t&#39;offrons&quot;
+&quot;on te donne&quot;
+&quot;nous te donnons&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pres_1p_ppc3)
+<span class="p">[</span>
+&quot;on [lui leur] offre&quot;
+&quot;nous [lui leur] offrons&quot;
+&quot;on [lui leur] donne&quot;
+&quot;nous [lui leur] donnons&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1s)
+<span class="p">[</span>
+&quot;j&#39;ai offert&quot;
+&quot;j&#39;ai donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1s_ppc1)
+<span class="p">[</span>
+&quot;je me suis offert&quot;
+&quot;je me suis donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1s_ppc2)
+<span class="p">[</span>
+&quot;je t&#39;ai offert&quot;
+&quot;je t&#39;ai donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1s_ppc3)
+<span class="p">[</span>
+&quot;je leur ai offert&quot;
+&quot;je leur ai donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1p)
+<span class="p">[</span>
+&quot;on a offert&quot;
+&quot;nous avons offert&quot;
+&quot;on a donné&quot;
+&quot;nous avons donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1p_ppc1)
+<span class="p">[</span>
+&quot;on m&#39;a offert&quot;
+&quot;on m&#39;a donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1p_ppc2)
+<span class="p">[</span>
+&quot;on t&#39;a offert&quot;
+&quot;on t&#39;a donné&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_pt_1p_ppc3)
+<span class="p">[</span>
+&quot;on [lui leur] a offert&quot;
+&quot;on [lui leur] a donné&quot;
+&quot;nous [lui leur] avons offert&quot;
+&quot;nous [lui leur] avons donné&quot;
+<span class="p">]</span>
+
+
+<span class="ow">concept</span>:(gift_verb_futur_1s)
+<span class="p">[</span>
+&quot;j&#39;offrirai&quot;
+&quot;je vais offrir&quot;
+&quot;je donnerai&quot;
+&quot;je vais donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1s_ppc1)
+<span class="p">[</span>
+&quot;je m&#39;offrirai&quot;
+&quot;je vais m&#39;offrir&quot;
+&quot;je me donnerai&quot;
+&quot;je vais me donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1s_ppc2)
+<span class="p">[</span>
+&quot;je t&#39;offrirai&quot;
+&quot;je vais t&#39;offrir&quot;
+&quot;je te donnerai&quot;
+&quot;je vais te donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1s_ppc3)
+<span class="p">[</span>
+&quot;je [lui leur] offrirai&quot;
+&quot;je vais [lui leur] offrir&quot;
+&quot;je [lui leur] donnerai&quot;
+&quot;je vais [lui leur] donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1p)
+<span class="p">[</span>
+&quot;on offrira&quot;
+&quot;nous offrirons&quot;
+&quot;on va offrir&quot;
+&quot;nous allons offrir&quot;
+&quot;on donnera&quot;
+&quot;nous donnerons&quot;
+&quot;on va donner&quot;
+&quot;nous allons donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1p_ppc1)
+<span class="p">[</span>
+&quot;on m&#39;offrira&quot;
+&quot;on va m&#39;offrir&quot;
+&quot;on me donnera&quot;
+&quot;on va me donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1p_ppc2)
+<span class="p">[</span>
+&quot;on t&#39;offrira&quot;
+&quot;nous t&#39;offrirons&quot;
+&quot;on va t&#39;offrir&quot;
+&quot;nous allons t&#39;offrir&quot;
+&quot;on te donnera&quot;
+&quot;nous te donnerons&quot;
+&quot;on va te donner&quot;
+&quot;nous allons te donner&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(gift_verb_futur_1p_ppc3)
+<span class="p">[</span>
+&quot;on [lui leur] offrira&quot;
+&quot;nous [lui leur] offrirons&quot;
+&quot;on va [lui leur] offrir&quot;
+&quot;nous allons [lui leur] offrir&quot;
+&quot;on [lui leur] donnera&quot;
+&quot;nous [lui leur] donnerons&quot;
+&quot;on va [lui leur]  donner&quot;
+&quot;nous allons [lui leur]  donner&quot;
+<span class="p">]</span>
+
+
+
+#============#
+### OTHERS ###
+#============#
+
+<span class="ow">concept</span>:(robot_impossible_actions_inf)
+<span class="p">[</span>
+&quot;boire $1spp=bois $1spn=&quot;bois pas&quot;&quot;
+&quot;manger $1spp=mange $1spn=&quot;mange pas&quot;&quot;
+&quot;nager $1spp=nage $1spn=&quot;nage pas&quot;&quot;
+&quot;voler $1spp=vole $1spn=&quot;vole pas&quot;&quot;
+&quot;faire caca $1spn=&quot;fais pas caca&quot; $1spp=&quot;fais caca&quot;&quot;
+&quot;faire pipi $1spn=&quot;fais pas pipi&quot; $1spp=&quot;fais pipi&quot; &quot;
+&quot;chier $1spp=chie $1spn=&quot;chie pas&quot;&quot;
+&quot;pisser $1spp=pisse $1spn=&quot;pisse pas&quot;&quot;
+&quot;respirer $1spp=respire $1spn=&quot;respire pas&quot;&quot;
+&quot;pleurer $1spp=pleure $1spn=&quot;pleure pas&quot;&quot;
+<span class="p">]</span>
+
+<span class="ow">concept</span>:(robot_impossible_actions_2spp)
+<span class="p">[</span>
+&quot;bois $1spp=bois $1spn=&quot;bois pas&quot;&quot;
+&quot;manges $1spp=mange $1spn=&quot;mange pas&quot;&quot;
+&quot;nages $1spp=nage $1spn=&quot;nage pas&quot;&quot;
+&quot;voles $1spp=vole $1spn=&quot;vole pas&quot;&quot;
+&quot;fais caca $1spn=&quot;fais pas caca&quot; $1spp=&quot;fais caca&quot;&quot;
+&quot;fais pipi $1spn=&quot;fais pas pipi&quot; $1spp=&quot;fais pipi&quot; &quot;
+&quot;chies $1spp=chie $1spn=&quot;chie pas&quot;&quot;
+&quot;pisses $1spp=pisse $1spn=&quot;pisse pas&quot;&quot;
+&quot;respires $1spp=respire $1spn=&quot;respire pas&quot;&quot;
+&quot;pleures $1spp=pleure $1spn=&quot;pleure pas&quot;&quot;
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index_dev_guide.html">NAOqi - Developer guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_nao.html"><strong>NAO</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../../contents.html">Site map</a>
+      <a title="Index" href="../../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

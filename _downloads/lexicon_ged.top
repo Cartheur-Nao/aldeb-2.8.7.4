@@ -1,0 +1,746 @@
+topic: ~lexicon()
+language: ged
+
+
+dynamic:robotname
+dynamic:friendlyname
+dynamic:all_descriptions
+dynamic:all_languages
+dynamic:myrobotname
+
+dynamic:app-name
+dynamic:app-dance
+dynamic:app-game
+dynamic:app-story
+
+dynamic:klg_thing
+dynamic:klg_definition
+dynamic:klg_date
+
+#==================================================================#
+##### Robot concepts #####
+#------------------------------------------------------------------#
+concept:(ald_robots) [~robotname ~myrobotname Nao Pepper Romeo]
+
+#==================================================================#
+##### Snippets #####
+#------------------------------------------------------------------#
+concept:(can_you) ["[kannst könntest] du" "[meinst glaubst] du du [kannst könntest]"]
+concept:(are_you) ["bist du"]
+concept:(what_is) ["{"sag mir"} was [ist "war {nochmal}"]" "wie [ist "war {nochmal}"]"]
+
+concept:(can_i) [ 
+    "[kann könnte darf dürfte] ich"
+    "[können könnten dürfen dürften] wir"
+    "ich würde {gerne}"
+    "wäre es für dich ok wenn ich"
+    "ist es möglich dass ich"
+]
+
+#------------------------------------------------------------------#
+
+concept:(it) [es "[dieses jenes] {ding zeug} {da}"] 
+concept:(it_is) ["das ist" "[es das dies] [ist war]" "{nun "ich glaube"} es ist" "es ist {zweifellos sicherlich natürlich}"]
+concept:(i_want) "ich ["möchte {gerne lieber}" will "würde {gerne lieber}"]"
+concept:(i_dont_want) ["ich [möchte will] [nicht keinen keine]"]
+concept:(do) [mach' mache tue tu']
+concept:(say) [Sag' Sage Nenn' Nenne]
+
+concept:(i_guess) [ 
+    "["ich glaube" "ich denke" "ich bin mir sicher" "natürlich"] {~it_is}"
+    "könnte es [folgendes das] sein"
+    "{es} sieht so aus als wäre es"
+    "meinem Gefühl nach"
+    "ich könnte mir vorstellen dass"
+    "ich würde [sagen raten antworten empfehlen vorschlagen]"
+]
+
+concept:(show_me) [
+    "[zeig' zeige] es {mir ihm ihr uns ihnen}"    
+    "~can_you es {mir ihm ihr uns ihnen} zeigen"    
+    "~can_you {mir ihm ihr uns ihnen} das vorführen"     
+    "~can_you das [machen tun]"    
+    "~do {du} [es jenes das]"
+    "[zeig' zeige] [mir ihm ihr uns ihnen]"
+    "demonstriere [mir ihm ihr uns ihnen]"
+]
+
+#==================================================================#
+##### Vocabulary #####
+#------------------------------------------------------------------#
+concept:(months) [januar februar märz april mai juni juno juli julei august september oktober november dezember]
+concept:(week_days) [montag dienstag mittwoch donnerstag freitag samstag sonnabend sonntag]
+
+concept:(robot_impossible_actions)[
+    schwimmen
+    fliegen
+    "auf die Toilette gehen"
+    "auf Klo gehen"
+    "kacken"
+    pinkeln
+    "ein [großes kleines] Geschäft erledigen"
+    atmen
+    weinen
+]
+
+concept:(robot_impossible_actions_conj)[
+    "schwimmst du"
+    "fliegst du"
+    "gehst du auf die Toilette"
+    "gehst du aufs Klo"
+    "gehst du kacken"
+    "erledigst du [kleine große] Geschäfte"
+    "pinkelst du"
+    "atmest du"
+    "weinst du"
+]
+
+#==================================================================#
+##### Full inputs #####
+#------------------------------------------------------------------#
+concept:(you_didnt_understand) [
+    "du hast ["{gar überhaupt} nichts" "kein wort"] [davon "von dem"] [verstanden wahrgenommen "zur Kenntnis genommen" kapiert gerafft mitbekommen gecheckt] {"was ich [sage "gesagt habe"]"}"
+    "du hast {das} nicht [verstanden wahrgenommen "zur Kenntnis genommen" kapiert gerafft mitbekommen gecheckt] {"was ich [sage "gesagt habe"]"}"
+    "das ist {total} [falsch daneben "nicht richtig"]"
+    "du hast {"{immer} noch"} nicht {ganz} alles  verstanden"
+    "du verstehst [es das] nicht"
+]
+
+concept:(what_is_your_name) [
+    "~what_is dein name"
+    "wie [soll sollte kann darf] ich dich [nennen anreden ansprechen]"
+    "["weißt du" "sag mir"] ["wie dein name lautet" "deinen namen"]"
+    "~say mir wer du bist"
+    "wie heißt du"
+    "[gib' ~say] mir deinen namen"
+    "wie ["nennen sie dich" "wirst du genannt" "nenne ich dich" "nennt man dich"]"
+    "wie lautet dein name"
+    "~i_want dass du mir deinen Namen [nennst gibst sagst]"
+]
+
+concept:(what_else)[
+    "das war's"
+    "was noch"
+    "außerdem"
+    "sonst {noch} [irgendwas was etwas]"
+    "hast du keine {weiteren} [Apps Anwendungen Fähigkeiten Aktivitäten] {mehr}"
+    "~can_you mir das zeigen"
+    "[gib' ~say] mir ein Beispiel"
+    "kannst du noch [was mehr]"
+    "ist das etwa {schon bereits} alles"
+    "noch mehr"
+    "~show_me ["noch was" mehr]"
+    "ich will mehr {sehen}"
+    "hast du noch [was mehr anderes weiteres "was anderes"] {"auf lager"}"
+]
+
+concept:(help) [
+    "["würdest du" ~can_you] mir helfen"
+    "ich brauche {nun jetzt} {deine} hilfe"
+    "~can_you mir {"ein paar" einige bestimmte} [infos informationen tipps] geben"
+    "ich [brauche benötige suche] {"ein paar" einige bestimmte} [infos informationen tipps details]"
+    "ich {brauche benötige} [hilfe "[eine deine] hilfestellung"]"
+    "{bitte} hilf' mir"
+]
+
+concept:(shut_up) [
+    "~can_you {bitte} ["ruhig sein" "[deinen den] schnabel halten" "[deine die] fresse halten"]"
+    "[bleib' sei'] {einfach} [leise ruhig still]"
+    "herrgott {nochmal} ["sei' [leise ruhig still]" "sag' jetzt nichts" "halt' ["[deine die] [schnauze klappe fresse]" "dein maul" "[den deinen] Mund"]"]"
+    "halt' ["[deine die] [schnauze klappe fresse]" "dein maul" "[den deinen] Mund"]"
+    "ich möchte darüber nicht {mehr} [reden sprechen diskutieren debattieren]"
+    "[beenden unterbrechen] wir hier die [diskussion unterhaltung konversation]"
+    "[beenden unterbrechen] wir hier das [gespräch Wortgefecht]"
+    "[beenden unterbrechen] wir hier den [streit]"
+    "{bitte} lass uns aufhören zu [reden sprechen diskutieren chatten]"
+    "halts maul"
+    "[silenzio stille] {bitte}"
+    "schnauze"
+    "hör' auf zu reden"
+    "~i_want dass du ["[deine die] [schnauze klappe fresse]" "dein maul" "[den deinen] Mund"] hälst"
+]
+
+concept:(talk_again) [
+    "[sprich' rede] {wieder} mit mir"
+    "~can_you wieder [sprechen reden]"
+    "[Sprich' rede] wieder"
+    "[sprechen reden] wir {wieder miteinander "wieder miteinander"}"
+    "ich [spreche rede] mit dir"
+    "mach' den Mund {wieder} auf"
+    "~i_want dass du {wieder} [sprichst redest]" 
+]
+
+concept:(repeat_it) [
+    "wiederhole {mir} {bitte} [die deine] {letzte} frage"
+    "was ist {noch mal} die Frage"
+    "wiederhole {mir} {bitte} [den deinen] {letzten} satz"
+    "wiederhole {bitte} das [letzte "zuletzt gesagte"]"
+    "~can_you {mir} das {bitte} {"noch einmal" "nochmal"} sagen"
+    "~can_you das {bitte} {"noch einmal" "nochmal"} wiederholen"
+    "~can_you  {mir} {bitte} die frage {nochmal "noch einmal"} [nennen stellen]"
+    "{bitte} sag' [es das] [nochmal "noch einmal"]"
+    "wie [lautete war] {"noch einmal" "nochmal"} {die Frage}"
+    "was ["hast du {"noch einmal" "nochmal"} gesagt" "sagtest du {"noch einmal" "nochmal"}" "war das letzte"]"
+    "{bitte} stelle {mir} [die diese] frage [nochmal "noch einmal"]"
+    "wiederhole das {bitte}  {nochmal "noch einmal"}"
+    "[nochmal "noch einmal"]"
+    "[sage frage] {das} [nochmal "noch einmal"]"
+    "[was wie] war {"noch einmal" "nochmal"} die Frage"
+    "{~can_you} die [animation bewegung geste] [wiederholen "noch mal machen"]"
+    "{~can_you} das {geräusch} [wiederholen "noch mal machen"]"
+    "wiederhole"
+    "~can_you das wiederholen"
+    "~i_want dass du das [wiederholst "nochmal [tust machst sagst]"]"
+    "wiederhole [es dies das]"
+    "wiederhole [es dies das] {erneut "noch einmal" nochmal}"
+]
+
+concept:(i_didnt_understand) [ 
+    "{sorry entschuldigung "tut mir leid"} ich habe [dies das alles "all' das" es] nicht [verstanden mitbekommen gecheckt wahrgenommen gerafft "zur Kenntnis genommen" kapiert]"
+    "ich habe nicht verstanden {"was du meinst" "[worüber wovon] du {da} [sprichst redest laberst]"}" 
+    "was ist das" 
+    "ich [verstehe kapiere checke] das nicht" 
+    "was [sagst meinst willst] du" 
+    "was ["sagst du" "versuchst du {mir} zu sagen"]" 
+    "[dies das] macht {überhaupt} keinen sinn"
+    "ich habe [dies das alles "all' das" es] nicht verstanden"
+    "ich habe nicht mitbekommen was du gesagt hast"
+    "ich habe dich nicht [gehört "zur Kenntnis genommen" wahrgenommen verstanden]"
+    "was hast du gesagt"
+]
+
+concept:(thank_you) [
+    "ich danke dir"
+    "danke {sehr dir vielmals}"
+    "vielen dank"
+    "dankeschön"
+]
+
+concept:(i_dont_care) [
+    "das ist {mir} {total vollkommen ganz völlig} [egal gleichgültig einerlei wurst]"
+    "{"ich habe"} ["kein interesse" "keinen bedarf"]"
+    "das interessiert mich einen feuchten [kehricht dreck]"
+    "das interessiert mich nicht"
+]
+
+concept:(i_dont_know) [
+    "ich weiß nichts {davon}"
+    "{davon} weiß ich nichts"
+    "ich habe {davon} [keine "nicht die geringste"] [vorstellung ahnung idee]"
+    "{"ich habe"} [keine keinerlei] ahnung {davon}"
+    "ich habe nie davon [gehört erfahren]"
+    "{das} weiß ich nicht"
+    "ich kenne mich damit nicht aus"
+    "ich weis es nicht"
+]
+
+concept:(im_not_sure) [
+    "ich bin {mir} {da} nicht {so} sicher"
+    "ich bin unsicher"
+    "ich zögere noch"
+]
+
+concept:(do_it_again) [
+   "~do [es dies das] [erneut "noch einmal" "nochmal"]"
+   "~can_you das {bitte} {"noch einmal" "nochmal"} wiederholen"
+   "wiederhole das {bitte}  {nochmal "noch einmal"}"
+   "[nochmal "noch einmal"]"
+   "{~can_you} die [animation bewegung geste] [wiederholen "noch mal machen"]"
+   "wiederhole"
+   "~can_you das wiederholen"
+   "~i_want dass du das [wiederholst "nochmal [tust machst sagst]"]"
+   "wiederhole [es dies das]"
+   "wiederhole [es dies das] {erneut "noch einmal" nochmal}"
+]
+
+concept:(its_up_to_you)[
+    "[~it_is "das liegt"] ganz bei dir"
+    "["was immer" "was auch immer"] {"du möchtest"}"
+    "du [wählst "suchst aus" entscheidest]"
+    "enscheide du ["für mich" das]"
+    "["[such' suche] aus" wähle wähl'] für mich"
+    "wie du [wünschst willst möchtest]"
+    "[sag' sage entscheide] du {"was [gemacht getan] [wird "werden soll"]"}"
+    "[wähl' wähle] du für mich"
+    "{das} kannst du entscheiden"
+    "mir egal"
+]
+
+concept:(im_good) "[
+    "mir ["geht es" geht's] ["{sehr} gut" wunderbar großartig perfekt grandios umwerfend hervorragend unbeschreiblich super ausgezeichnet]"
+    "ich bin guter Dinge" 
+    "ich bin bereit sofort loszulegen" 
+    "ich bin in ["bester laune" "Höchstform" "Bestform"]"
+    "["{sehr} gut" wunderbar großartig perfekt grandios umwerfend hervorragend unbeschreiblich super ausgezeichnet]"
+    "[alles sehr] gut"
+    "es geht ["{sehr} gut" wunderbar großartig perfekt grandios umwerfend hervorragend unbeschreiblich super ausgezeichnet]" 
+    "ziemlich gut"
+    "bei mir läufts ["{sehr} gut" wunderbar großartig perfekt grandios umwerfend hervorragend unbeschreiblich super ausgezeichnet]"
+    "läuft ["{sehr} gut" wunderbar großartig perfekt grandios umwerfend hervorragend unbeschreiblich super ausgezeichnet]"
+]{"danke der Nachfrage"}"
+
+concept:(i_dont_feel_good) [
+    "[beschissen schlecht "nicht {sehr} gut" scheiße "nicht {so} [super gut]" "{sehr ziemlich} schlecht" "{gar} nicht {so} gut"]"
+    "es geht {mir} [beschissen schlecht "nicht {sehr} gut" scheiße "nicht {so} [super gut]" "{sehr ziemlich} schlecht" "{gar} nicht {so} gut"]"
+    "mir ["geht es" geht's] [beschissen schlecht "nicht {sehr} gut" scheiße "nicht {so} [super gut]" "{sehr ziemlich} schlecht" "{gar} nicht {so} gut"]"
+    "ich fühle mich [beschissen schlecht "nicht {sehr} gut" scheiße "nicht {so} [super gut]" "{sehr ziemlich} schlecht" "{gar} nicht {so} gut"]"
+    "ich fühle mich nicht in Höchstform"
+    "ich bin nicht sehr gut in Form"
+    "ich bin außer mir {"vor Wut"}"
+]
+
+concept:(im_ok) [
+    "ich bin ok"
+    "{ist} ["nicht so wichtig" egal]
+    "mir ["geht es" geht's] [mittelmäßig "{halbwegs} ok" "nicht {allzu} schlecht" "so lala" "gut genug"]
+    "es ging mir schon besser"
+    "[mittelmäßig "{halbwegs} ok" "nicht {allzu} schlecht" "so lala" "gut genug"]"
+]
+
+concept:(im_sick) [
+    "mir ist {"ein bisschen" etwas "ein wenig" sehr} [übel schlecht schwindelig]"
+    "ich fühle mich {"ein bisschen" etwas "ein wenig" sehr} [krank verschnupft mulmig verstopft]"
+    "ich habe {sehr schlimme "sehr schlimme"} [kopfschmerzen halsschmerzen bauchschmerzen windpocken masern]"
+    "ich habe eine {sehr} schlimme [erkältung racheninfektion halsentzündung migräne "magen-darmgrippe" Ohrenentzündung]"
+    "ich habe einen {sehr} steifen nacken"
+    "ich habe {einen} {sehr} schlimmen husten"
+    "ich habe ein ["paar schlimme blasen" "gebrochenes Bein"]"
+    "ich habe [husten schnupfen "{etwas} Fieber"]"
+    "mein kopf tut weh"
+    "ich habe eine [verstauchung sehnenscheidenentzündung "gebrochene Hand"]"
+    "ich habe mir etwas gebrochen"
+    "ich habe einen ["verstauchten knöchel" "gebrochenen [fuß Arm]"]"
+    "ich ["habe mich" bin] verletzt"
+    "ich habe mir den Knöchel [verknackst verstaucht]"
+    "ich bin {"ein bisschen" etwas "ein wenig" sehr} krank"
+]
+
+concept:(im_tired)[
+    "ich muss [schlafen "zu bett"]"
+    "ich brauche etwas Schlaf"
+    "{ich} bin [müde erschöpft abgekämpft tot ausgeschaltet kaputt gedämpft schläfrig]"
+    "ich fühle mich {"plötzlich {"ein wenig"}" "ein wenig" "viel zu"} [müde erschöpft abgekämpft tot ausgeschaltet kaputt gedämpft schläfrig]"
+]
+
+concept:(im_drunk)[
+    "Ich habe zu viel {Alkohol} getrunken"
+    "Ich bin {total} [betrunken beschwipst besoffen]"
+    "Ich hab mich total betrunken"
+    "Ich habe einen schlimmen Kater"
+    "Ich hab' total den Kater"
+    "Ich bin verkatert"
+    "Ich bin {etwas} [angeschwipst angetrunken]"
+]
+
+concept:(highfive)[
+    "highfive"
+    "hai faif"
+    "Schlag ein"
+    "Gib mir Fünf"
+]
+
+concept:(handshake)[
+    "~can_you meine [Hand Hände] schütteln"
+    "schüttle meine Hand"
+    "[Schütteln Geben] wir uns die Hand"
+    "Gib mir [die deine] Hand"
+    "Gibst du mir [die deine] Hand"
+    "Lass uns Hände schütteln"
+]
+
+concept:(fistbump)[
+    "Faustschlag"
+    "Hau' rein"
+    "Ghettofaust"
+    "Brofist"
+]
+
+concept:(lowfive)[
+    "von unten"
+    "low-five"
+    "lo faif"
+]
+concept:(hug)[
+    "[drücke drück' umarme] mich"
+    "Ich will eine Umarmung"
+    "Ich will dich umarmen"
+    "~can_you mich [drücken umarmen]"
+    "Zeit für eine Umarmung"
+    "gib mir eine umarmung"
+    "Umarmst du mich"
+]
+
+#------------------------------------------------------------------#
+concept:(yes) [
+    e:Dialog/Yes
+    "{oh} [ja doch] {genau bitte "ich auch" natürlich "ich {sicher} auch" sicherlich}"
+    "ok {sicher "warum nicht"}"
+    richtig
+    gut großartig  toll perfekt  cool absolut exzellent hervorragend klar
+    "na gut"
+    natürlich
+    "sicher {"ich will"}"
+    wahr
+    jap
+    "{mach} weiter"
+    "~it_is [es richtig gut sicher]"
+    "~it_is wahr"
+    "du hast recht"
+    "auf jeden fall"
+    "warum nicht"
+    natürlich
+    total
+    definitiv
+    "{ja} das würde ich {"{liebend} gern"} {tun}"
+    "mit vergnügen"
+    "wenn du [willst möchtest]"
+    "kein [problem sorge]"
+    zweifellos
+    sozusagen
+    schätzungsweise
+    vielleicht
+    quasi
+    "[gute hervorragende] idee"
+    exakt
+    "sehr gut"
+    "du hast es {erraten}"
+    "aber klar"
+    "ich stimme zu"
+    "ich hätte nichts dagegen"
+    "das hört sich [gut großartig  toll cool exzellent hervorragend "nach einem mordsspaß"] an"
+    "das kannst du {gerne} machen"
+    "~do es"
+    "[denk' denke] ich mal so"
+    "ich [denk' denke schätze] ja"
+    "auf gehts"
+    "los gehts"
+    "gute idee"
+    "Find ich gut"
+]
+#------------------------------------------------------------------#
+concept:(no) [
+    e:Dialog/No
+    "{oh} [nein] {danke "danke [das es] [reicht "ist gut" "ist genug"]"}"
+    "auf {gar} keinen fall"
+    "{nein} nicht [wirklich "im geringsten" "jetzt" "so sehr"]"
+    "ich bin nicht interessiert"
+    "{nein} ["das möchte ich nicht"]"
+    "{"ich bin mir {da}"} nicht {ganz} sicher"
+    "ich denke nicht"
+    "ich werde darüber nachdenken"
+    "{überhaupt} nicht"
+    "[definitiv absolut wahrscheinlich gar noch überhaupt] nicht"
+    "davon träumst du"
+    "träumst du" 
+    "träum weiter"
+    "nicht ["{gerade} jetzt" "im moment"]"
+    "wohl kaum"
+    "ich bin nicht einverstanden"
+    "{danke} das tut es schon"
+    "das ist nicht wahr"
+    "das ist falsch"
+    kaum
+    "das geht dich nichts an"
+    "damit hast du nichts zu tun"
+    "was kümmert dich das"
+    "da hast du nichts mit zu tun"
+    "kümmer dich um deinen {eigenen} [Mist dreck]"
+    "kehr' mal vor deiner eigenen haustür"
+    "das geht dich nichts an"
+    "nie {"im leben"}"
+    "das interessiert mich nicht"
+    "das macht mich nicht an"
+    "nicht wirklich"
+    "keine frage"
+    "das ist {knapp voll} daneben"
+    "du bist auf dem holzweg"
+    "danach ist mir {gar} nicht {zumute}"
+    "vielleicht später"
+    "ein anderes mal"
+    "doch nicht"
+]
+
+#==================================================================#
+##### NUMBER #####
+#------------------------------------------------------------------#
+concept:(number_0_100)["0 $num=0" "null $num=0" "1 $num=1" "eins $num=1" "2 $num=2" "zwei $num=2" "3 $num=3" "drei $num=3" "4 $num=4" "vier $num=4" "5 $num=5" "fünf $num=5" "6 $num=6" "sechs $num=6" "7 $num=7" "sieben $num=7" "8 $num=8" "acht $num=8" "9 $num=9" "neun $num=9" "10 $num=10" "zehn $num=10" "11 $num=11" "elf $num=11" "12 $num=12" "zwölf $num=12" "13 $num=13" "dreizehn $num=13" "14 $num=14" "vierzehn $num=14" "15 $num=15" "fünfzehn $num=15" "16 $num=16" "sechzehn $num=16" "17 $num=17" "siebzehn $num=17" "18 $num=18" "achtzehn $num=18" "19 $num=19" "neunzehn $num=19" "20 $num=20" "zwanzig $num=20" "21 $num=21" "einundzwanzig $num=21" "22 $num=22" "zweiundzwanzig $num=22" "23 $num=23" "dreiundzwanzig $num=23" "24 $num=24" "vierundzwanzig $num=24" "25 $num=25" "fünfundzwanzig $num=25" "26 $num=26" "sechsundzwanzig $num=26" "27 $num=27" "siebenundzwanzig $num=27" "28 $num=28" "achtundzwanzig $num=28" "29 $num=29" "neunundzwanzig $num=29" "30 $num=30" "dreiβig $num=30" "31 $num=31" "einunddreiβig $num=31" "32 $num=32" "zweiunddreißig $num=32" "33 $num=33" "dreiunddreißig $num=33" "34 $num=34" "vierunddreißig $num=34" "35 $num=35" "fünfunddreißig $num=35" "36 $num=36" "sechsunddreißig $num=36" "37 $num=37" "siebenunddreißig $num=37" "38 $num=38" "achtunddreißig $num=38" "39 $num=39" "neununddreißig $num=39" "40 $num=40" "vierzig $num=40" "41 $num=41" "einundvierzig $num=41" "42 $num=42" "zweiundvierzig $num=42" "43 $num=43" "dreiundvierzig $num=43" "44 $num=44" "vierundvierzig $num=44" "45 $num=45" "fünfundvierzig $num=45" "46 $num=46" "sechsundvierzig $num=46" "47 $num=47" "siebenundvierzig $num=47" "48 $num=48" "achtundvierzig $num=48" "49 $num=49" "neunundvierzig $num=49" "50 $num=50" "fünfzig $num=50" "51 $num=51" "einundfünfzig $num=51" "52 $num=52" "zweiundfünfzig $num=52" "53 $num=53" "dreiundfünfzig $num=53" "54 $num=54" "vierundfünfzig $num=54" "55 $num=55" "fünfundfünfzig $num=55" "56 $num=56" "sechsundfünfzig $num=56" "57 $num=57" "siebenundfünfzig $num=57" "58 $num=58" "achtundfünfzig $num=58" "59 $num=59" "neunundfünfzig $num=59" "60 $num=60" "sechzig $num=60" "61 $num=61" "einundsechzig $num=61" "62 $num=62" "zweiundsechzig $num=62" "63 $num=63" "dreiundsechzig $num=63" "64 $num=64" "vierundsechzig $num=64" "65 $num=65" "fünfundsechzig $num=65" "66 $num=66" "sechsundsechzig $num=66" "67 $num=67" "siebenundsechzig $num=67" "68 $num=68" "achtundsechzig $num=68" "69 $num=69" "neunundsechzig $num=69" "70 $num=70" "siebzig $num=70" "71 $num=71" "einundsiebzig $num=71" "72 $num=72" "zweiundsiebzig $num=72" "73 $num=73" "dreiundsiebzig $num=73" "74 $num=74" "vierundsiebzig $num=74" "75 $num=75" "fünfundsiebzig $num=75" "76 $num=76" "sechsundsiebzig $num=76" "77 $num=77" "siebenundsiebzig $num=77" "78 $num=78" "achtundsiebzig $num=78" "79 $num=79" "neunundsiebzig $num=79" "80 $num=80" "achtzig $num=80" "81 $num=81" "einundachtzig $num=81" "82 $num=82" "zweiundachtzig $num=82" "83 $num=83" "dreiundachtzig $num=83" "84 $num=84" "vierundachtzig $num=84" "85 $num=85" "fünfundachtzig $num=85" "86 $num=86" "sechsundachtzig $num=86" "87 $num=87" "siebenundachtzig $num=87" "88 $num=88" "achtundachtzig $num=88" "89 $num=89" "neunundachtzig $num=89" "90 $num=90" "neunzig $num=90" "91 $num=91" "einundneunzig $num=91" "92 $num=92" "zweiundneunzig $num=92" "93 $num=93" "dreiundneunzig $num=93" "94 $num=94" "vierundneunzig $num=94" "95 $num=95" "fünfundneunzig $num=95" "96 $num=96" "sechsundneunzig $num=96" "97 $num=97" "siebenundneunzig $num=97" "98 $num=98" "achtundneunzig $num=98" "99 $num=99" "neunundneunzig $num=99" "100 $num=100" "einhundert $num=100"]
+
+#==================================================================#
+##### LANGUAGES #####
+#------------------------------------------------------------------#
+concept:(main_languages_entity)
+[
+"asl $available_language=0"
+"afrikanisch $available_language=0"
+"algerisches arabisch $available_language=0"
+"amerikanische gebärdensprache $available_language=0"
+"arabisch $available_language=$Dialog/Language/LangArabic"
+"assamesisch $available_language=0"
+"asiatisch $available_language=0"
+"awadhi $available_language=0"
+"aserbaidschanisch $available_language=0"
+"aserbaidschan türkisch $available_language=0"
+"weissrussisch $available_language=0"
+"belgisch-niederländisch $available_language=0"
+"bengalisch $available_language=0"
+"berberisch $available_language=0"
+"bhojpuri $available_language=0"
+"bisaya $available_language=0"
+"burmesisch $available_language=0"
+"kanaresisch $available_language=0"
+"kantonesisch $available_language=$Dialog/Language/LangCantoneseHK"
+"kastilisch $available_language=0"
+"zentralthailändisch $available_language=0"
+"chatgaya $available_language=0"
+"chhattisgarhi $available_language=0"
+"chinesisch $available_language=$Dialog/Language/LangChinese"
+"chittagong bengalisch $available_language=0"
+"kroatisch $available_language=0"
+"tschechisch $available_language=$Dialog/Language/LangCzech"
+"dakkani $available_language=0"
+"dänisch $available_language=$Dialog/Language/LangDanish"
+"niederländisch $available_language=$Dialog/Language/LangDutch"
+"ägyptisches arabisch $available_language=0"
+"englisch $available_language=$Dialog/Language/LangEnglish"
+"europäisch $available_language=0"
+"farsi $available_language=0"
+"filipino $available_language=0"
+"finnisch $available_language=$Dialog/Language/LangFinnish"
+"flämisch-niederländisch $available_language=$Dialog/Language/LangDutch"
+"französische gebärdensprache $available_language=0"
+"französisch $available_language=$Dialog/Language/LangFrench"
+"fsl $available_language=0"
+"gan chinesisch $available_language=0"
+"deutsch $available_language=$Dialog/Language/LangGerman"
+"nepalesisch $available_language=0"
+"griechisch $available_language=$Dialog/Language/LangGreek"
+"gujarati $available_language=0"
+"hakka chinesisch $available_language=0"
+"haryanvi $available_language=0"
+"hausa $available_language=0"
+"hsiang chinesisch $available_language=0"
+"hindi $available_language=0"
+"holländisch $available_language=0"
+"ungarisch $available_language=0"
+"igbo $available_language=0"
+"indonesisch $available_language=0"
+"italienisch $available_language=$Dialog/Language/LangItalian"
+"japanisch $available_language=$Dialog/Language/LangJapanese"
+"japanische gebärdensprache $available_language=0"
+"javanisch $available_language=0"
+"jin chinesisch $available_language=0"
+"jsl $available_language=0"
+"kanadisch $available_language=0"
+"kejia chinesisch $available_language=0"
+"khaskura $available_language=0"
+"koreanisch $available_language=$Dialog/Language/LangKorean"
+"maduresisch $available_language=0"
+"magadhi $available_language=0"
+"maithili $available_language=0"
+"malaisisch $available_language=0"
+"malayalam $available_language=0"
+"mandarin $available_language=$Dialog/Language/LangChinese"
+"marathi $available_language=0"
+"marwari $available_language=0"
+"modernes standard hindi $available_language=0"
+"modernes standard mandarin $available_language=$Dialog/Language/LangChinese"
+"modernes standard urdu $available_language=0"
+"marokkanisch $available_language=0"
+"nördliches min chinesisch $available_language=0"
+"norwegisch $available_language=$Dialog/Language/LangNorwegian"
+"odia $available_language=0"
+"persisch $available_language=0"
+"polnisch $available_language=$Dialog/Language/LangPolish"
+"portugiesisch $available_language=$Dialog/Language/LangPortuguese"
+"pandschabi $available_language=0"
+"rumänisch $available_language=0"
+"russisch $available_language=$Dialog/Language/LangRussian"
+"saraiki $available_language=0"
+"serbisch $available_language=0"
+"siamesisch $available_language=0"
+"gebärdensprache $available_language=0"
+"sindhi $available_language=0"
+"singhalesisch $available_language=0"
+"süd-niederländisch $available_language=$Dialog/Language/LangDutch"
+"spanisch $available_language=$Dialog/Language/LangSpanish"
+"standard chinesisch $available_language=$Dialog/Language/LangChinese"
+"sundanesisch $available_language=0"
+"schwedisch $available_language=$Dialog/Language/LangSwedish"
+"tamil $available_language=0"
+"telugu $available_language=0"
+"thailändisch $available_language=0"
+"türkisch $available_language=$Dialog/Language/LangTurkish"
+"ukrainisch $available_language=0"
+"urdu $available_language=0"
+"usbekisch $available_language=0"
+"visayan $available_language=0"
+"vietnamesisch $available_language=0"
+"wu chinesisch $available_language=0"
+"xiang chinesisch $available_language=0"
+"[yue yueh] chinesisch $available_language=$Dialog/Language/LangCantoneseHK"
+"yoruba $available_language=0"
+]
+
+concept:(languages_entity)
+[
+"asl"
+"afrikanisch"
+"algerisches arabisch" 
+"amerikanische gebärdensprache"
+"arabisch" 
+"assamesisch" 
+"asiatisch" 
+"awadhi" 
+"aserbaidschanisch" 
+"aserbaidschan türkisch"
+"weissrussisch"
+"belgisch-niederländisch"
+"bengalisch"
+"berberisch" 
+"bhojpuri" 
+"bisaya" 
+"burmesisch" 
+"kanaresisch" 
+"kantonesisch" 
+"kastilisch"
+"zentralthailändisch" 
+"chatgaya"
+"chhattisgarhi"
+"chinesisch" 
+"chittagong bengalisch" 
+"kroatisch" 
+"tschechisch" 
+"dakkani" 
+"dänisch" 
+"niederländisch" 
+"ägyptisches arabisch" 
+"englisch" 
+"europäisch" 
+"farsi" 
+"filipino" 
+"finnisch" 
+"flämisch-niederländisch" 
+"französische gebärdensprache" 
+"französisch" 
+"fsl" 
+"gan chinesisch" 
+"deutsch" 
+"nepalesisch" 
+"griechisch"
+"gujarati"
+"hakka chinesisch"
+"haryanvi"
+"hausa"
+"hsiang chinesisch"
+"hindi"
+"holländisch"
+"ungarisch"
+"igbo"
+"indonesisch"
+"italienisch"
+"japanisch"
+"japanische gebärdensprache"
+"javanisch"
+"jin chinesisch"
+"jsl"
+"kanadisch"
+"kejia chinesisch"
+"khaskura"
+"koreanisch"
+"maduresisch"
+"magadhi"
+"maithili"
+"malaisisch"
+"malayalam"
+"mandarin"
+"marathi"
+"marwari"
+"modernes standard hindi"
+"modernes standard mandarin"
+"modernes standard urdu"
+"marokkanisch"
+"nördliches min chinesisch"
+"norwegisch"
+"odia"
+"persisch"
+"polnisch"
+"portugiesisch"
+"pandschabi"
+"rumänisch"
+"russisch"
+"saraiki"
+"serbisch"
+"siamesisch"
+"gebärdensprache"
+"sindhi"
+"singhalesisch"
+"süd-niederländisch"
+"spanisch"
+"standard chinesisch"
+"sundanesisch"
+"schwedisch"
+"tamil"
+"telugu"
+"thailändisch"
+"türkisch"
+"ukrainisch"
+"urdu"
+"usbekisch"
+"visayan" 
+"vietnamesisch" 
+"wu chinesisch" 
+"xiang chinesisch"
+"[yue yueh] chinesisch" 
+"yoruba"
+]
+
+concept:(dialog_languages_entity)
+[
+"arabisch $lang=Arabic"
+"tschechisch $lang=Czech"
+"dänisch $lang=Danish"
+"griechisch $lang=Greek"
+"koreanisch $lang=Korean"
+"deutsch $lang=German"
+"englisch $lang=English"
+"spanisch $lang=Spanish"
+"finnisch $lang=Finnish"
+"französisch $lang=French"
+"italienisch $lang=Italian"
+"niederländisch $lang=Dutch"
+"chinesisch $lang=Chinese"
+"japanisch $lang=Japanese"
+"norwegisch $lang=Norwegian"
+"polnisch $lang=Polish"
+"brasilianisch $lang=Brazilian"
+"portugiesisch $lang=Portuguese"
+"russisch $lang=Russian"
+"schwedisch $lang=Swedish"
+"türkisch $lang=Turkish"
+"taiwanesisches Mandarin $lang="Taiwanese Mandarin""
+]
+
+def:translate_lang($language)
+^first
+[
+"$language==Arabic Arabisch"
+"$language==Czech Tschechisch"
+"$language==Danish Dänisch"
+"$language==Greek Griechisch"
+"$language==Korean Koreanisch"
+"$language==German Deutsch"
+"$language==Spanish Spanisch"
+"$language==Finnish Finnisch"
+"$language==French Französisch"
+"$language==Italian Italienisch"
+"$language==Dutch Niederländisch"
+"$language==Chinese Chinesisch"
+"$language==Japanese Japanisch"
+"$language==Norwegian Norwegisch"
+"$language==Polish Polnisch"
+"$language==Russian Russisch"
+"$language==Swedish Schwedisch"
+"$language==Turkish Türkisch"
+"$language==English Englisch"
+"$language=="Taiwanese Mandarin"　Taiwanesisches Mandarin"
+]

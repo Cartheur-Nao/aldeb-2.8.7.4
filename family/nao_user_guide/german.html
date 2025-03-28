@@ -1,0 +1,1521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basic Channel - What can I say to NAO &mdash; Aldebaran 2.8.7.4 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.8.7.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Aldebaran 2.8.7.4 documentation" href="../../index.html" />
+    <link rel="up" title="Basic Channel - What can I say to NAO" href="basic_channel_conversation_nao.html" />
+    <link rel="next" title="Basic Channel - What can I say to NAO" href="spanish.html" />
+    <link rel="prev" title="Basic Channel - What can I say to NAO" href="chinese.html" />
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115894784-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115894784-6');
+</script>
+
+<script type="text/javascript" src="https://cloud.aldebaran-robotics.com/static/js/topbar.js"></script>
+<style>
+div#hd::after {
+  
+  
+  content: 'NAOqi 2.8';
+  
+  
+  
+  position: absolute;
+  margin-top: -54px;
+  right: -4px;
+  font-size: 125%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+</style>
+<script>
+
+$(window).ready(function () {
+
+    //Aldebaran Top bar
+     var barLinks = [];
+     barLinks.push({'name':'Aldebaran Site', 'url':'http://www.aldebaran-robotics.com', 'click':'', 'img':'https://cloud.aldebaran-robotics.com/static/img/aldeb.png'});
+     barLinks.push({'name':'Documentation', 'url':'../../index.html', 'click':"", 'img':''});
+     function ShowBar(name, email, usertype) {
+        var barParams = {
+            'name'    : name,
+            'email'   : email,
+            'usertype': usertype,
+            'loginfct': "FctLogin"
+        }
+        try { InitTopBar(barParams, barLinks); } catch (e) { console.log('Top Bar Init Failed'); }
+    }
+    ShowBar();
+
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+
+    // first level navigation
+
+    var buttonIds = [".naoqi", "pepper", "nao", "romeo"];
+    for(id in buttonIds){
+        $(id).removeClass("active");
+    }
+    //Aldebaran project
+    if ($('.toctree-l1.current a').text().indexOf("Romeo ")==0){
+        $(".romeo").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Pepper ")==0){
+        $(".pepper").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("NAO ")==0){
+        $(".nao").toggleClass('active');
+    }
+    else if($('.toctree-l1.current a').text().indexOf("NAOqi ")==0){
+        $(".naoqi").toggleClass('active');
+    }
+
+    //qibuild project
+    if ($('.toctree-l1.current a').text().indexOf("Welcome to qiBuild documentation !")==0){
+        $(".beginner").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Advanced qibuild usage")==0){
+        $(".advanced").toggleClass('active');
+    }
+    else if ($('.toctree-l1.current a').text().indexOf("Hacking qiBuild")==0){
+        $(".hacking").toggleClass('active');
+    }
+
+    // add "On this page", add cssClasses
+    if($('.yui-g .section h1').length > 0){
+        $('.yui-g .section h1:first').addClass("titleWrapper");
+        $('.yui-g .section h1:first').after($("#on-this-page").html())
+    }
+    else if($('.yui-g .section h2').length > 0){
+        $('.yui-g .section h2:first').addClass("titleWrapper");
+        $('.yui-g .section h2:first').after($("#on-this-page").html())
+    }
+    //remove first element on this page
+    if($("#on-this-page").length > 0){
+        var doms = $(".yui-g .section :first").nextUntil("#toc-list");
+        doms = doms.add($("#toc-list"));
+        doms.wrapAll('<div class="iNavWrapper"></div>');
+        $("#toc-list ul li a:first").remove()
+        $("#toc-list ul:first").replaceWith($("#toc-list ul li").html())
+    }
+    $("#toc-list").hide();
+    $("#otp-link").click(function(){
+        $("#toc-list").slideToggle();
+        if($("h2#otp-link").hasClass("change-before")){
+            $("h2#otp-link").removeClass("change-before")
+        }
+        else{
+            $("h2#otp-link").addClass("change-before")
+        }
+    });
+
+    if($("a.current.reference.internal").length>0){
+        var left = $("a.current.reference.internal").position().left-1;
+        var width = $("a.current.reference.internal").width();
+        var offset = 51;
+        var sidebarWidth = 339;
+        var right = sidebarWidth - (left + width + offset);
+        if($("a.current.reference.internal").height() <= 15){
+            $("a.current.reference.internal").css("white-space","nowrap");
+            $("a.current.reference.internal").css({"backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        else{
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+            left = $("a.current.reference.internal").position().left-1;
+            width = $("a.current.reference.internal").width();
+            right = sidebarWidth - (left + width + offset);
+            $("a.current.reference.internal").css({"float":"right","backgroundColor":"#0F2939","paddingTop":"2px", "paddingBottom":"2px","paddingLeft":left+"px","marginLeft":"-"+left+"px", "paddingRight":right+"px","marginRight":"-"+right+"px", "boxShadow":"0px 0px 1px rgb(15, 41, 57)"});
+        }
+        $("a.current.reference.internal").parent().css("list-style-type","none");
+    }
+
+    //back to top
+    var offset = 300,
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+    offset_opacity = 1200,
+    //duration of the top scrolling animation (in ms)
+    scroll_top_duration = 700;
+    //grab the "back to top" link
+    var back_to_top = $('.cd-top');
+
+    //hide or show the "back to top" link
+    $(window).scroll(function(){
+        //back to top button
+        ( $(this).scrollTop() > offset ) ? back_to_top.addClass('cd-is-visible') : back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if( $(this).scrollTop() > offset_opacity ) {
+            back_to_top.addClass('cd-fade-out');
+        }
+    });
+
+    //smooth scroll to top
+    back_to_top.click(function(event){
+        event.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 ,
+        }, scroll_top_duration
+        );
+    });
+    //add show source button
+
+    //replace "go" with "search"
+    $("#searchbox form input[type=submit]").val("Search")
+
+    //trigger click on version triangle to jump to whats new
+    $("#hd").click(function(e){if(e.pageX >= this.offsetWidth && e.pageY<120){$(".whatsnew")[0].click()}})
+})
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      
+      <h1><a href="../../index.html">SoftBank Robotics documentation</a>
+      
+      
+      <span><a class="whatsnew" href="../../news/index.html" >
+      
+          What's new in NAOqi 2.8?
+      
+      </a></span>
+      
+      </h1>
+      <div id="global-nav">
+        
+        <a class="naoqi" title="NAOqi Developer guide" href="../../index_dev_guide.html">NAOqi</a>
+        <a class="pepper" title="Pepper documentation" href="../../home_pepper.html">Pepper</a>
+        <a class="nao" title="NAO documentation" href="../../home_nao.html">NAO</a>
+        <a class="romeo" title="Romeo Documentation" href="../../home_romeo.html">Romeo</a>
+        
+        
+        
+        <div class="nav">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script></div>
+      </div>
+
+    </div>
+    <main class="cd-container">
+        <div id="bd">
+          <div id="yui-main">
+            <div class="yui-b">
+              <div class="yui-g" id="family-nao_user_guide-german">
+                
+  <div class="section" id="basic-channel-what-can-i-say-to-nao">
+<span id="bchannel-text-nao-ge"></span><h1>Basic Channel - What can I say to <strong>NAO</strong><a class="headerlink" href="#basic-channel-what-can-i-say-to-nao" title="Permalink to this headline">¶</a></h1>
+<p>If you do not know what you could say to <strong>NAO</strong>, try one of the following sentences.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These sentences are the canonical forms. A canonical form is the standard.
+Some of variants can also work. For example, you can also try
+&#8220;How can I call you?&#8221; for &#8220;what&#8217;s your name?&#8221;</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Prerequisite</strong>: <a class="reference internal" href="nao_life.html#alife-nao"><span>Autonomous Life</span></a>: <strong>ON</strong> - <a class="reference internal" href="nao_life.html#basic-channel-nao"><span>Basic Channel</span></a>: <strong>ON</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="meet-nao">
+<span id="bc-meet-nao-de"></span><h2>Meet NAO<a class="headerlink" href="#meet-nao" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-meet-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-meet-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-meet-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-meet-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-meet-nao-it"><span>Italian</span></a></p>
+<div class="section" id="greetings">
+<h3>Greetings<a class="headerlink" href="#greetings" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Hello</td>
+<td>Hallo</td>
+</tr>
+<tr class="row-odd"><td>Good morning</td>
+<td>Guten Morgen</td>
+</tr>
+<tr class="row-even"><td>Good afternoon</td>
+<td>Guten Tag</td>
+</tr>
+<tr class="row-odd"><td>Good evening</td>
+<td>Guten Abend</td>
+</tr>
+<tr class="row-even"><td>Nice to meet you</td>
+<td>Schön dich kennenzulernen</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="small-talk">
+<h3>Small talk<a class="headerlink" href="#small-talk" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>How are you?</td>
+<td>Wie geht es dir?</td>
+</tr>
+<tr class="row-odd"><td>Nao!</td>
+<td>Nao!</td>
+</tr>
+<tr class="row-even"><td>Thank you</td>
+<td>Danke dir</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="end-of-interaction">
+<h3>End of interaction<a class="headerlink" href="#end-of-interaction" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Goodbye</td>
+<td>Auf Wiedersehen</td>
+</tr>
+<tr class="row-odd"><td>Goodnight</td>
+<td>Gute nacht</td>
+</tr>
+<tr class="row-even"><td>See you later</td>
+<td>Wir sprechen uns später noch</td>
+</tr>
+<tr class="row-odd"><td>Have a good day</td>
+<td>Hab&#8217; einen schönen Tag</td>
+</tr>
+<tr class="row-even"><td>Take care</td>
+<td>Pass&#8217; auf dich auf</td>
+</tr>
+<tr class="row-odd"><td>I&#8217;m going to sleep</td>
+<td>Ich gehe jetzt schlafen</td>
+</tr>
+<tr class="row-even"><td>I have to go</td>
+<td>Ich muss los</td>
+</tr>
+<tr class="row-odd"><td>I&#8217;ll come back soon</td>
+<td>Ich bin gleich wieder da</td>
+</tr>
+<tr class="row-even"><td>Have a nice weekend</td>
+<td>Schönes Wochenende</td>
+</tr>
+<tr class="row-odd"><td>See you tonight</td>
+<td>Wir sehen uns heute Abend</td>
+</tr>
+<tr class="row-even"><td>See you tomorrow</td>
+<td>Wir sehen uns morgen</td>
+</tr>
+<tr class="row-odd"><td>See you Monday [1]</td>
+<td>Wir sehen uns am Montag</td>
+</tr>
+<tr class="row-even"><td>See you next week</td>
+<td>Wir sehen uns nächste Woche</td>
+</tr>
+</tbody>
+</table>
+<p>[1] Try also with other weekdays.</p>
+</div>
+</div>
+<div class="section" id="ask-for-information">
+<span id="bc-ask-nao-de"></span><h2>Ask for information<a class="headerlink" href="#ask-for-information" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-ask-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-ask-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-ask-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-ask-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-ask-nao-it"><span>Italian</span></a></p>
+<div class="section" id="repeat">
+<h3>Repeat<a class="headerlink" href="#repeat" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What did I say?</td>
+<td>Was habe ich gesagt?</td>
+</tr>
+<tr class="row-odd"><td>Can you repeat?</td>
+<td>Kannst du das wiederholen?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What are your applications?</td>
+<td>Welche Anwendungen hast du installiert?</td>
+</tr>
+<tr class="row-odd"><td>How can I start an application?</td>
+<td>Wie kann ich eine App starten?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="date-time">
+<h3>Date &amp; time<a class="headerlink" href="#date-time" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What time is it?</td>
+<td>Wie spät ist es?</td>
+</tr>
+<tr class="row-odd"><td>What day is it?</td>
+<td>Welcher Tag ist heute?</td>
+</tr>
+<tr class="row-even"><td>Tell me the current year</td>
+<td>Welches Jahr haben wir?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="languages">
+<h3>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What languages do you speak?</td>
+<td>Welche Sprachen kennst sprichst du?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="volume">
+<h3>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Tell me your current volume</td>
+<td>Sag&#8217; mir deine aktuelle Lautstärke.</td>
+</tr>
+<tr class="row-odd"><td>How can I change your volume?</td>
+<td>Sag&#8217; mir wie ich deine Lautstärke ändern kann.</td>
+</tr>
+<tr class="row-even"><td>What is your minimum volume?</td>
+<td>Was ist deine niedrigste Lautstärke?</td>
+</tr>
+<tr class="row-odd"><td>What is your maximum volume?</td>
+<td>Was ist deine maximale Lautstärke?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="battery-level">
+<h3>Battery level<a class="headerlink" href="#battery-level" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>How long does it take you to charge?</td>
+<td>Wie lange brauchst du zum aufladen?</td>
+</tr>
+<tr class="row-odd"><td>How much autonomy do you have?</td>
+<td>Wie lange hält deine Batterie?</td>
+</tr>
+<tr class="row-even"><td>What is your battery level?</td>
+<td>Wie ist dein Akkustand?</td>
+</tr>
+<tr class="row-odd"><td>Do you need charging?</td>
+<td>Musst du aufgeladen werden?</td>
+</tr>
+<tr class="row-even"><td>Are you hungry?</td>
+<td>Bist du hungrig?</td>
+</tr>
+<tr class="row-odd"><td>What is your exact battery level?</td>
+<td>Was ist dein genauer Batteriestand.</td>
+</tr>
+<tr class="row-even"><td>Are you plugged in?</td>
+<td>Bist du eingesteckt?</td>
+</tr>
+<tr class="row-odd"><td>Are you charging?</td>
+<td>Lädst du gerade auf?</td>
+</tr>
+<tr class="row-even"><td>Do you want me to plug you in?</td>
+<td>Willst du angeschlossen werden?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="internet-connection">
+<h3>Internet connection<a class="headerlink" href="#internet-connection" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What is your IP address?</td>
+<td>Wie lautet deine IP Adresse?</td>
+</tr>
+<tr class="row-odd"><td>Give me your wifi IP address</td>
+<td>Gib&#8217; mir deine WLAN IP Adresse.</td>
+</tr>
+<tr class="row-even"><td>Give me your ethernet IP address</td>
+<td>Gib&#8217; mir deine Ethernet IP Adresse.</td>
+</tr>
+<tr class="row-odd"><td>Give me your bluetooth IP address</td>
+<td>Gib&#8217; mir deine Bluetooth IP Adresse.</td>
+</tr>
+<tr class="row-even"><td>What is your webpage?</td>
+<td>Wie lautet die Adresse deiner Internetseite?</td>
+</tr>
+<tr class="row-odd"><td>I want to configure the Internet</td>
+<td>Hilf mir dich mit dem Internet zu verbinden.</td>
+</tr>
+<tr class="row-even"><td>Are you connected to the wifi?</td>
+<td>Bist du mit dem WLAN verbunden.</td>
+</tr>
+<tr class="row-odd"><td>Are you connected to the internet?</td>
+<td>Bist du mit dem Internet verbunden?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modify-settings">
+<span id="bc-set-nao-de"></span><h2>Modify settings<a class="headerlink" href="#modify-settings" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-set-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-set-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-set-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-set-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-set-nao-it"><span>Italian</span></a></p>
+<div class="section" id="id1">
+<h3>Languages<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Speak English</td>
+<td>Lass uns englisch sprechen.</td>
+</tr>
+</tbody>
+</table>
+<p>Try also with the other supported languages: English, French, Japanese, Chinese,
+German, Spanish and Italian (the corresponding language packages must
+be installed on your robot beforehand).</p>
+<p>Note: when NAO is asked to speak another language, the language is changed
+and remains changed, i.e. asking NAO to speak a language has the same effect as
+modifying his settings.</p>
+</div>
+<div class="section" id="id2">
+<h3>Volume<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Speak softer</td>
+<td>Sei&#8217; leiser</td>
+</tr>
+<tr class="row-odd"><td>Speak louder</td>
+<td>Sei&#8217; lauter</td>
+</tr>
+<tr class="row-even"><td>Set the volume to the minimum</td>
+<td>Sei&#8217; so leise wie möglich</td>
+</tr>
+<tr class="row-odd"><td>Set the volume to the maximum</td>
+<td>Sei&#8217; so laut du kannst</td>
+</tr>
+<tr class="row-even"><td>I want to set the volume at 35 [2]</td>
+<td>Ich möchte deine Lautstärke auf 35 einstellen.</td>
+</tr>
+<tr class="row-odd"><td>I want to change the volume</td>
+<td>Ich möchte deine Lautstärke ändern.</td>
+</tr>
+</tbody>
+</table>
+<p>[2] Try also with other values between 20 and 100.</p>
+</div>
+<div class="section" id="silent-mode">
+<h3>Silent mode<a class="headerlink" href="#silent-mode" title="Permalink to this headline">¶</a></h3>
+<p>In silent mode, NAO will still listen but will make specific gestures instead of answering.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Stop talking</td>
+<td>Hör&#8217; auf zu reden.</td>
+</tr>
+<tr class="row-odd"><td>You can speak again</td>
+<td>Rede wieder mit mir.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="shutdown-restart-sleep-mode">
+<h3>Shutdown, restart &amp; sleep mode<a class="headerlink" href="#shutdown-restart-sleep-mode" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you shutdown?</td>
+<td>Kannst du dich herunterfahren?</td>
+</tr>
+<tr class="row-odd"><td>Can you restart?</td>
+<td>Kannst du dich neu starten?</td>
+</tr>
+<tr class="row-even"><td>Go to sleep</td>
+<td>Geh&#8217; jetzt schlafen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="make-nao-move">
+<span id="bc-move-nao-de"></span><h2>Make NAO move<a class="headerlink" href="#make-nao-move" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-move-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-move-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-move-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-move-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-move-nao-it"><span>Italian</span></a></p>
+<div class="section" id="posture">
+<h3>Posture<a class="headerlink" href="#posture" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Turn your engines on</td>
+<td>Schalte deine Motoren ein.</td>
+</tr>
+<tr class="row-odd"><td>Turn your engines off</td>
+<td>Schalte deine Motoren aus.</td>
+</tr>
+<tr class="row-even"><td>Can you stand up?</td>
+<td>Kannst du dich hinstellen?</td>
+</tr>
+<tr class="row-odd"><td>Can you sit down?</td>
+<td>Kannst du dich hinsetzen?</td>
+</tr>
+<tr class="row-even"><td>Can you lie down? [3]</td>
+<td>Kannst du dich hinlegen?</td>
+</tr>
+<tr class="row-odd"><td>Can you crouch?</td>
+<td>Kannst du dich hinhocken?</td>
+</tr>
+</tbody>
+</table>
+<p>[3] Try also: Can you lie on your belly / on your back?</p>
+</div>
+<div class="section" id="head">
+<h3>Head<a class="headerlink" href="#head" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you turn your head? [4]</td>
+<td>Kannst du deinen Kopf drehen?</td>
+</tr>
+<tr class="row-odd"><td>Can you look elsewhere?</td>
+<td>Kannst du woanders hingucken?</td>
+</tr>
+<tr class="row-even"><td>Can you look down?</td>
+<td>Kannst du nach unten gucken?</td>
+</tr>
+<tr class="row-odd"><td>Can you look up?</td>
+<td>Kannst nach oben gucken?</td>
+</tr>
+<tr class="row-even"><td>Can you shake your head?</td>
+<td>Kannst du deinen Kopf schütteln?</td>
+</tr>
+<tr class="row-odd"><td>Can you look at me?</td>
+<td>Kannst du mich angucken?</td>
+</tr>
+<tr class="row-even"><td>Can you stop moving your head?</td>
+<td>Kannst du aufhören deinen Kopf zu bewegen?</td>
+</tr>
+</tbody>
+</table>
+<p>[4] Try also: Can you turn your head to the left / to the right?</p>
+</div>
+<div class="section" id="arms">
+<h3>Arms<a class="headerlink" href="#arms" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you raise your arm? [5]</td>
+<td>Kannst du deinen Arm heben?</td>
+</tr>
+<tr class="row-odd"><td>Can you raise your arms?</td>
+<td>Kannst du beide Arme hochheben?</td>
+</tr>
+<tr class="row-even"><td>Can you stretch your arm? [5]</td>
+<td>Kannst du deinen Arm strecken?</td>
+</tr>
+<tr class="row-odd"><td>Can you stretch your arms?</td>
+<td>Kannst du deine Arme ausstrecken?</td>
+</tr>
+</tbody>
+</table>
+<p>[5] Try also with left / right arm.</p>
+</div>
+<div class="section" id="hands">
+<h3>Hands<a class="headerlink" href="#hands" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Let&#8217;s shake hands!</td>
+<td>Lass&#8217; uns Hände schütteln</td>
+</tr>
+<tr class="row-odd"><td>Can you open your hand? [6]</td>
+<td>Kannst du deine Hand öffnen?</td>
+</tr>
+<tr class="row-even"><td>Can you open your hands?</td>
+<td>Kannst du deine Hände öffnen?</td>
+</tr>
+<tr class="row-odd"><td>Can you close your hand? [6]</td>
+<td>Kannst du deine Hand schließen?</td>
+</tr>
+<tr class="row-even"><td>Can you close your hands?</td>
+<td>Kannst du deine Hände schließen?</td>
+</tr>
+<tr class="row-odd"><td>Can you move your hand? [6]</td>
+<td>Kannst du deine Hand bewegen?</td>
+</tr>
+<tr class="row-even"><td>Can you move your hands?</td>
+<td>Kannst du deine Hände bewegen?</td>
+</tr>
+<tr class="row-odd"><td>Hands up!</td>
+<td>Hände hoch!</td>
+</tr>
+<tr class="row-even"><td>Can you put your hands behind?</td>
+<td>Kannst du deine Hände hinter den Rücken tun?</td>
+</tr>
+<tr class="row-odd"><td>Can you wave bye bye?</td>
+<td>Kannst du mir zum Abschied winken?</td>
+</tr>
+<tr class="row-even"><td>Hide yourself</td>
+<td>Versteck&#8217; dich</td>
+</tr>
+</tbody>
+</table>
+<p>[6] Try also with left / right hand.</p>
+</div>
+<div class="section" id="impossible-moves">
+<h3>Impossible moves<a class="headerlink" href="#impossible-moves" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you touch me?</td>
+<td>Berühre mich bitte.</td>
+</tr>
+<tr class="row-odd"><td>Can you point at me?</td>
+<td>Kannst du auf mich zeigen?</td>
+</tr>
+<tr class="row-even"><td>Can you cross your arms?</td>
+<td>Kannst du die Arme verschränken?</td>
+</tr>
+<tr class="row-odd"><td>Can you dab?</td>
+<td>Kannst du dabben?</td>
+</tr>
+<tr class="row-even"><td>Can you turn your head 180 degrees?</td>
+<td>Drehe deinen Kopf um 180 grad</td>
+</tr>
+<tr class="row-odd"><td>Can you walk?</td>
+<td>Kannst du gehen?</td>
+</tr>
+<tr class="row-even"><td>Can you roll?</td>
+<td>Kannst du rollen?</td>
+</tr>
+<tr class="row-odd"><td>Go backwards</td>
+<td>Lauf&#8217; rückwärts.</td>
+</tr>
+<tr class="row-even"><td>Can you run?</td>
+<td>Kannst du rennen?</td>
+</tr>
+<tr class="row-odd"><td>Can you jump?</td>
+<td>Kannst du springen?</td>
+</tr>
+<tr class="row-even"><td>Can you spin?</td>
+<td>Kannst du dich drehen?</td>
+</tr>
+<tr class="row-odd"><td>Can you do a backflip?</td>
+<td>Kannst du einen Salto machen?</td>
+</tr>
+<tr class="row-even"><td>Can you do push ups?</td>
+<td>Kannst du Liegestützen machen?</td>
+</tr>
+<tr class="row-odd"><td>Can you stand on one foot?</td>
+<td>Kannst du auf einem Bein stehen?</td>
+</tr>
+<tr class="row-even"><td>Can you fly?</td>
+<td>Kannst du fliegen?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="make-nao-do-something">
+<span id="bc-do-nao-de"></span><h2>Make NAO do something<a class="headerlink" href="#make-nao-do-something" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-do-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-do-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-do-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-do-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-do-nao-it"><span>Italian</span></a></p>
+<div class="section" id="sing">
+<h3>Sing<a class="headerlink" href="#sing" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you sing?</td>
+<td>Kannst du singen?</td>
+</tr>
+<tr class="row-odd"><td>Sing Ring around the Rosie</td>
+<td>Sing&#8217; Ringel Ringel Reihe</td>
+</tr>
+<tr class="row-even"><td>Sing Mary had a little lamb</td>
+<td>Sing&#8217; Mary hat ein kleines Schaf</td>
+</tr>
+<tr class="row-odd"><td>Sing Row row row your boat</td>
+<td>Sing&#8217; Rudere Rudere Rudere dein Boot</td>
+</tr>
+<tr class="row-even"><td>Sing Do Re Mi</td>
+<td>Sing&#8217; Do Re Mi</td>
+</tr>
+<tr class="row-odd"><td>Sing Hello Robots</td>
+<td>Sing&#8217; Hallo Roboter</td>
+</tr>
+<tr class="row-even"><td>Sing the ABC song</td>
+<td>Sing das Alphabet-Lied</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="abilities">
+<h3>Abilities<a class="headerlink" href="#abilities" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>What can you do?</td>
+<td>Was kannst du alles tun?</td>
+</tr>
+<tr class="row-odd"><td>What cannot you do?</td>
+<td>Was kannst du nicht tun?</td>
+</tr>
+<tr class="row-even"><td>What can we talk about?</td>
+<td>Worüber können wir reden?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>Applications<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Launch &lt;application name&gt;</td>
+<td>Starte &lt;&gt;</td>
+</tr>
+<tr class="row-odd"><td>&lt;trigger sentence of the application&gt;</td>
+<td>&lt;&gt;</td>
+</tr>
+<tr class="row-even"><td>Launch an application randomly</td>
+<td>Starte eine zufällige App</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="learn-more-about-nao">
+<span id="bc-learn-nao-de"></span><h2>Learn more about NAO<a class="headerlink" href="#learn-more-about-nao" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="basic_channel_conversation_nao.html#bc-learn-nao"><span>French</span></a> - <a class="reference internal" href="japanese.html#bc-learn-nao-jp"><span>Japanese</span></a> - <a class="reference internal" href="chinese.html#bc-learn-nao-cn"><span>Chinese</span></a> - <em>German</em> - <a class="reference internal" href="spanish.html#bc-learn-nao-es"><span>Spanish</span></a> - <a class="reference internal" href="italian.html#bc-learn-nao-it"><span>Italian</span></a></p>
+<div class="section" id="personal-information">
+<h3>Personal information<a class="headerlink" href="#personal-information" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Can you introduce yourself?</td>
+<td>Kannst du dich vorstellen?</td>
+</tr>
+<tr class="row-odd"><td>What&#8217;s your name?</td>
+<td>Wie heißt du?</td>
+</tr>
+<tr class="row-even"><td>What&#8217;s your nickname?</td>
+<td>Hast du einen Spitznamen?</td>
+</tr>
+<tr class="row-odd"><td>Can I change your name?</td>
+<td>Kann ich deinen Namen ändern?</td>
+</tr>
+<tr class="row-even"><td>How old are you?</td>
+<td>Wie alt bist du?</td>
+</tr>
+<tr class="row-odd"><td>How old is Pepper?</td>
+<td>Wie alt ist Pepper?</td>
+</tr>
+<tr class="row-even"><td>How old is Romeo?</td>
+<td>Wie alt ist Romeo?</td>
+</tr>
+<tr class="row-odd"><td>When is your birthday?</td>
+<td>Wann hast du Geburtstag?</td>
+</tr>
+<tr class="row-even"><td>What is your job?</td>
+<td>Was ist dein Job?</td>
+</tr>
+<tr class="row-odd"><td>Are you a boy or a girl?</td>
+<td>Bist du ein Junge oder ein Mädchen?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>How tall are you?</td>
+<td>Wie groß bist du?</td>
+</tr>
+<tr class="row-odd"><td>How much do you weight?</td>
+<td>Wieviel wiegst du?</td>
+</tr>
+<tr class="row-even"><td>What are you made of?</td>
+<td>Woraus bist du gemacht?</td>
+</tr>
+<tr class="row-odd"><td>What color are you?</td>
+<td>Welche Farbe hast du?</td>
+</tr>
+<tr class="row-even"><td>How many fingers do you have?</td>
+<td>Wieviele Finger hast du?</td>
+</tr>
+<tr class="row-odd"><td>What is the meaning of your fingerprints?</td>
+<td>Was bedeuten deine Fingerabdrücke?</td>
+</tr>
+<tr class="row-even"><td>What is your tablet for?</td>
+<td>Wofür hast du ein Tablet?</td>
+</tr>
+<tr class="row-odd"><td>Do you have microphones?</td>
+<td>Hast du ein Mikrofon?</td>
+</tr>
+<tr class="row-even"><td>Where are your microphones?</td>
+<td>Wo sind deine Mikrofone?</td>
+</tr>
+<tr class="row-odd"><td>Do you have speakers?</td>
+<td>Hast du Lautsprecher?</td>
+</tr>
+<tr class="row-even"><td>Where are your speakers?</td>
+<td>Wo sind deine Lautsprecher?</td>
+</tr>
+<tr class="row-odd"><td>How many wheels do you have?</td>
+<td>Wieviele Räder hast du?</td>
+</tr>
+<tr class="row-even"><td>Do you have cameras?</td>
+<td>Hast du Kameras?</td>
+</tr>
+<tr class="row-odd"><td>Where are your cameras?</td>
+<td>Wo sind deine Kaeras?</td>
+</tr>
+<tr class="row-even"><td>Do you have sensors?</td>
+<td>Hast du Sensoren?</td>
+</tr>
+<tr class="row-odd"><td>Where are your sensors?</td>
+<td>Wo sind deine Sensoren?</td>
+</tr>
+<tr class="row-even"><td>How many articulations do you have?</td>
+<td>Wieviel Bewegungsfreiheit hast du?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Abilities<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>How fast can you go?</td>
+<td>Wie schnell kannst du gehen?</td>
+</tr>
+<tr class="row-odd"><td>Do you understand my emotions?</td>
+<td>Kannst du meine Gefühle verstehen?</td>
+</tr>
+<tr class="row-even"><td>How you detect emotions?</td>
+<td>Wie erkennst du Gefühle?</td>
+</tr>
+<tr class="row-odd"><td>Can you remember me?</td>
+<td>Kannst du dich an mich erinnern</td>
+</tr>
+<tr class="row-even"><td>Can you keep a secret?</td>
+<td>Kannst du dein Geheimnis bewahren?</td>
+</tr>
+<tr class="row-odd"><td>Can you see me?</td>
+<td>Kannst du mich sehen?</td>
+</tr>
+<tr class="row-even"><td>How do you recognize me?</td>
+<td>Wie kannst du mich wiedererkennen?</td>
+</tr>
+<tr class="row-odd"><td>How do you track me with your eyes?</td>
+<td>Wie schaffst du es mir mit deinem Blick zu folgen?</td>
+</tr>
+<tr class="row-even"><td>Can you hear me?</td>
+<td>Kannst du mich hören?</td>
+</tr>
+<tr class="row-odd"><td>Can you understand me?</td>
+<td>Kannst du mich verstehen?</td>
+</tr>
+<tr class="row-even"><td>How many words do you know?</td>
+<td>Wie viele Wörter sind in deinem Vokabular?</td>
+</tr>
+<tr class="row-odd"><td>How do you understand what I say?</td>
+<td>Wie kannst du verstehen was ich sage?</td>
+</tr>
+<tr class="row-even"><td>How do you speak?</td>
+<td>Wie sprichst du?</td>
+</tr>
+<tr class="row-odd"><td>How do you move forward?</td>
+<td>Wie bewegst du dich vorwärts?</td>
+</tr>
+<tr class="row-even"><td>How do you move?</td>
+<td>Wie bewegst du dich vorwärts?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="origins">
+<h3>Origins<a class="headerlink" href="#origins" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Where do you come from?</td>
+<td>Wo kommst du her?</td>
+</tr>
+<tr class="row-odd"><td>Why are you called Nao?</td>
+<td>Warum wurdest du Nao genannt?</td>
+</tr>
+<tr class="row-even"><td>What does Nao mean?</td>
+<td>Was bedeutet Nao?</td>
+</tr>
+<tr class="row-odd"><td>Who called you Nao?</td>
+<td>Wer hat dich Nao genannt?</td>
+</tr>
+<tr class="row-even"><td>Tell me more about Softbank Robotics</td>
+<td>Erzähl&#8217; mir mehr über Softbank Robotics</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="character">
+<h3>Character<a class="headerlink" href="#character" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Are you kind?</td>
+<td>Bist du nett?</td>
+</tr>
+<tr class="row-odd"><td>Are you cool?</td>
+<td>Bist du cool?</td>
+</tr>
+<tr class="row-even"><td>Are you smart?</td>
+<td>Bist du schlau?</td>
+</tr>
+<tr class="row-odd"><td>Can I trust you?</td>
+<td>Kann ich dir vertrauen?</td>
+</tr>
+<tr class="row-even"><td>What do you think about humans?</td>
+<td>Was hälst du von Menschen?</td>
+</tr>
+<tr class="row-odd"><td>Do you like humans?</td>
+<td>Liebst/ Magst du Menschen?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="humanoid-robot">
+<h3>Humanoid robot<a class="headerlink" href="#humanoid-robot" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Are you human?</td>
+<td>Bist du menschlich?</td>
+</tr>
+<tr class="row-odd"><td>Are you alive?</td>
+<td>Bist du lebendig?</td>
+</tr>
+<tr class="row-even"><td>Are you conscious?</td>
+<td>Hast du ein Bewusstsein?</td>
+</tr>
+<tr class="row-odd"><td>Do you eat?</td>
+<td>Isst du?</td>
+</tr>
+<tr class="row-even"><td>Do you drink?</td>
+<td>Trinkst du?</td>
+</tr>
+<tr class="row-odd"><td>Do you know the laws of robotics?</td>
+<td>Kennst du die Robotergesetze?</td>
+</tr>
+<tr class="row-even"><td>Who is Asimov?</td>
+<td>Wer war Asimov?</td>
+</tr>
+<tr class="row-odd"><td>Are you a robot?</td>
+<td>Bist du ein Roboter?</td>
+</tr>
+<tr class="row-even"><td>What is a humanoid robot?</td>
+<td>Was ist ein humanoider Roboter?</td>
+</tr>
+<tr class="row-odd"><td>What is a robot?</td>
+<td>Was ist ein Roboter?</td>
+</tr>
+<tr class="row-even"><td>Will robots replace humans?</td>
+<td>Werden Roboter irgendwann den Menschen ersetzen?</td>
+</tr>
+<tr class="row-odd"><td>Are robots dangerous?</td>
+<td>Sind Roboter gefährlich?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-robots">
+<h3>Other robots<a class="headerlink" href="#other-robots" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Who is Pepper?</td>
+<td>Wer ist Pepper?</td>
+</tr>
+<tr class="row-odd"><td>Talk about Pepper</td>
+<td>Erzähle mir von Pepper</td>
+</tr>
+<tr class="row-even"><td>I know Pepper</td>
+<td>Ich kenne Pepper bereits</td>
+</tr>
+<tr class="row-odd"><td>Who is Romeo?</td>
+<td>Wer ist Romeo?</td>
+</tr>
+<tr class="row-even"><td>Talk about Romeo</td>
+<td>Erzähle mir von Romeo</td>
+</tr>
+<tr class="row-odd"><td>I know Romeo</td>
+<td>Ich kenne Romeo bereits</td>
+</tr>
+<tr class="row-even"><td>When will Romeo be available?</td>
+<td>Ab wann kann ich Romeo kaufen?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="relationships">
+<h3>Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">English</th>
+<th class="head">German</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Do you have siblings?</td>
+<td>Hast du Geschwister?</td>
+</tr>
+<tr class="row-odd"><td>Do you have parents?</td>
+<td>Hast du Eltern?</td>
+</tr>
+<tr class="row-even"><td>Do you have a child?</td>
+<td>Hast du ein Kind?</td>
+</tr>
+<tr class="row-odd"><td>Who is your father?</td>
+<td>Wer ist dein Vater?</td>
+</tr>
+<tr class="row-even"><td>Do you have friends?</td>
+<td>Hast du Freunde?</td>
+</tr>
+<tr class="row-odd"><td>What&#8217;s your friend&#8217;s name?</td>
+<td>Wie heißt dein Freund?</td>
+</tr>
+<tr class="row-even"><td>Do you want to be my friend?</td>
+<td>Willst du mein Freund sein?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          
+            
+              <div class="yui-b" id="sidebar">
+                
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents.html">Site map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/index.html">What&#8217;s new</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index_dev_guide.html">NAOqi - Developer guide</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../home_nao.html"><strong>NAO</strong> - Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><strong>NAO</strong> - User Guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="introduction_nao.html">First steps with <strong>NAO</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="interacting.html">Daily use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring.html">Configuring and settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="store_home_nao.html">NAO Apps Store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taking-care.html">Taking care of NAO</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="understanding_nao.html">More details about <strong>NAO</strong></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="chest_button_usages.html">Main usages of the Chest button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voice_notifications_nao.html">Event and state notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="boot_process_nao.html">Understanding the boot process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shutdown_process_nao.html">Understanding the shutdown process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nao_life.html">Understanding Autonomous Life settings</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="basic_channel_conversation_nao.html">Basic Channel - What can I say to <strong>NAO</strong></a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="japanese.html">Basic Channel - What can I say to <strong>NAO</strong></a></li>
+<li class="toctree-l5"><a class="reference internal" href="chinese.html">Basic Channel - What can I say to <strong>NAO</strong></a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="">Basic Channel - What can I say to <strong>NAO</strong></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="spanish.html">Basic Channel - What can I say to <strong>NAO</strong></a></li>
+<li class="toctree-l5"><a class="reference internal" href="italian.html">Basic Channel - What can I say to <strong>NAO</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="semantic_engine_nao.html">Semantic Engine - What <strong>NAO</strong> knows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nao_technical/index_naov6.html"><strong>NAO</strong> - Developer Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../home_pepper.html"><strong>Pepper</strong> - Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../home_romeo.html"><strong>Romeo</strong> - Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../legal/notice.html">Legal notices</a></li>
+</ul>
+
+    <div id="on-this-page" style="display:none;">
+        <h2 id="otp-link">On this page</h2>
+        <div id="toc-list">
+            <ul>
+<li><a class="reference internal" href="#">Basic Channel - What can I say to <strong>NAO</strong></a><ul>
+<li><a class="reference internal" href="#meet-nao">Meet NAO</a><ul>
+<li><a class="reference internal" href="#greetings">Greetings</a></li>
+<li><a class="reference internal" href="#small-talk">Small talk</a></li>
+<li><a class="reference internal" href="#end-of-interaction">End of interaction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ask-for-information">Ask for information</a><ul>
+<li><a class="reference internal" href="#repeat">Repeat</a></li>
+<li><a class="reference internal" href="#applications">Applications</a></li>
+<li><a class="reference internal" href="#date-time">Date &amp; time</a></li>
+<li><a class="reference internal" href="#languages">Languages</a></li>
+<li><a class="reference internal" href="#volume">Volume</a></li>
+<li><a class="reference internal" href="#battery-level">Battery level</a></li>
+<li><a class="reference internal" href="#internet-connection">Internet connection</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modify-settings">Modify settings</a><ul>
+<li><a class="reference internal" href="#id1">Languages</a></li>
+<li><a class="reference internal" href="#id2">Volume</a></li>
+<li><a class="reference internal" href="#silent-mode">Silent mode</a></li>
+<li><a class="reference internal" href="#shutdown-restart-sleep-mode">Shutdown, restart &amp; sleep mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-nao-move">Make NAO move</a><ul>
+<li><a class="reference internal" href="#posture">Posture</a></li>
+<li><a class="reference internal" href="#head">Head</a></li>
+<li><a class="reference internal" href="#arms">Arms</a></li>
+<li><a class="reference internal" href="#hands">Hands</a></li>
+<li><a class="reference internal" href="#impossible-moves">Impossible moves</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-nao-do-something">Make NAO do something</a><ul>
+<li><a class="reference internal" href="#sing">Sing</a></li>
+<li><a class="reference internal" href="#abilities">Abilities</a></li>
+<li><a class="reference internal" href="#id3">Applications</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#learn-more-about-nao">Learn more about NAO</a><ul>
+<li><a class="reference internal" href="#personal-information">Personal information</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#id4">Abilities</a></li>
+<li><a class="reference internal" href="#origins">Origins</a></li>
+<li><a class="reference internal" href="#character">Character</a></li>
+<li><a class="reference internal" href="#humanoid-robot">Humanoid robot</a></li>
+<li><a class="reference internal" href="#other-robots">Other robots</a></li>
+<li><a class="reference internal" href="#relationships">Relationships</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    </div>
+        </div>
+      </div>
+              </div>
+            
+          
+        </div>
+    </main>
+    <a href="#0" class="cd-top"></a>
+    <div id="ft">
+      
+      <a title="Glossary" href="../../glossary.html">Glossary</a>
+      <a title="Site map" href="../../contents.html">Site map</a>
+      <a title="Index" href="../../genindex.html">Index</a>
+      <a title="Support" target="_blank" href="https://account.aldebaran.com/support/">Support</a>
+      <a title="Contact" target="_blank" href="https://www.aldebaran.com/en/contact">Contact</a>
+      <a title="Legal Notices" href="../../legal/notice.html">Legal Notices</a>
+      
+      
+      <img src="https://www.ald.softbankrobotics.com/sites/aldebaran/files/logos-picture/2016_digital_logo_sbr_112x31_0.png" alt="">
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
